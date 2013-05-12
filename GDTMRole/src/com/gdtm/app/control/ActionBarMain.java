@@ -38,7 +38,9 @@ public class ActionBarMain extends Activity implements TabListener {
 			fragMentTra = getFragmentManager().beginTransaction();
 			ActionBar bar = getActionBar();
 			bar.addTab(bar.newTab().setText("Meeting List").setTabListener(this));
+			bar.addTab(bar.newTab().setText("CL").setTabListener(this));
 			bar.addTab(bar.newTab().setText("Upcoming Meeting").setTabListener(this));
+			bar.addTab(bar.newTab().setText("CC").setTabListener(this));
 			bar.addTab(bar.newTab().setText("Setting").setTabListener(this));
 
 			bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
