@@ -5,14 +5,14 @@
 	android:orientation="vertical"
 	>
 	
-    <!-- <com.facebook.widget.LoginButton
+    <com.facebook.widget.LoginButton
                 android:id="@+id/login_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 facebook:confirm_logout="false"
                 facebook:fetch_user_info="true"
-                /> -->
+                />
 	
     <Button 
         android:id="@+id/btn_signup_fb"
