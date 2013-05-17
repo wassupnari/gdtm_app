@@ -10,11 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
+ * This is the main page of role signup.
  * @author Nari Kim (wassupnari@gmail.com)
  */
 public class FragmentMain extends Fragment {
-	private String arry[] = { "Tofeeq", "Ahmad", "Fragment", "Example",
-			"Tofeeq", "Ahmad", "Fragment", "Example" };
+	private String arry[] = { "Theme", "Toastmaster", "General Evaluator", "Table Topic Master",
+			"Guest Greeter", "Receptionist", "Word & Quote Master", "Quiz Master", "Timer",
+			"Grammarian", "Ah Counter", "Speaker #1", "Evaluator #1", "Speaker #2", "Evaluator #2",
+			"Speacker #3", "Evaluator #3", "Stanby Speaker", "Stanby Evaluator"};
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

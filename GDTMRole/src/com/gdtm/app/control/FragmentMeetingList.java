@@ -10,12 +10,13 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 /**
+ * 
  * @author Nari Kim (wassupnari@gmail.com)
  */
 
 public class FragmentMeetingList extends Fragment {
-	private String arry[] = { "Tofeeq", "Ahmad", "Fragment", "Example",
-			"Tofeeq", "Ahmad", "Fragment", "Example" };
+	private String arry[] = { "July. 6", "July. 13", "July. 20", "July. 27",
+			"Aug. 3", "Aug. 10", "Aug. 17", "Aug. 24", "Aug. 31" };
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

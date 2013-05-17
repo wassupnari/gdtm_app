@@ -23,9 +23,12 @@ public class ActionBarMain extends Activity implements TabListener {
 	RelativeLayout rl;
 	
 	FragmentMain mFragMain;
-	FragmentTransaction fragMentTra = null;
+	FragmentCL mFragCL;
 	FragmentSetting mFragSetting;
+	FragmentCC mFragCC;
 	FragmentMeetingList mFragMeetingList;
+	
+	FragmentTransaction mFragTransaction = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,7 +38,7 @@ public class ActionBarMain extends Activity implements TabListener {
 		setContentView(R.layout.control_actionbar_main);
 		try {
 			rl = (RelativeLayout) findViewById(R.id.mainLayout);
-			fragMentTra = getFragmentManager().beginTransaction();
+			mFragTransaction = getFragmentManager().beginTransaction();
 			ActionBar bar = getActionBar();
 			bar.addTab(bar.newTab().setText("Meeting List").setTabListener(this));
 			bar.addTab(bar.newTab().setText("CL").setTabListener(this));
@@ -79,30 +82,51 @@ public class ActionBarMain extends Activity implements TabListener {
 			} catch (Exception e) {
 			}
 			mFragMeetingList = new FragmentMeetingList();
-			fragMentTra.addToBackStack(null);
-			fragMentTra = getFragmentManager().beginTransaction();
-			fragMentTra.add(rl.getId(), mFragMeetingList);
-			fragMentTra.commit();
+			mFragTransaction.addToBackStack(null);
+			mFragTransaction = getFragmentManager().beginTransaction();
+			mFragTransaction.add(rl.getId(), mFragMeetingList);
+			mFragTransaction.commit();
+		} else if (tab.getText().equals("CL")) {
+			try {
+				rl.removeAllViews();
+			} catch(Exception e) {
+			}
+			mFragCL = new FragmentCL();
+			mFragTransaction.addToBackStack(null);
+			mFragTransaction = getFragmentManager().beginTransaction();
+			mFragTransaction.add(rl.getId(), mFragCL);
+			mFragTransaction.commit();
 		} else if (tab.getText().equals("Upcoming Meeting")) {
 			try {
 				rl.removeAllViews();
 			} catch (Exception e) {
 			}
 			mFragMain = new FragmentMain();
-			fragMentTra.addToBackStack(null);
-			fragMentTra = getFragmentManager().beginTransaction();
-			fragMentTra.add(rl.getId(), mFragMain);
-			fragMentTra.commit();
-		} else if (tab.getText().equals("Setting")) {
+			mFragTransaction.addToBackStack(null);
+			mFragTransaction = getFragmentManager().beginTransaction();
+			mFragTransaction.add(rl.getId(), mFragMain);
+			mFragTransaction.commit();
+		} else if (tab.getText().equals("CC")) {
+			try {
+				rl.removeAllViews();
+			} catch(Exception e) {
+			}
+			mFragCC = new FragmentCC();
+			mFragTransaction.addToBackStack(null);
+			mFragTransaction = getFragmentManager().beginTransaction();
+			mFragTransaction.add(rl.getId(), mFragCC);
+			mFragTransaction.commit();
+		}
+			else if (tab.getText().equals("Setting")) {
 			try {
 				rl.removeAllViews();
 			} catch (Exception e) {
 			}
 			mFragSetting = new FragmentSetting();
-			fragMentTra.addToBackStack(null);
-			fragMentTra = getFragmentManager().beginTransaction();
-			fragMentTra.add(rl.getId(), mFragSetting);
-			fragMentTra.commit();
+			mFragTransaction.addToBackStack(null);
+			mFragTransaction = getFragmentManager().beginTransaction();
+			mFragTransaction.add(rl.getId(), mFragSetting);
+			mFragTransaction.commit();
 		}
 
 	}

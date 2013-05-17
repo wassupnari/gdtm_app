@@ -73,7 +73,7 @@ public class SignupPage extends FragmentActivity{
 			
 		});
 		
-		Button btn_fb = (Button) findViewById(R.id.btn_signup_fb);
+		Button btn_fb = (Button) findViewById(R.id.btn_signup_email);
 		btn_fb.setOnClickListener(new Button.OnClickListener() {
 
 			@Override
