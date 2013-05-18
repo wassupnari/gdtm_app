@@ -1,132 +1,174 @@
 package com.gdtm.app.intro;
 
 import java.security.MessageDigest;
+import java.util.Arrays;
 
+import com.facebook.FacebookException;
+import com.facebook.Request;
+import com.facebook.Response;
 import com.facebook.Session;
+import com.facebook.SessionState;
 import com.facebook.widget.LoginButton;
+import com.facebook.widget.LoginButton.OnErrorListener;
 import com.facebook.model.GraphUser;
 import com.gdtm.app.R;
 import com.gdtm.app.control.ActionBarMain;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.TextView;
 
 /**
  * @author Nari Kim (wassupnari@gmail.com)
  */
 
-public class SignupPage extends FragmentActivity{
-	
-	private LoginButton loginButton;
-	
+public class SignupPage extends Activity {
+
+	private LoginButton mLoginWithFacebook;
+	private Button mLoginWithEmail;
+	private Button mSignup;
+
 	private PendingAction pendingAction = PendingAction.NONE;
-	private GraphUser user;
-	
+	private GraphUser mUser;
+
+	private TextView mText;
+
 	private enum PendingAction {
-        NONE,
-        POST_PHOTO,
-        POST_STATUS_UPDATE
-    }
+		NONE, POST_PHOTO, POST_STATUS_UPDATE
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);    // Removes title bar
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,     
-				  WindowManager.LayoutParams.FLAG_FULLSCREEN);    // Removes notification bar
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE); // Removes title bar
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN); // Removes
+																// notification
+																// bar
 		setContentView(R.layout.intro_signup_page);
-		
-		loginButton = (LoginButton) findViewById(R.id.login_button);
-        loginButton.setUserInfoChangedCallback(new LoginButton.UserInfoChangedCallback() {
-            @Override
-            public void onUserInfoFetched(GraphUser user) {
-                SignupPage.this.user = user;
-                updateUI();
-                // It's possible that we were waiting for this.user to be populated in order to post a
-                // status update.
-                handlePendingAction();
-            }
-        });
-		
-		Button btn_login = (Button) findViewById(R.id.btn_login);
-		btn_login.setOnClickListener(new Button.OnClickListener() {
+
+		mText = (TextView) findViewById(R.id.user_name);
+
+		mLoginWithFacebook = (LoginButton) findViewById(R.id.login_button);
+		mLoginWithFacebook.setOnErrorListener(new OnErrorListener() {
+
+			@Override
+			public void onError(FacebookException error) {
+
+				Log.i("GDTM", "Error " + error.getMessage());
+			}
+		});
+
+		// set permission list, Don't forget to add email
+		mLoginWithFacebook.setReadPermissions(Arrays.asList("basic_info", "email"));
+		// session state call back event
+		mLoginWithFacebook.setSessionStatusCallback(new Session.StatusCallback() {
+
+			@Override
+			public void call(Session session, SessionState state, Exception exception) {
+
+				if (session.isOpened()) {
+					Log.i("GDTM", "Access Token" + session.getAccessToken());
+					Request.executeMeRequestAsync(session, new Request.GraphUserCallback() {
+
+						@Override
+						public void onCompleted(GraphUser user, Response response) {
+
+							if (user != null) {
+								Log.i("GDTM", "User ID " + user.getId());
+								Log.i("GDTM", "Email " + user.asMap().get("email"));
+								mText.setText(user.getName());
+
+								Intent intent = new Intent(SignupPage.this, ActionBarMain.class);
+								startActivity(intent);
+								finish();
+							}
+						}
+					});
+				}
+			}
+
+		});
+
+		Button mLoginWithEmail = (Button) findViewById(R.id.btn_login);
+		mLoginWithEmail.setOnClickListener(new Button.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+
 				// Start main view after sign in
 				Intent intent = new Intent(SignupPage.this, ActionBarMain.class);
 				startActivity(intent);
 				finish();
 			}
-			
+
 		});
-		
-		Button btn_fb = (Button) findViewById(R.id.btn_signup_email);
-		btn_fb.setOnClickListener(new Button.OnClickListener() {
+
+		Button mSignup = (Button) findViewById(R.id.btn_signup_email);
+		mSignup.setOnClickListener(new Button.OnClickListener() {
 
 			@Override
 			public void onClick(View arg0) {
-				try {
-			        PackageInfo info = getPackageManager().getPackageInfo(
-			                "com.facebook.samples.hellofacebook", 
-			                PackageManager.GET_SIGNATURES);
-//			        for (Signature signature : info.signatures) {
-//			            MessageDigest md = MessageDigest.getInstance("SHA");
-//			            md.update(signature.toByteArray());
-//			            Log.d("KeyHash:", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-//			            }
-			    } catch (NameNotFoundException e) {
 
-			    }
 			}
-			
 		});
 	}
-	
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		super.onActivityResult(requestCode, resultCode, data);
+		Session.getActiveSession().onActivityResult(this, requestCode, resultCode, data);
+	}
+
 	private void updateUI() {
-        Session session = Session.getActiveSession();
-        boolean enableButtons = (session != null && session.isOpened());
 
-//        postStatusUpdateButton.setEnabled(enableButtons);
-//        postPhotoButton.setEnabled(enableButtons);
-//        pickFriendsButton.setEnabled(enableButtons);
-//        pickPlaceButton.setEnabled(enableButtons);
-//
-//        if (enableButtons && user != null) {
-//            profilePictureView.setProfileId(user.getId());
-//            greeting.setText(getString(R.string.hello_user, user.getFirstName()));
-//        } else {
-//            profilePictureView.setProfileId(null);
-//            greeting.setText(null);
-//        }
-    }
-	
+		Session session = Session.getActiveSession();
+		boolean enableButtons = (session != null && session.isOpened());
+
+		// postStatusUpdateButton.setEnabled(enableButtons);
+		// postPhotoButton.setEnabled(enableButtons);
+		// pickFriendsButton.setEnabled(enableButtons);
+		// pickPlaceButton.setEnabled(enableButtons);
+		//
+		// if (enableButtons && user != null) {
+		// profilePictureView.setProfileId(user.getId());
+		// greeting.setText(getString(R.string.hello_user,
+		// user.getFirstName()));
+		// } else {
+		// profilePictureView.setProfileId(null);
+		// greeting.setText(null);
+		// }
+	}
+
 	private void handlePendingAction() {
-        PendingAction previouslyPendingAction = pendingAction;
-        // These actions may re-set pendingAction if they are still pending, but we assume they
-        // will succeed.
-        pendingAction = PendingAction.NONE;
 
-        switch (previouslyPendingAction) {
-            case POST_PHOTO:
-                //postPhoto();
-                break;
-            case POST_STATUS_UPDATE:
-                //postStatusUpdate();
-                break;
-        }
-    }
-	
+		PendingAction previouslyPendingAction = pendingAction;
+		// These actions may re-set pendingAction if they are still pending, but
+		// we assume they
+		// will succeed.
+		pendingAction = PendingAction.NONE;
+
+		switch (previouslyPendingAction) {
+		case POST_PHOTO:
+			// postPhoto();
+			break;
+		case POST_STATUS_UPDATE:
+			// postStatusUpdate();
+			break;
+		}
+	}
+
+	public GraphUser getUserInfo() {
+
+		return mUser;
+	}
 }

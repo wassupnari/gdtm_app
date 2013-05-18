@@ -21,20 +21,21 @@ import android.widget.RelativeLayout;
 public class ActionBarMain extends Activity implements TabListener {
 
 	RelativeLayout rl;
-	
+
 	FragmentMain mFragMain;
 	FragmentCL mFragCL;
 	FragmentSetting mFragSetting;
 	FragmentCC mFragCC;
 	FragmentMeetingList mFragMeetingList;
-	
+
 	FragmentTransaction mFragTransaction = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+
 		super.onCreate(savedInstanceState);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,     
-				  WindowManager.LayoutParams.FLAG_FULLSCREEN);    // Removes notification bar
+		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.control_actionbar_main);
 		try {
 			rl = (RelativeLayout) findViewById(R.id.mainLayout);
@@ -46,8 +47,7 @@ public class ActionBarMain extends Activity implements TabListener {
 			bar.addTab(bar.newTab().setText("CC").setTabListener(this));
 			bar.addTab(bar.newTab().setText("Setting").setTabListener(this));
 
-			bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
-					| ActionBar.DISPLAY_USE_LOGO);
+			bar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM | ActionBar.DISPLAY_USE_LOGO);
 			bar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 			bar.setDisplayShowHomeEnabled(true);
 			bar.setDisplayShowTitleEnabled(false);
@@ -60,17 +60,17 @@ public class ActionBarMain extends Activity implements TabListener {
 		 * Hiding Action Bar
 		 */
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+
 		getMenuInflater().inflate(R.menu.menu_actionbar_main, menu);
 		return true;
 	}
-	
-	
 
 	@Override
 	public void onTabReselected(Tab tab, FragmentTransaction ft) {
+
 	}
 
 	@Override
@@ -89,7 +89,7 @@ public class ActionBarMain extends Activity implements TabListener {
 		} else if (tab.getText().equals("CL")) {
 			try {
 				rl.removeAllViews();
-			} catch(Exception e) {
+			} catch (Exception e) {
 			}
 			mFragCL = new FragmentCL();
 			mFragTransaction.addToBackStack(null);
@@ -109,15 +109,14 @@ public class ActionBarMain extends Activity implements TabListener {
 		} else if (tab.getText().equals("CC")) {
 			try {
 				rl.removeAllViews();
-			} catch(Exception e) {
+			} catch (Exception e) {
 			}
 			mFragCC = new FragmentCC();
 			mFragTransaction.addToBackStack(null);
 			mFragTransaction = getFragmentManager().beginTransaction();
 			mFragTransaction.add(rl.getId(), mFragCC);
 			mFragTransaction.commit();
-		}
-			else if (tab.getText().equals("Setting")) {
+		} else if (tab.getText().equals("Setting")) {
 			try {
 				rl.removeAllViews();
 			} catch (Exception e) {
@@ -135,6 +134,5 @@ public class ActionBarMain extends Activity implements TabListener {
 	public void onTabUnselected(Tab tab, FragmentTransaction ft) {
 
 	}
-    
-    
+
 }

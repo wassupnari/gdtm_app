@@ -8,14 +8,18 @@ import android.view.ViewGroup;
 
 import com.gdtm.app.R;
 
+/**
+ * @author Nari Kim (wassupnari@gmail.com)
+ */
+
 public class FragmentCL extends Fragment {
-	
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
 		View view = inflater.inflate(R.layout.control_frag_cl, null);
-		//GridView listView = (GridView) view.findViewById(R.id.cc_scroll);
-		//listView.setAdapter(new Adapter());
+		// GridView listView = (GridView) view.findViewById(R.id.cc_scroll);
+		// listView.setAdapter(new Adapter());
 		return view;
 	}
 

@@ -11,24 +11,28 @@ import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ListView;
 
-public class FragmentCC extends Fragment {
-	private String arry[] = { "Tofeeq", "Ahmad", "Fragment", "Example",
-			"Tofeeq", "Ahmad", "Fragment", "Example" };
-	
-	
+/**
+ * @author Nari Kim (wassupnari@gmail.com)
+ */
 
-//	@Override
-//	public void onCreate(Bundle savedInstanceState) {
-//		super.onCreate(savedInstanceState);
-//		
-//		setContentView(R.layout.control_frag_cc);
-//	}
+public class FragmentCC extends Fragment {
+
+	private String arry[] = { "Tofeeq", "Ahmad", "Fragment", "Example", "Tofeeq", "Ahmad",
+			"Fragment", "Example" };
+
+	// @Override
+	// public void onCreate(Bundle savedInstanceState) {
+	// super.onCreate(savedInstanceState);
+	//
+	// setContentView(R.layout.control_frag_cc);
+	// }
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
 		View view = inflater.inflate(R.layout.control_frag_cc, null);
-		//GridView listView = (GridView) view.findViewById(R.id.cc_scroll);
-		//listView.setAdapter(new Adapter());
+		// GridView listView = (GridView) view.findViewById(R.id.cc_scroll);
+		// listView.setAdapter(new Adapter());
 		return view;
 	}
 
