@@ -1,6 +1,5 @@
 package com.gdtm.app.intro;
 
-import java.security.MessageDigest;
 import java.util.Arrays;
 
 import com.facebook.FacebookException;
@@ -17,7 +16,6 @@ import com.gdtm.app.control.ActionBarMain;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -37,6 +35,7 @@ public class SignupPage extends Activity {
 
 	private PendingAction pendingAction = PendingAction.NONE;
 	private GraphUser mUser;
+	// private UserInfo mUserInfo;
 
 	private TextView mText;
 
@@ -54,6 +53,8 @@ public class SignupPage extends Activity {
 																// notification
 																// bar
 		setContentView(R.layout.intro_signup_page);
+
+		// mUserInfo = UserInfo.getInstance();
 
 		mText = (TextView) findViewById(R.id.user_name);
 
@@ -86,6 +87,13 @@ public class SignupPage extends Activity {
 								Log.i("GDTM", "User ID " + user.getId());
 								Log.i("GDTM", "Email " + user.asMap().get("email"));
 								mText.setText(user.getName());
+
+								mUser = user;
+
+								UserInfo.getInstance().setID(user.getId());
+								UserInfo.getInstance().setName(user.getName());
+								// Log.d("GDTM", "User name in signUp : " +
+								// UserInfo.getInstance().getName());
 
 								Intent intent = new Intent(SignupPage.this, ActionBarMain.class);
 								startActivity(intent);

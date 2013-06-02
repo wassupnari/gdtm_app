@@ -1,11 +1,13 @@
 package com.gdtm.app.control;
 
+import com.facebook.model.GraphUser;
 import com.facebook.widget.ProfilePictureView;
 import com.gdtm.app.R;
+import com.gdtm.app.intro.UserInfo;
 
-import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,19 +28,24 @@ public class FragmentSetting extends Fragment {
 
 	private ProfilePictureView mProfilePicture;
 
+	private GraphUser mUser;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.control_frag_setting, null);
 
+		// Should check session before caching user data!
+
 		mProfilePicture = (ProfilePictureView) view.findViewById(R.id.profilePicture);
-		// mProfilePicker.setProfileId()
+		mProfilePicture.setProfileId(UserInfo.getInstance().getID());
 
 		mName = (TextView) view.findViewById(R.id.profile_name);
 		mName.setText("User name");
 		mName.setTextSize(20);
 		mNameField = (TextView) view.findViewById(R.id.profile_name_field);
-		mNameField.setText("Nari Kim");
+		mNameField.setText(UserInfo.getInstance().getName());
+		// Log.d("GDTM", "User name : " + UserInfo.getInstance().getName());
 
 		mEmail = (TextView) view.findViewById(R.id.profile_email);
 		mEmail.setText("User Email");
