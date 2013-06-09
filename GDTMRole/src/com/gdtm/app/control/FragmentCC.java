@@ -23,13 +23,11 @@ import android.widget.ExpandableListView;
 
 public class FragmentCC extends Fragment {
 
-	private String arry[] = { "Tofeeq", "Ahmad", "Fragment", "Example", "Tofeeq", "Ahmad",
-			"Fragment", "Example" };
-
 	private static final String PREFERENCE = "MyPrefFile";
 
+	private final static int NUM_OF_CC_PJT = 10;
+
 	private MyExpandableListAdapter mAdapter;
-	// private ExpandableListView mListview;
 
 	private ArrayList<String> mGroupItem = new ArrayList<String>();
 	private ArrayList<Object> mChildItem = new ArrayList<Object>();
@@ -56,28 +54,21 @@ public class FragmentCC extends Fragment {
 
 	public void setGroupData() {
 
-		mGroupItem.add("Project 1");
-		mGroupItem.add("Project 2");
-		mGroupItem.add("Project 3");
+		for (int i = 1; i <= NUM_OF_CC_PJT; i++) {
+			mGroupItem.add("Project " + i);
+		}
 	}
 
 	public void setChildData() {
 
-		ArrayList<String> child = new ArrayList<String>();
-		child.add("1-Title");
-		child.add("1-Date");
-		child.add("1-Evaluator");
-		mChildItem.add(child);
-		child = new ArrayList<String>();
-		child.add("2-Title");
-		child.add("2-Date");
-		child.add("2-Evaluator");
-		mChildItem.add(child);
-		child = new ArrayList<String>();
-		child.add("3-Title");
-		child.add("3-Date");
-		child.add("3-Evaluator");
-		mChildItem.add(child);
+		ArrayList<String> child;
+		for (int i = 0; i < NUM_OF_CC_PJT; i++) {
+			child = new ArrayList<String>();
+			child.add("Title : ");
+			child.add("Date : ");
+			child.add("Evaluator : ");
+			mChildItem.add(child);
+		}
 	}
 
 	public class CCDataOpenHelper extends SQLiteOpenHelper {

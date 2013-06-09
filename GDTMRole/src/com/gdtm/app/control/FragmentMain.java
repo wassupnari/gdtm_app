@@ -1,5 +1,10 @@
 package com.gdtm.app.control;
 
+import java.util.ArrayList;
+
+import com.gdtm.app.R;
+import com.gdtm.app.view.MyExpandableListAdapter;
+
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -7,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ExpandableListView;
 import android.widget.ListView;
 
 /**
@@ -16,20 +22,61 @@ import android.widget.ListView;
  */
 public class FragmentMain extends Fragment {
 
-	private String arry[] = { "Theme", "Toastmaster", "General Evaluator", "Table Topic Master",
-			"Guest Greeter", "Receptionist", "Word & Quote Master", "Quiz Master", "Timer",
-			"Grammarian", "Ah Counter", "Speaker #1", "Evaluator #1", "Speaker #2", "Evaluator #2",
-			"Speacker #3", "Evaluator #3", "Stanby Speaker", "Stanby Evaluator" };
+	private final static int NUM_OF_ROLE = 18;
+
+	private MyExpandableListAdapter mAdapter;
+
+	private ArrayList<String> mGroupItem = new ArrayList<String>();
+	private ArrayList<Object> mChildItem = new ArrayList<Object>();
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		ListView listView = new ListView(getActivity());
-		ArrayAdapter<String> array = new ArrayAdapter<String>(getActivity(),
-				android.R.layout.simple_list_item_1);
-		for (String str : arry)
-			array.add(str);
-		listView.setAdapter(array);
-		return listView;
+		View view = inflater.inflate(R.layout.control_frag_upcoming_meeting, null);
+
+		ExpandableListView expandableListView = (ExpandableListView) view
+				.findViewById(R.id.expandable_list_main);
+
+		setGroupData();
+		setChildData();
+
+		mAdapter = new MyExpandableListAdapter(mGroupItem, mChildItem);
+		mAdapter.setInflater(inflater, getActivity());
+		expandableListView.setAdapter(mAdapter);
+
+		return view;
+	}
+
+	public void setGroupData() {
+
+		mGroupItem.add("Toastmaster");
+		mGroupItem.add("General Evaluator");
+		mGroupItem.add("Table Topic Master");
+		mGroupItem.add("Guest Greeter");
+		mGroupItem.add("Receptionist");
+		mGroupItem.add("Word & Quote Master");
+		mGroupItem.add("Quiz Master");
+		mGroupItem.add("Timer");
+		mGroupItem.add("Grammarian");
+		mGroupItem.add("Ah Counter");
+		mGroupItem.add("Speaker #1");
+		mGroupItem.add("Speaker #2");
+		mGroupItem.add("Speaker #3");
+		mGroupItem.add("Speaker #4");
+		mGroupItem.add("Evaluator #1");
+		mGroupItem.add("Evaluator #2");
+		mGroupItem.add("Evaluator #3");
+		mGroupItem.add("Evaluator $4");
+	}
+
+	public void setChildData() {
+
+		ArrayList<String> child;
+
+		for (int i = 0; i < NUM_OF_ROLE; i++) {
+			child = new ArrayList<String>();
+			child.add("Role taker : ");
+			mChildItem.add(child);
+		}
 	}
 }

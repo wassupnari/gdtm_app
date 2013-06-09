@@ -1,11 +1,14 @@
 package com.gdtm.app.control;
 
+import com.facebook.Session;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.ProfilePictureView;
 import com.gdtm.app.R;
+import com.gdtm.app.intro.SignupPage;
 import com.gdtm.app.intro.UserInfo;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -25,6 +28,7 @@ public class FragmentSetting extends Fragment {
 	private Button mEmailField;
 	private TextView mPhone;
 	private TextView mPhoneField;
+	private Button mLogout;
 
 	private ProfilePictureView mProfilePicture;
 
@@ -59,6 +63,23 @@ public class FragmentSetting extends Fragment {
 		mPhoneField = (Button) view.findViewById(R.id.profile_phone_field);
 		mPhoneField.setText("010-9925-1234");
 
+		mLogout = (Button) view.findViewById(R.id.profile_logout);
+		mLogout.setText("Logout");
+		mLogout.setOnClickListener(new Button.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+
+				// Clear User Preference
+
+				// Session Out
+				Session session = Session.getActiveSession();
+				session.closeAndClearTokenInformation();
+				startActivity(new Intent(getActivity().getApplicationContext(), SignupPage.class));
+				getActivity().finish();
+			}
+
+		});
 		return view;
 	}
 }

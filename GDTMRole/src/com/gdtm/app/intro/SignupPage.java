@@ -15,6 +15,7 @@ import com.gdtm.app.control.ActionBarMain;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -35,9 +36,10 @@ public class SignupPage extends Activity {
 
 	private PendingAction pendingAction = PendingAction.NONE;
 	private GraphUser mUser;
+
 	// private UserInfo mUserInfo;
 
-	private TextView mText;
+	// private TextView mText;
 
 	private enum PendingAction {
 		NONE, POST_PHOTO, POST_STATUS_UPDATE
@@ -53,10 +55,9 @@ public class SignupPage extends Activity {
 																// notification
 																// bar
 		setContentView(R.layout.intro_signup_page);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		// mUserInfo = UserInfo.getInstance();
-
-		mText = (TextView) findViewById(R.id.user_name);
+		// mText = (TextView) findViewById(R.id.user_name);
 
 		mLoginWithFacebook = (LoginButton) findViewById(R.id.login_button);
 		mLoginWithFacebook.setOnErrorListener(new OnErrorListener() {
@@ -86,7 +87,6 @@ public class SignupPage extends Activity {
 							if (user != null) {
 								Log.i("GDTM", "User ID " + user.getId());
 								Log.i("GDTM", "Email " + user.asMap().get("email"));
-								mText.setText(user.getName());
 
 								mUser = user;
 

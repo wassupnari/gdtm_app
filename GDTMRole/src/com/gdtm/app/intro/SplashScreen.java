@@ -7,6 +7,7 @@ import com.gdtm.app.R;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
@@ -38,6 +39,7 @@ public class SplashScreen extends Activity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.intro_splash_screen);
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		// Create Hash Tag for facebook
 		// printHashKey();
 
@@ -62,7 +64,7 @@ public class SplashScreen extends Activity {
 			}
 
 			// Start main activity
-			Intent intent = new Intent(SplashScreen.this, SignupPage.class);
+			Intent intent = new Intent(SplashScreen.this, SignupPage2.class);
 			SplashScreen.this.startActivity(intent);
 			SplashScreen.this.finish();
 		}
