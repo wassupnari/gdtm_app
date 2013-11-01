@@ -33,7 +33,7 @@
             </intent-filter>
         </activity> -->
         <activity
-            android:name="com.gdtm.app.intro.SignupPage2"
+            android:name="com.gdtm.app.intro.SignupMain"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

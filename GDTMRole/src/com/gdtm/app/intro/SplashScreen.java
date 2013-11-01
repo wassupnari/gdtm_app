@@ -58,13 +58,13 @@ public class SplashScreen extends Activity {
 
 			try {
 				// Sleeping
-				Thread.sleep(SLEEP_TIME * 500);
+				Thread.sleep(SLEEP_TIME * 200);
 			} catch (Exception e) {
 				Log.e(TAG, e.getMessage());
 			}
 
 			// Start main activity
-			Intent intent = new Intent(SplashScreen.this, SignupPage2.class);
+			Intent intent = new Intent(SplashScreen.this, SignupMain.class);
 			SplashScreen.this.startActivity(intent);
 			SplashScreen.this.finish();
 		}
