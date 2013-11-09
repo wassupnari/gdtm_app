@@ -25,7 +25,7 @@ public class FragmentCC extends Fragment {
 
 	private static final String PREFERENCE = "MyPrefFile";
 
-	private final static int NUM_OF_CC_PJT = 10;
+	private static final int NUM_OF_CC_PJT = 10;
 
 	private MyExpandableListAdapter mAdapter;
 

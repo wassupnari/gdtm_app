@@ -22,7 +22,7 @@ import android.widget.ListView;
  */
 public class FragmentMain extends Fragment {
 
-	private final static int NUM_OF_ROLE = 18;
+	private static final int NUM_OF_ROLE = 18;
 
 	private MyExpandableListAdapter mAdapter;
 

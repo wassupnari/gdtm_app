@@ -18,7 +18,7 @@ import com.gdtm.app.view.MyExpandableListAdapter;
 
 public class FragmentCL extends Fragment {
 
-	private final static int NUM_OF_CL_PJT = 10;
+	private static final int NUM_OF_CL_PJT = 10;
 
 	private MyExpandableListAdapter mAdapter;
 
