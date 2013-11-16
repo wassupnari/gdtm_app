@@ -1,6 +1,10 @@
 package com.gdtm.app.control;
 
+import com.facebook.Request;
+import com.facebook.Response;
 import com.facebook.Session;
+import com.facebook.SessionState;
+import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.ProfilePictureView;
 import com.gdtm.app.R;
@@ -32,24 +36,36 @@ public class FragmentSetting extends Fragment {
 
 	private ProfilePictureView mProfilePicture;
 
-	private GraphUser mUser;
+	private UiLifecycleHelper mUIHelper;
+
+	private Session.StatusCallback callback = new Session.StatusCallback() {
+
+		@Override
+		public void call(final Session session, final SessionState state, final Exception exception) {
+
+			onSessionStateChange(session, state, exception);
+		}
+	};
+
+	// For new permission request
+	private static final int REAUTH_ACTIVITY_CODE = 100;
+
+	// private GraphUser mUser;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.control_frag_setting, null);
 
-		// Should check session before caching user data!
-
+		// Find the user's profile custom view
 		mProfilePicture = (ProfilePictureView) view.findViewById(R.id.profilePicture);
-		mProfilePicture.setProfileId(UserInfo.getInstance().getID());
-
+		mProfilePicture.setCropped(true);
+		
+		// Find user name view
 		mName = (TextView) view.findViewById(R.id.profile_name);
 		mName.setText("User name");
 		mName.setTextSize(20);
 		mNameField = (TextView) view.findViewById(R.id.profile_name_field);
-		mNameField.setText(UserInfo.getInstance().getName());
-		// Log.d("GDTM", "User name : " + UserInfo.getInstance().getName());
 
 		mEmail = (TextView) view.findViewById(R.id.profile_email);
 		mEmail.setText("User Email");
@@ -71,7 +87,6 @@ public class FragmentSetting extends Fragment {
 			public void onClick(View arg0) {
 
 				// Clear User Preference
-
 				// Session Out
 				Session session = Session.getActiveSession();
 				session.closeAndClearTokenInformation();
@@ -80,6 +95,115 @@ public class FragmentSetting extends Fragment {
 			}
 
 		});
+
+		// Check for an open session
+		Session session = Session.getActiveSession();
+		if (session != null && session.isOpened()) {
+			// Get the user's data
+			makeMeRequest(session);
+		}
+
 		return view;
+	}
+
+	/**
+	 * Initialize UILifecycleHelper.
+	 */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+
+		super.onCreate(savedInstanceState);
+		mUIHelper = new UiLifecycleHelper(getActivity(), callback);
+		mUIHelper.onCreate(savedInstanceState);
+	}
+
+	/**
+	 * Call the corresponding UiLifecycleHelper method if the
+	 * REAUTH_ACTIVITY_CODE request code is passed in.
+	 */
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+		super.onActivityResult(requestCode, resultCode, data);
+		if (requestCode == REAUTH_ACTIVITY_CODE) {
+			mUIHelper.onActivityResult(requestCode, resultCode, data);
+		}
+	}
+
+	@Override
+	public void onResume() {
+
+		super.onResume();
+		mUIHelper.onResume();
+	}
+
+	@Override
+	public void onSaveInstanceState(Bundle bundle) {
+
+		super.onSaveInstanceState(bundle);
+		mUIHelper.onSaveInstanceState(bundle);
+	}
+
+	@Override
+	public void onPause() {
+
+		super.onPause();
+		mUIHelper.onPause();
+	}
+
+	@Override
+	public void onDestroy() {
+
+		super.onDestroy();
+		mUIHelper.onDestroy();
+	}
+
+	/**
+	 * Request user data.
+	 * 
+	 * @param session
+	 */
+	private void makeMeRequest(final Session session) {
+
+		// Make an API call to get user data and define a new callback to handle
+		// the response.
+		Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
+
+			@Override
+			public void onCompleted(GraphUser user, Response response) {
+
+				// If the response is successful
+				if (session == Session.getActiveSession()) {
+					if (user != null) {
+						// Set the id for the ProfilePictureView
+						// view that in turn displays the profile picture.
+						mProfilePicture.setProfileId(user.getId());
+						// Set the Textview's text to the user's name.
+						mNameField.setText(user.getName());
+					}
+				}
+				if (response.getError() != null) {
+					// Handle errors, will do so later.
+				}
+			}
+
+		});
+		request.executeAsync();
+	}
+
+	/**
+	 * Respond to session changes and call the makeMeRequest(), if the session
+	 * is open.
+	 * 
+	 * @param session
+	 * @param state
+	 * @param exception
+	 */
+	private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
+
+		if (session != null && session.isOpened()) {
+			// Get the user's data.
+			makeMeRequest(session);
+		}
 	}
 }
