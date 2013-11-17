@@ -19,8 +19,6 @@ import com.gdtm.app.control.ActionBarMain;
  * 
  * @author Nari Kim Shin (wassupnari@gmail.com)
  * 
- *         No longer use this class. - 2013. 10. 31
- * 
  */
 
 public class SignupMain extends FragmentActivity {

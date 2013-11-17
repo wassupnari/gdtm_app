@@ -8,10 +8,12 @@ import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.ProfilePictureView;
 import com.gdtm.app.R;
-import com.gdtm.app.intro.SignupPage;
-import com.gdtm.app.intro.UserInfo;
+import com.gdtm.app.intro.SplashScreen;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,11 +22,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * @author Nari Kim (wassupnari@gmail.com)
  */
 public class FragmentSetting extends Fragment {
+
+	private Context mContext;
 
 	private TextView mName;
 	private TextView mNameField;
@@ -50,17 +55,18 @@ public class FragmentSetting extends Fragment {
 	// For new permission request
 	private static final int REAUTH_ACTIVITY_CODE = 100;
 
-	// private GraphUser mUser;
+	private GraphUser mUser;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.control_frag_setting, null);
+		mContext = view.getContext();
 
 		// Find the user's profile custom view
 		mProfilePicture = (ProfilePictureView) view.findViewById(R.id.profilePicture);
 		mProfilePicture.setCropped(true);
-		
+
 		// Find user name view
 		mName = (TextView) view.findViewById(R.id.profile_name);
 		mName.setText("User name");
@@ -86,12 +92,35 @@ public class FragmentSetting extends Fragment {
 			@Override
 			public void onClick(View arg0) {
 
-				// Clear User Preference
-				// Session Out
-				Session session = Session.getActiveSession();
-				session.closeAndClearTokenInformation();
-				startActivity(new Intent(getActivity().getApplicationContext(), SignupPage.class));
-				getActivity().finish();
+				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+				builder.setMessage(R.string.app_logout)
+						.setTitle(R.string.app_name)
+						.setPositiveButton(R.string.dialog_btn_ok,
+								new DialogInterface.OnClickListener() {
+
+									public void onClick(DialogInterface dialog, int id) {
+
+										// User clicked OK button
+										// Clear User Preference and Session Out
+										Session session = Session.getActiveSession();
+										if (session != null && !session.isClosed()) {
+											session.closeAndClearTokenInformation();
+											startActivity(new Intent(mContext, SplashScreen.class));
+											getActivity().finish();
+										}
+									}
+								})
+						.setNegativeButton(R.string.dialog_btn_cancel,
+								new DialogInterface.OnClickListener() {
+
+									public void onClick(DialogInterface dialog, int id) {
+
+										// User cancelled the dialog
+										// Do nothing
+									}
+								});
+				AlertDialog dialog = builder.create();
+				dialog.show();
 			}
 
 		});

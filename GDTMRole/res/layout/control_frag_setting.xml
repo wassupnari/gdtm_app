@@ -22,7 +22,7 @@
                 android:layout_marginBottom="10dp"
                 android:gravity="center_horizontal"
                 facebook:preset_size="normal" />
-            
+
             <ImageView
                 android:id="@+id/profile"
                 android:layout_width="wrap_content"
@@ -67,7 +67,7 @@
             android:id="@+id/profile_phone_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        
+
         <Button
             android:id="@+id/profile_logout"
             android:layout_width="match_parent"

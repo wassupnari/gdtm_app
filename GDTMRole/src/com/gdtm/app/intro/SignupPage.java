@@ -26,6 +26,8 @@ import android.widget.TextView;
 
 /**
  * @author Nari Kim (wassupnari@gmail.com)
+ * 
+ *         No longer use this class. - 2013. 10. 31
  */
 
 public class SignupPage extends Activity {
