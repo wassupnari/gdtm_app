@@ -1,10 +1,9 @@
-package com.gdtm.app.control;
+package com.gdtm.app.fragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
 
-import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,7 +14,7 @@ import android.widget.ListView;
 
 /**
  * 
- * @author Nari Kim (wassupnari@gmail.com)
+ * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 
 public class FragmentMeetingList extends Fragment {

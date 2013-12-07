@@ -47,7 +47,7 @@
         
         <!-- Controls -->
         <activity
-            android:name="com.gdtm.app.control.ActionBarMain"
+            android:name="com.gdtm.app.control.MainActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
              >
             <intent-filter>

@@ -4,6 +4,30 @@
     <string name="app_name">GDTM Role</string>
     <string name="action_settings">Settings</string>
     <string name="app_id">626066877422488</string>
+    
+    <!-- Navigation Drawer -->
+    <string name="drawer_open">Drawer Open</string>
+    <string name="drawer_close">Drawer Close</string>
+    
+    <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Main</item>
+        <item >Meeting List</item>
+        <item >CL Manual</item>
+        <item >CC Manual</item>
+        <item >Visit website</item>
+        <item >Setting</item>
+    </string-array>
+    
+    <!-- Nav Drawer List Item Icons -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_launcher</item>
+    </array>
 
     <!-- Dialog - Logout -->
     <string name="app_logout">Are you sure to logout?</string>

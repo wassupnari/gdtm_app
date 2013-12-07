@@ -11,7 +11,7 @@ import com.facebook.widget.LoginButton;
 import com.facebook.widget.LoginButton.OnErrorListener;
 import com.facebook.model.GraphUser;
 import com.gdtm.app.R;
-import com.gdtm.app.control.ActionBarMain;
+import com.gdtm.app.control.MainActivity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -97,7 +97,7 @@ public class SignupPage extends Activity {
 								// Log.d("GDTM", "User name in signUp : " +
 								// UserInfo.getInstance().getName());
 
-								Intent intent = new Intent(SignupPage.this, ActionBarMain.class);
+								Intent intent = new Intent(SignupPage.this, MainActivity.class);
 								startActivity(intent);
 								finish();
 							}
@@ -115,7 +115,7 @@ public class SignupPage extends Activity {
 			public void onClick(View v) {
 
 				// Start main view after sign in
-				Intent intent = new Intent(SignupPage.this, ActionBarMain.class);
+				Intent intent = new Intent(SignupPage.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 			}

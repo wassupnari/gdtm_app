@@ -1,4 +1,4 @@
-package com.gdtm.app.control;
+package com.gdtm.app.fragment;
 
 import java.util.ArrayList;
 
@@ -18,7 +18,7 @@ import android.widget.ListView;
 /**
  * This is the main page of role signup.
  * 
- * @author Nari Kim (wassupnari@gmail.com)
+ * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 public class FragmentMain extends Fragment {
 
@@ -32,7 +32,7 @@ public class FragmentMain extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.control_frag_upcoming_meeting, null);
+		View view = inflater.inflate(R.layout.fragment_upcoming_meeting, null);
 
 		ExpandableListView expandableListView = (ExpandableListView) view
 				.findViewById(R.id.expandable_list_main);

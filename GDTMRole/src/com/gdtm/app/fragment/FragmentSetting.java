@@ -1,4 +1,4 @@
-package com.gdtm.app.control;
+package com.gdtm.app.fragment;
 
 import com.facebook.Request;
 import com.facebook.Response;
@@ -25,7 +25,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * @author Nari Kim (wassupnari@gmail.com)
+ * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 public class FragmentSetting extends Fragment {
 
@@ -60,7 +60,7 @@ public class FragmentSetting extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.control_frag_setting, null);
+		View view = inflater.inflate(R.layout.fragment_setting, null);
 		mContext = view.getContext();
 
 		// Find the user's profile custom view

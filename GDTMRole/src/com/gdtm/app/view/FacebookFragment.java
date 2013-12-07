@@ -5,7 +5,7 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
 import com.gdtm.app.R;
-import com.gdtm.app.control.ActionBarMain;
+import com.gdtm.app.control.MainActivity;
 import com.gdtm.app.intro.SignupPage;
 
 import android.content.Intent;
@@ -18,7 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 public class FacebookFragment extends Fragment {
-
+/*
 	private UiLifecycleHelper uiHelper;
 
 	@Override
@@ -37,7 +37,7 @@ public class FacebookFragment extends Fragment {
 
 				// Start main view after sign in
 				Intent intent = new Intent(getActivity().getApplicationContext(),
-						ActionBarMain.class);
+						MainActivity.class);
 				startActivity(intent);
 				getActivity().finish();
 			}
@@ -124,5 +124,5 @@ public class FacebookFragment extends Fragment {
 
 			onSessionStateChange(session, state, exception);
 		}
-	};
+	}; */
 }

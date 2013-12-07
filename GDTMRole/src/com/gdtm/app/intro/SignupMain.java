@@ -13,7 +13,7 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.gdtm.app.R;
-import com.gdtm.app.control.ActionBarMain;
+import com.gdtm.app.control.MainActivity;
 
 /**
  * 
@@ -132,7 +132,7 @@ public class SignupMain extends FragmentActivity {
 				// If the session state is open:
 				// Go to main page
 				// showFragment(AUTH, false);
-				Intent intent = new Intent(SignupMain.this, ActionBarMain.class);
+				Intent intent = new Intent(SignupMain.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 			} else if (state.isClosed()) {
@@ -153,7 +153,7 @@ public class SignupMain extends FragmentActivity {
 			// if the session is already open,
 			// Go to main page
 			// showFragment(AUTH, false);
-			Intent intent = new Intent(SignupMain.this, ActionBarMain.class);
+			Intent intent = new Intent(SignupMain.this, MainActivity.class);
 			startActivity(intent);
 			finish();
 		} else {

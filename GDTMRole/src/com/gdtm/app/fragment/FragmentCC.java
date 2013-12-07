@@ -1,8 +1,9 @@
-package com.gdtm.app.control;
+package com.gdtm.app.fragment;
 
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
+import com.gdtm.app.control.DBHandlerCC;
 import com.gdtm.app.view.MyExpandableListAdapter;
 
 import android.app.Fragment;
@@ -18,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 /**
- * @author Nari Kim (wassupnari@gmail.com)
+ * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 
 public class FragmentCC extends Fragment {
@@ -35,7 +36,7 @@ public class FragmentCC extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.control_frag_cc, null);
+		View view = inflater.inflate(R.layout.fragment_cc, null);
 
 		SharedPreferences setting = this.getActivity().getSharedPreferences(PREFERENCE, 0);
 
@@ -44,7 +45,12 @@ public class FragmentCC extends Fragment {
 
 		setGroupData();
 		setChildData();
+		
+		// Database
+		DBHandlerCC db = new DBHandlerCC(this.getActivity());
+		//db.addCCData(new UserCC(1, "Icebreaker Speech", "My First Speech", "Peter Shin", "2013. 11. 15"));
 
+		// Adapter for listview
 		mAdapter = new MyExpandableListAdapter(mGroupItem, mChildItem);
 		mAdapter.setInflater(inflater, getActivity());
 		expandableListView.setAdapter(mAdapter);
