@@ -21,12 +21,12 @@
     
     <!-- Nav Drawer List Item Icons -->
     <array name="nav_drawer_icons">
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
-        <item>@drawable/ic_launcher</item>
+        <item>@drawable/ic_nav_main</item>
+        <item>@drawable/ic_nav_meeting_list</item>
+        <item>@drawable/ic_nav_cl</item>
+        <item>@drawable/ic_nav_cc</item>
+        <item>@drawable/ic_nav_web</item>
+        <item>@drawable/ic_nav_setting</item>
     </array>
 
     <!-- Dialog - Logout -->

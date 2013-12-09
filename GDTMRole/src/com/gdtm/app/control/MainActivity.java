@@ -83,12 +83,14 @@ public class MainActivity extends FragmentActivity {
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setIcon(R.drawable.logo);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer,
 				R.string.drawer_open, R.string.drawer_close) {
 
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
+
 				invalidateOptionsMenu();
 			}
 
@@ -103,9 +105,9 @@ public class MainActivity extends FragmentActivity {
 			// on first time display view for first nav item
 			DisplayView(0);
 		}
-		
+
 		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-		
+
 	}
 
 	@Override
@@ -176,6 +178,7 @@ public class MainActivity extends FragmentActivity {
 
 	/**
 	 * Diplaying fragment view for selected nav drawer list item.
+	 * 
 	 * @param position
 	 */
 	private void DisplayView(int position) {
