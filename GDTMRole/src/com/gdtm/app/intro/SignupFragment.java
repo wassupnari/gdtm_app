@@ -21,7 +21,7 @@ import com.gdtm.app.control.MainActivity;
  * 
  */
 
-public class SignupMain extends FragmentActivity {
+public class SignupFragment extends FragmentActivity {
 
 	private static final int NONAUTH = 0;
 	// private static final int AUTH = 1;
@@ -48,7 +48,7 @@ public class SignupMain extends FragmentActivity {
 				WindowManager.LayoutParams.FLAG_FULLSCREEN); // Removes
 																// notification
 																// bar
-		setContentView(R.layout.intro_signup_main);
+		setContentView(R.layout.intro_signup_fragment);
 
 		FragmentManager fm = getSupportFragmentManager();
 		nonAuthFrag = fm.findFragmentById(R.id.nonauthfrag);
@@ -132,7 +132,7 @@ public class SignupMain extends FragmentActivity {
 				// If the session state is open:
 				// Go to main page
 				// showFragment(AUTH, false);
-				Intent intent = new Intent(SignupMain.this, MainActivity.class);
+				Intent intent = new Intent(SignupFragment.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 			} else if (state.isClosed()) {
@@ -153,7 +153,7 @@ public class SignupMain extends FragmentActivity {
 			// if the session is already open,
 			// Go to main page
 			// showFragment(AUTH, false);
-			Intent intent = new Intent(SignupMain.this, MainActivity.class);
+			Intent intent = new Intent(SignupFragment.this, MainActivity.class);
 			startActivity(intent);
 			finish();
 		} else {

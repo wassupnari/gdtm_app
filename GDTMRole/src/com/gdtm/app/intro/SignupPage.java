@@ -122,7 +122,7 @@ public class SignupPage extends Activity {
 
 		});
 
-		Button mSignup = (Button) findViewById(R.id.btn_signup_email);
+		Button mSignup = (Button) findViewById(R.id.btn_signup);
 		mSignup.setOnClickListener(new Button.OnClickListener() {
 
 			@Override

@@ -33,7 +33,7 @@
             </intent-filter>
         </activity> -->
         <activity
-            android:name="com.gdtm.app.intro.SignupMain"
+            android:name="com.gdtm.app.intro.SignupFragment"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +44,14 @@
                   android:theme="@android:style/Theme.Translucent.NoTitleBar"
                   android:label="@string/app_name" />
         <meta-data android:name="com.facebook.sdk.ApplicationId" android:value="@string/app_id"/>
+        <activity
+            android:name="com.gdtm.app.intro.SignupWithEmail"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         
         <!-- Controls -->
         <activity

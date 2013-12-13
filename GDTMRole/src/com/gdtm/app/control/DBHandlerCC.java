@@ -43,6 +43,7 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 		String CREATE_CC_TABLE = "CREATE_TABLE" + TABLE_NAME + "(" + KEY_ID
 				+ " INTEGER_PRIMARY_KEY, " + KEY_PJT_TITLE + " TEXT, " + KEY_SPEECH_TITLE
 				+ " TEXT, " + KEY_EVALUATOR + " TEXT, " + KEY_DATE + " TEXT" + ")";
+		
 		db.execSQL(CREATE_CC_TABLE);
 	}
 
@@ -175,9 +176,15 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 		private String mSpeechTitle;
 		private String mEvaluator;
 		private String mDate;
-
+		
+		// Later, I'll change all these constructor to Builder Pattern
 		public UserCC() {
+			
+		}
 
+		public UserCC(int id, String pTitle) {
+			mId = id;
+			mProjectTitle = pTitle;
 		}
 
 		public UserCC(int id, String pTitle, String sTitle, String eval, String date) {

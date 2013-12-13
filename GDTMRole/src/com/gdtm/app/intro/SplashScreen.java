@@ -1,19 +1,11 @@
 package com.gdtm.app.intro;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 import com.gdtm.app.R;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.content.pm.Signature;
 import android.os.Bundle;
-import android.util.Base64;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
@@ -64,7 +56,7 @@ public class SplashScreen extends Activity {
 			}
 
 			// Start main activity
-			Intent intent = new Intent(SplashScreen.this, SignupMain.class);
+			Intent intent = new Intent(SplashScreen.this, SignupFragment.class);
 			SplashScreen.this.startActivity(intent);
 			SplashScreen.this.finish();
 		}

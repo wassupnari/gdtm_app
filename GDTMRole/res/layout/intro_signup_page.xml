@@ -12,24 +12,44 @@
         android:layout_marginTop="50dp"
         android:src="@drawable/logo" />
 
-    <com.facebook.widget.LoginButton
-        android:id="@+id/login_button"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/signin_email"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        facebook:confirm_logout="false"
-        facebook:fetch_user_info="true" />
+        android:layout_marginTop="40dp"
+        android:ems="10"
+        android:hint="@string/hint_email"
+        android:inputType="textEmailAddress" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/signin_pw"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/hint_pw"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/btn_login"
         android:layout_width="@dimen/com_facebook_loginview_width"
         android:layout_height="wrap_content"
-        android:text="Log in" />
+        android:text="@string/btn_login" />
 
-    <Button
-        android:id="@+id/btn_signup_email"
-        android:layout_width="@dimen/com_facebook_loginview_width"
+    <com.facebook.widget.LoginButton
+        android:id="@+id/login_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up with Email" />
+        facebook:confirm_logout="false"
+        facebook:fetch_user_info="true" />
+
+    <TextView
+        android:id="@+id/btn_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_create_new_account"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </LinearLayout>
