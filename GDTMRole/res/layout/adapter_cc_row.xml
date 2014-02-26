@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100" >
+
+    <TextView
+        android:id="@+id/cc_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="30"
+        android:text="number" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="70"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/cc_project"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="project" />
+
+        <TextView
+            android:id="@+id/cc_compelte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="compelete" />
+    </LinearLayout>
+
+</LinearLayout>

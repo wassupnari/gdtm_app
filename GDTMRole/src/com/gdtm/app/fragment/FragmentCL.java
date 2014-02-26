@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
 import com.gdtm.app.R;
-import com.gdtm.app.view.MyExpandableListAdapter;
+import com.gdtm.app.adapter.MyExpandableListAdapter;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)

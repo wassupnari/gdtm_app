@@ -37,6 +37,19 @@
         <item>@drawable/ic_nav_web</item>
         <item>@drawable/ic_nav_setting</item>
     </array>
+    
+    <array name="cc_project">
+        <item>The Ice Breaker</item>
+        <item>Organize Your Speech</item>
+        <item>Get to the Point</item>
+        <item>How to Say It</item>
+        <item>Your Body Speaks</item>
+        <item>Vocal Variety</item>
+        <item>Research Your Topic</item>
+        <item>Get Comfortable with Visual Aids</item>
+        <item>Persuade with Power</item>
+        <item>Inspire Your Audience</item>
+    </array>
 
     <!-- Dialog -->
     <string name="app_logout">Are you sure to logout?</string>

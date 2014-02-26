@@ -3,7 +3,7 @@ package com.gdtm.app.fragment;
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
-import com.gdtm.app.view.MyExpandableListAdapter;
+import com.gdtm.app.adapter.MyExpandableListAdapter;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;

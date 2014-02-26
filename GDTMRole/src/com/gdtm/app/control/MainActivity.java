@@ -3,6 +3,7 @@ package com.gdtm.app.control;
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
+import com.gdtm.app.adapter.DrawerAdapter;
 import com.gdtm.app.fragment.FragmentCC;
 import com.gdtm.app.fragment.FragmentCL;
 import com.gdtm.app.fragment.FragmentClubPage;

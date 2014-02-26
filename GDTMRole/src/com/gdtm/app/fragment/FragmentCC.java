@@ -3,8 +3,9 @@ package com.gdtm.app.fragment;
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
-import com.gdtm.app.control.DBHandlerCC;
-import com.gdtm.app.view.MyExpandableListAdapter;
+import com.gdtm.app.adapter.CCListAdapter;
+import com.gdtm.app.adapter.MyExpandableListAdapter;
+import com.gdtm.app.database.DBHandlerCC;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -17,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
+import android.widget.ListView;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -28,10 +30,14 @@ public class FragmentCC extends Fragment {
 
 	private static final int NUM_OF_CC_PJT = 10;
 
-	private MyExpandableListAdapter mAdapter;
+	// private MyExpandableListAdapter mAdapter;
+	private CCListAdapter mAdapter;
 
-	private ArrayList<String> mGroupItem = new ArrayList<String>();
-	private ArrayList<Object> mChildItem = new ArrayList<Object>();
+	// private ArrayList<String> mGroupItem = new ArrayList<String>();
+	// private ArrayList<Object> mChildItem = new ArrayList<Object>();
+	private ArrayList<CCDataPojo> data = new ArrayList<CCDataPojo>();
+
+	private String[] mProject;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,40 +46,41 @@ public class FragmentCC extends Fragment {
 
 		SharedPreferences setting = this.getActivity().getSharedPreferences(PREFERENCE, 0);
 
-		ExpandableListView expandableListView = (ExpandableListView) view
-				.findViewById(R.id.expandable_list);
+		mProject = getResources().getStringArray(R.array.cc_project);
 
-		setGroupData();
-		setChildData();
-		
+		for (int i = 0; i < NUM_OF_CC_PJT; i++) {
+			data.add(new CCDataPojo(mProject[i], i, false));
+		}
+
+		ListView listView = (ListView) view.findViewById(R.id.cc_listview);
+
 		// Database
 		DBHandlerCC db = new DBHandlerCC(this.getActivity());
-		//db.addCCData(new UserCC(1, "Icebreaker Speech", "My First Speech", "Peter Shin", "2013. 11. 15"));
+		// db.addCCData(new UserCC(1, "Icebreaker Speech", "My First Speech",
+		// "Peter Shin", "2013. 11. 15"));
 
 		// Adapter for listview
-		mAdapter = new MyExpandableListAdapter(mGroupItem, mChildItem);
-		mAdapter.setInflater(inflater, getActivity());
-		expandableListView.setAdapter(mAdapter);
+		mAdapter = new CCListAdapter(getActivity(), data);
+		// mAdapter.setInflater(inflater, getActivity());
+		listView.setAdapter(mAdapter);
 
 		return view;
 	}
 
-	public void setGroupData() {
+	public class CCDataPojo {
 
-		for (int i = 1; i <= NUM_OF_CC_PJT; i++) {
-			mGroupItem.add("Project " + i);
+		public String project;
+		public Integer productNumber;
+		public boolean isCompleted;
+
+		public CCDataPojo(String title, Integer productNumber, boolean isCompleted) {
+			this.project = title;
+			this.productNumber = productNumber;
+			this.isCompleted = isCompleted;
 		}
-	}
 
-	public void setChildData() {
-
-		ArrayList<String> child;
-		for (int i = 0; i < NUM_OF_CC_PJT; i++) {
-			child = new ArrayList<String>();
-			child.add("Title : ");
-			child.add("Date : ");
-			child.add("Evaluator : ");
-			mChildItem.add(child);
+		public String getProject() {
+			return this.project;
 		}
 	}
 

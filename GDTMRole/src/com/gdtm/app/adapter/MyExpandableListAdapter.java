@@ -1,4 +1,4 @@
-package com.gdtm.app.view;
+package com.gdtm.app.adapter;
 
 import java.util.ArrayList;
 

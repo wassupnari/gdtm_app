@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:gravity="center" >
 
-    <ExpandableListView
-        android:id="@+id/expandable_list"
+    <ListView
+        android:id="@+id/cc_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
