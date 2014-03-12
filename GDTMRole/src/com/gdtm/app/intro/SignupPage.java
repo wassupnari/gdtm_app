@@ -10,8 +10,8 @@ import com.facebook.SessionState;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.LoginButton.OnErrorListener;
 import com.facebook.model.GraphUser;
+import com.gdtm.app.MainActivity;
 import com.gdtm.app.R;
-import com.gdtm.app.control.MainActivity;
 
 import android.app.Activity;
 import android.content.Intent;

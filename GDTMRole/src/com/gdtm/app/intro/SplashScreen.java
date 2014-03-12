@@ -27,8 +27,8 @@ public class SplashScreen extends Activity {
 		// Removes title bar
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// Removes notification bar
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		setContentView(R.layout.intro_splash_screen);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);

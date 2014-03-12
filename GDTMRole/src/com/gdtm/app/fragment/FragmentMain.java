@@ -34,49 +34,9 @@ public class FragmentMain extends Fragment {
 
 		View view = inflater.inflate(R.layout.fragment_upcoming_meeting, null);
 
-		ExpandableListView expandableListView = (ExpandableListView) view
-				.findViewById(R.id.expandable_list_main);
-
-		setGroupData();
-		setChildData();
-
-		mAdapter = new MyExpandableListAdapter(mGroupItem, mChildItem);
-		mAdapter.setInflater(inflater, getActivity());
-		expandableListView.setAdapter(mAdapter);
 
 		return view;
 	}
 
-	public void setGroupData() {
-
-		mGroupItem.add("Toastmaster");
-		mGroupItem.add("General Evaluator");
-		mGroupItem.add("Table Topic Master");
-		mGroupItem.add("Guest Greeter");
-		mGroupItem.add("Receptionist");
-		mGroupItem.add("Word & Quote Master");
-		mGroupItem.add("Quiz Master");
-		mGroupItem.add("Timer");
-		mGroupItem.add("Grammarian");
-		mGroupItem.add("Ah Counter");
-		mGroupItem.add("Speaker #1");
-		mGroupItem.add("Speaker #2");
-		mGroupItem.add("Speaker #3");
-		mGroupItem.add("Speaker #4");
-		mGroupItem.add("Evaluator #1");
-		mGroupItem.add("Evaluator #2");
-		mGroupItem.add("Evaluator #3");
-		mGroupItem.add("Evaluator $4");
-	}
-
-	public void setChildData() {
-
-		ArrayList<String> child;
-
-		for (int i = 0; i < NUM_OF_ROLE; i++) {
-			child = new ArrayList<String>();
-			child.add("Role taker : ");
-			mChildItem.add(child);
-		}
-	}
+	
 }

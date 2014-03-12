@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/activatedBackgroundIndicator"
+    android:background="@drawable/nav_drawer_selector"
     android:minHeight="?android:attr/listPreferredItemHeightSmall" >
 
     <!-- icon -->
@@ -23,7 +23,7 @@
         android:layout_marginLeft="8dp"
         android:layout_toRightOf="@+id/item_icon"
         android:textAlignment="center"
-        android:textColor="#fff"
+        android:textColor="@color/actionbar_text_color"
         android:textSize="18sp" />
     
     <!-- notification counter -->

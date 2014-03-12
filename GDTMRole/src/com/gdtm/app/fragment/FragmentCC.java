@@ -3,20 +3,24 @@ package com.gdtm.app.fragment;
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
+import com.gdtm.app.activity.SpeechActivity;
 import com.gdtm.app.adapter.CCListAdapter;
 import com.gdtm.app.adapter.MyExpandableListAdapter;
 import com.gdtm.app.database.DBHandlerCC;
 
 import android.app.Fragment;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 
@@ -53,6 +57,15 @@ public class FragmentCC extends Fragment {
 		}
 
 		ListView listView = (ListView) view.findViewById(R.id.cc_listview);
+		listView.setOnItemClickListener(new ListView.OnItemClickListener() {
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				Intent speechView = new Intent(getActivity(), SpeechActivity.class);
+				startActivity(speechView);
+			}
+			
+		});
 
 		// Database
 		DBHandlerCC db = new DBHandlerCC(this.getActivity());

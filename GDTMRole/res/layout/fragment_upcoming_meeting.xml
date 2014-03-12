@@ -2,11 +2,22 @@
     android:id="@+id/cc_scroll"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center" >
+    android:orientation="vertical" >
 
-    <ExpandableListView
-        android:id="@+id/expandable_list_main"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Your progress" />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Competent Communication" />
+    
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Competent Leadership" />
+    
 
 </LinearLayout>

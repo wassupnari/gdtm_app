@@ -12,8 +12,8 @@ import android.view.WindowManager;
 import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
+import com.gdtm.app.MainActivity;
 import com.gdtm.app.R;
-import com.gdtm.app.control.MainActivity;
 
 /**
  * 

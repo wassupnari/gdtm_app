@@ -7,6 +7,7 @@ import com.gdtm.app.fragment.FragmentCC.CCDataPojo;
 import com.gdtm.app.R;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,18 +45,15 @@ public class CCListAdapter extends BaseAdapter {
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		if (convertView == null) {
-			View vi = mInflater.inflate(R.layout.adapter_cc_row, null);
+		View vi = mInflater.inflate(R.layout.adapter_cc_row, null);
 
-			TextView project = (TextView) vi.findViewById(R.id.cc_project);
-			TextView number = (TextView) vi.findViewById(R.id.cc_number);
-			TextView compeleted = (TextView) vi.findViewById(R.id.cc_compelte);
+		TextView project = (TextView) vi.findViewById(R.id.cc_project_title);
+		TextView number = (TextView) vi.findViewById(R.id.cc_number);
+		TextView compeleted = (TextView) vi.findViewById(R.id.cc_title);
 
-			project.setText(mData.get(position).getProject());
-			return vi;
-		} else {
-			return convertView;
-		}
+		project.setText(mData.get(position).getProject());
+		number.setText("Project " + String.valueOf(position + 1));
+		return vi;
 
 	}
 

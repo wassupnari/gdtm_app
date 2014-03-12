@@ -24,6 +24,7 @@
         <item>Meeting List</item>
         <item>CL Manual</item>
         <item>CC Manual</item>
+        <item>Speech Draft</item>
         <item>Visit website</item>
         <item>Setting</item>
     </string-array>
@@ -34,6 +35,7 @@
         <item>@drawable/ic_nav_meeting_list</item>
         <item>@drawable/ic_nav_cl</item>
         <item>@drawable/ic_nav_cc</item>
+        <item>@drawable/ic_nav_web</item>
         <item>@drawable/ic_nav_web</item>
         <item>@drawable/ic_nav_setting</item>
     </array>

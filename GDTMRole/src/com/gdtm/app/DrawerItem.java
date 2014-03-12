@@ -1,4 +1,4 @@
-package com.gdtm.app.control;
+package com.gdtm.app;
 
 /**
  * 

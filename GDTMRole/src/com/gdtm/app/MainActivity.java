@@ -1,4 +1,4 @@
-package com.gdtm.app.control;
+package com.gdtm.app;
 
 import java.util.ArrayList;
 
@@ -7,6 +7,7 @@ import com.gdtm.app.adapter.DrawerAdapter;
 import com.gdtm.app.fragment.FragmentCC;
 import com.gdtm.app.fragment.FragmentCL;
 import com.gdtm.app.fragment.FragmentClubPage;
+import com.gdtm.app.fragment.FragmentDraft;
 import com.gdtm.app.fragment.FragmentMain;
 import com.gdtm.app.fragment.FragmentMeetingList;
 import com.gdtm.app.fragment.FragmentSetting;
@@ -57,8 +58,8 @@ public class MainActivity extends FragmentActivity {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
 		mContext = this.getApplicationContext();
 
@@ -162,6 +163,7 @@ public class MainActivity extends FragmentActivity {
 		mDrawerItem.add(new DrawerItem(mNavMenuIcon.getResourceId(3, -1), mNavMenuTitle[3]));
 		mDrawerItem.add(new DrawerItem(mNavMenuIcon.getResourceId(4, -1), mNavMenuTitle[4]));
 		mDrawerItem.add(new DrawerItem(mNavMenuIcon.getResourceId(5, -1), mNavMenuTitle[5]));
+		mDrawerItem.add(new DrawerItem(mNavMenuIcon.getResourceId(6, -1), mNavMenuTitle[6]));
 
 	}
 
@@ -199,9 +201,12 @@ public class MainActivity extends FragmentActivity {
 			fragment = new FragmentCC();
 			break;
 		case 4:
-			fragment = new FragmentClubPage();
+			fragment = new FragmentDraft();
 			break;
 		case 5:
+			fragment = new FragmentClubPage();
+			break;
+		case 6:
 			fragment = new FragmentSetting();
 			break;
 		default:

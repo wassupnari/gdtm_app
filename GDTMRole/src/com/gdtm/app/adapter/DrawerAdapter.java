@@ -2,8 +2,8 @@ package com.gdtm.app.adapter;
 
 import java.util.ArrayList;
 
+import com.gdtm.app.DrawerItem;
 import com.gdtm.app.R;
-import com.gdtm.app.control.DrawerItem;
 
 import android.content.Context;
 import android.view.LayoutInflater;

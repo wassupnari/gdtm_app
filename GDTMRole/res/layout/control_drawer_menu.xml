@@ -10,7 +10,7 @@
         android:id="@+id/content_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF" />
+        android:background="#ffffff" />
 
     <!-- Navigation Menu view -->
 
@@ -19,7 +19,7 @@
         android:layout_width="240dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#111"
+        android:background="@color/actionbar_default_color"
         android:choiceMode="singleChoice"
         android:divider="#B0ABAC"
         android:dividerHeight="0.5dp"
