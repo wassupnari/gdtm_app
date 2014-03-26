@@ -6,6 +6,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageButton;
@@ -47,16 +48,24 @@ public class BaseActivity extends Activity {
 			
 		});
 		
-		ToggleButton editBtn = (ToggleButton) v.findViewById(R.id.actionbar_edit_btn);
+		final ToggleButton editBtn = (ToggleButton) v.findViewById(R.id.actionbar_edit_btn);
 		editBtn.setChecked(false);
 		editBtn.setOnClickListener(new ToggleButton.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
+				if(editBtn.isChecked()) {
+					onEdit();
+				} else {
+					onEditDone();
+				}
 				
 			}
 			
 		});
 	}
+	
+	public void onEdit() {};
+	public void onEditDone() {};
 	
 }
