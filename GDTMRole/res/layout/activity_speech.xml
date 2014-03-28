@@ -3,72 +3,81 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
+
     <!-- Title -->
-    <TextView 
-        android:id="@+id/speech_title_static"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    
-    <TextView 
-        android:id="@+id/speech_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your title" />
-    
-    <EditText 
-        android:id="@+id/speech_title_edit"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-    
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/speech_title_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/speech_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/speech_title_static"
+            android:text="Your title" />
+
+        <EditText
+            android:id="@+id/speech_title_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/speech_title_static"
+            android:visibility="gone" />
+    </RelativeLayout>
+
     <!-- Evaluator -->
-    <TextView 
+
+    <TextView
         android:id="@+id/speech_evaluator_static"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    
-    <TextView 
+
+    <TextView
         android:id="@+id/speech_evaluator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your title" />
-    
-    <EditText 
+
+    <EditText
         android:id="@+id/speech_evaluator_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone" />
-    
+
     <!-- Date -->
-    <TextView 
+
+    <TextView
         android:id="@+id/speech_date_static"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    
-    <TextView 
+
+    <TextView
         android:id="@+id/speech_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    
+
     <!-- Evaluation -->
-    
-    <TextView 
+
+    <TextView
         android:id="@+id/speech_eval_static"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-    
-    <TextView 
+
+    <TextView
         android:id="@+id/speech_evaluation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Your title" />
-    
-    <EditText 
+
+    <EditText
         android:id="@+id/speech_evaluation_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:visibility="gone" />
-    
 
 </LinearLayout>

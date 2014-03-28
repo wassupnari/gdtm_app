@@ -62,6 +62,7 @@ public class FragmentCC extends Fragment {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 				Intent speechView = new Intent(getActivity(), SpeechActivity.class);
+				speechView.putExtra("cc_id", position);
 				startActivity(speechView);
 			}
 			

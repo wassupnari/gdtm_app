@@ -1,9 +1,12 @@
 package com.gdtm.app.activity;
 
 import com.gdtm.app.R;
+import com.gdtm.app.database.DBHandlerCC;
+import com.gdtm.app.pojo.CCDataPojo;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,6 +28,11 @@ public class SpeechActivity extends BaseActivity {
 	
 	private BaseActivity mBaseActivity;
 	
+	private DBHandlerCC mDB;
+	private CCDataPojo mData;
+	
+	private int mID;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +42,10 @@ public class SpeechActivity extends BaseActivity {
 		showActionBar(this, "My Speech");
 		
 		UISetup();
+		
+		mDB = new DBHandlerCC(this);
+		mID = getIntent().getIntExtra("cc_id", 0);
+		Log.d("GDTM", "Selected id : " + mID);
 		
 	}
 	
@@ -75,6 +87,14 @@ public class SpeechActivity extends BaseActivity {
 		mEvaluatorEdit.setVisibility(View.GONE);
 		
 		// Hide keyboard
+		
+		// Save data to DB
+		mData = new CCDataPojo();
+		String title = mTitleEdit.getText().toString();
+		mData.setSpeechTitle(title);
+		mData.setEvaluator(mEvaluatorEdit.getText().toString());
+		mTitleData.setText(title);
+		mDB.addCCData(mID, mData);
 	}
 	
 	

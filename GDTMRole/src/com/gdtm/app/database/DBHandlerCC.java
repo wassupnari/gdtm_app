@@ -3,11 +3,14 @@ package com.gdtm.app.database;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.gdtm.app.pojo.CCDataPojo;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.database.sqlite.SQLiteDatabase.CursorFactory;
 
 public class DBHandlerCC extends SQLiteOpenHelper {
 
@@ -28,21 +31,26 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	private static final String KEY_SPEECH_TITLE = "speech_title";
 	private static final String KEY_EVALUATOR = "evaluator";
 	private static final String KEY_DATE = "date";
+	private static final String KEY_OBJECT = "object";
 
-	UserCC[] data = new UserCC[NUM_OF_CC_PJT];
+	CCDataPojo[] data = new CCDataPojo[NUM_OF_CC_PJT];
 
 	public DBHandlerCC(Context context) {
 
 		super(context, DATABASE_NAME, null, DATABASE_VER);
+	}
+	
+	public DBHandlerCC(Context context, String name, CursorFactory factory, int version) {
+		super(context, name, factory, version);
 	}
 
 	// Create table
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 
-		String CREATE_CC_TABLE = "CREATE_TABLE" + TABLE_NAME + "(" + KEY_ID
-				+ " INTEGER_PRIMARY_KEY, " + KEY_PJT_TITLE + " TEXT, " + KEY_SPEECH_TITLE
-				+ " TEXT, " + KEY_EVALUATOR + " TEXT, " + KEY_DATE + " TEXT" + ")";
+		String CREATE_CC_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + KEY_ID
+				+ " INTEGER PRIMARY KEY," + KEY_OBJECT + " TEXT" + ")";
+		
 
 		db.execSQL(CREATE_CC_TABLE);
 	}
@@ -60,15 +68,14 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	 * 
 	 * @param cc
 	 */
-	public void addCCData(UserCC cc) {
+	public void addCCData(int id, CCDataPojo cc) {
 
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_PJT_TITLE, cc.getProjectTitle());
-		values.put(KEY_SPEECH_TITLE, cc.getSpeechTitle());
-		values.put(KEY_EVALUATOR, cc.getEvaluator());
-		values.put(KEY_DATE, cc.getDate());
+		///String jsonObj = gson.toJson(cc);
+		values.put(KEY_ID, id);
+		values.put(KEY_OBJECT, cc.getProjectTitle());
 
 		db.insert(TABLE_NAME, null, values);
 		db.close();
@@ -80,7 +87,7 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	 * @param id
 	 * @return
 	 */
-	public UserCC getUserCCData(int id) {
+	public CCDataPojo getUserCCData(int id) {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 
@@ -92,7 +99,7 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 			cursor.moveToFirst();
 		}
 
-		UserCC cc = new UserCC(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
+		CCDataPojo cc = new CCDataPojo(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
 				cursor.getString(2), cursor.getString(3), cursor.getString(4));
 
 		return cc;
@@ -103,9 +110,9 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	 * 
 	 * @return
 	 */
-	public List<UserCC> getAllData() {
+	public List<CCDataPojo> getAllData() {
 
-		List<UserCC> ccList = new ArrayList<UserCC>();
+		List<CCDataPojo> ccList = new ArrayList<CCDataPojo>();
 
 		String selectQuery = "SELECT * FROM " + TABLE_NAME;
 
@@ -114,7 +121,7 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 
 		if (cursor.moveToFirst()) {
 			do {
-				UserCC cc = new UserCC();
+				CCDataPojo cc = new CCDataPojo();
 				cc.setId(Integer.parseInt(cursor.getString(0)));
 				cc.setProjectTitle(cursor.getString(1));
 				cc.setSpeechTitle(cursor.getString(2));
@@ -134,7 +141,7 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	 * @param cc
 	 * @return
 	 */
-	public int updateCC(UserCC cc) {
+	public int updateCC(CCDataPojo cc) {
 
 		SQLiteDatabase db = this.getWritableDatabase();
 
@@ -151,7 +158,7 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	 * 
 	 * @param cc
 	 */
-	public void deleteCC(UserCC cc) {
+	public void deleteCC(CCDataPojo cc) {
 
 		SQLiteDatabase db = this.getWritableDatabase();
 		db.delete(TABLE_NAME, KEY_ID + " =?", new String[] { String.valueOf(cc.getId()) });
@@ -169,83 +176,5 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 		return cursor.getCount();
 	}
 
-	public class UserCC {
-
-		private int mId;
-		private String mProjectTitle;
-		private String mSpeechTitle;
-		private String mEvaluator;
-		private String mDate;
-
-		// Later, I'll change all these constructor to Builder Pattern
-		public UserCC() {
-
-		}
-
-		public UserCC(int id, String pTitle) {
-			mId = id;
-			mProjectTitle = pTitle;
-		}
-
-		public UserCC(int id, String pTitle, String sTitle, String eval, String date) {
-
-			mId = id;
-			mProjectTitle = pTitle;
-			mSpeechTitle = sTitle;
-			mEvaluator = eval;
-			mDate = date;
-		}
-
-		public void setId(int id) {
-
-			mId = id;
-		}
-
-		public void setProjectTitle(String pTitle) {
-
-			mProjectTitle = pTitle;
-		}
-
-		public void setSpeechTitle(String sTitle) {
-
-			mSpeechTitle = sTitle;
-		}
-
-		public void setEvaluator(String eval) {
-
-			mEvaluator = eval;
-		}
-
-		public void setDate(String date) {
-
-			mDate = date;
-		}
-
-		public int getId() {
-
-			return mId;
-		}
-
-		public String getProjectTitle() {
-
-			return mProjectTitle;
-		}
-
-		public String getSpeechTitle() {
-
-			return mSpeechTitle;
-		}
-
-		public String getEvaluator() {
-
-			return mEvaluator;
-		}
-
-		public String getDate() {
-
-			return mDate;
-		}
-
-	}
-
+	
 }
