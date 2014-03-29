@@ -1,11 +1,18 @@
 package com.gdtm.app.pojo;
 
+import com.google.gson.annotations.Expose;
+
 public class CCDataPojo {
 
+	@Expose
 	private int mId;
+	@Expose
 	private String mProjectTitle;
+	@Expose
 	private String mSpeechTitle;
+	@Expose
 	private String mEvaluator;
+	@Expose
 	private String mDate;
 
 	// Later, I'll change all these constructor to Builder Pattern

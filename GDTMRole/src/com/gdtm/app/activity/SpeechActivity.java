@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,8 +28,6 @@ public class SpeechActivity extends BaseActivity {
 	private EditText mTitleEdit;
 	private EditText mEvaluatorEdit;
 	
-	private BaseActivity mBaseActivity;
-	
 	private DBHandlerCC mDB;
 	private CCDataPojo mData;
 	
@@ -41,11 +41,15 @@ public class SpeechActivity extends BaseActivity {
 		
 		showActionBar(this, "My Speech");
 		
-		UISetup();
-		
-		mDB = new DBHandlerCC(this);
 		mID = getIntent().getIntExtra("cc_id", 0);
 		Log.d("GDTM", "Selected id : " + mID);
+		
+		mDB = new DBHandlerCC(this);
+		mData = mDB.getUserCCData(mID);
+		
+		
+		UISetup();
+		
 		
 	}
 	
@@ -67,6 +71,9 @@ public class SpeechActivity extends BaseActivity {
 		mEvaluationStatic.setText("Evaluation : ");
 		mEvaluationData = (TextView) findViewById(R.id.speech_evaluation);
 		
+		if(mData != null) {
+			mTitleData.setText(mData.getSpeechTitle());
+		}
 	}
 
 	@Override
@@ -81,20 +88,25 @@ public class SpeechActivity extends BaseActivity {
 	@Override
 	public void onEditDone() {
 		super.onEditDone();
+		
+		// Hide keyboard
+		InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+		inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+		
 		mTitleData.setVisibility(View.VISIBLE);
 		mEvaluatorData.setVisibility(View.VISIBLE);
 		mTitleEdit.setVisibility(View.GONE);
 		mEvaluatorEdit.setVisibility(View.GONE);
 		
-		// Hide keyboard
-		
 		// Save data to DB
 		mData = new CCDataPojo();
 		String title = mTitleEdit.getText().toString();
+		String evaluator = mEvaluatorEdit.getText().toString();
 		mData.setSpeechTitle(title);
-		mData.setEvaluator(mEvaluatorEdit.getText().toString());
+		mData.setEvaluator(evaluator);
 		mTitleData.setText(title);
-		mDB.addCCData(mID, mData);
+		//mEvaluatorData.setTex)
+		mDB.updateCC(mData);
 	}
 	
 	

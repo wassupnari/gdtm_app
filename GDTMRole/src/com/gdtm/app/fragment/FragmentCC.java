@@ -42,6 +42,8 @@ public class FragmentCC extends Fragment {
 	private ArrayList<CCDataPojo> data = new ArrayList<CCDataPojo>();
 
 	private String[] mProject;
+	
+	private DBHandlerCC mDB;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,9 +53,10 @@ public class FragmentCC extends Fragment {
 		SharedPreferences setting = this.getActivity().getSharedPreferences(PREFERENCE, 0);
 
 		mProject = getResources().getStringArray(R.array.cc_project);
-
+		mDB = new DBHandlerCC(getActivity());
 		for (int i = 0; i < NUM_OF_CC_PJT; i++) {
 			data.add(new CCDataPojo(mProject[i], i, false));
+			mDB.addCCData(i, new com.gdtm.app.pojo.CCDataPojo());
 		}
 
 		ListView listView = (ListView) view.findViewById(R.id.cc_listview);

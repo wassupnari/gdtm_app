@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.gdtm.app.R;
 import com.gdtm.app.adapter.DrawerAdapter;
+import com.gdtm.app.database.DBHandlerCC;
 import com.gdtm.app.fragment.FragmentCC;
 import com.gdtm.app.fragment.FragmentCL;
 import com.gdtm.app.fragment.FragmentClubPage;
@@ -53,6 +54,8 @@ public class MainActivity extends FragmentActivity {
 	// Slide menu items
 	private String[] mNavMenuTitle;
 	private TypedArray mNavMenuIcon;
+	
+	private DBHandlerCC mDB;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -109,6 +112,9 @@ public class MainActivity extends FragmentActivity {
 		}
 
 		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+		
+		mDB = new DBHandlerCC(MainActivity.this);
+		
 
 	}
 

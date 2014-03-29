@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.gdtm.app.pojo.CCDataPojo;
+import com.google.gson.Gson;
+import com.google.gson.JsonParser;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -11,6 +13,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
+import android.util.Log;
 
 public class DBHandlerCC extends SQLiteOpenHelper {
 
@@ -27,13 +30,12 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 
 	// Table column names
 	private static final String KEY_ID = "id";
-	private static final String KEY_PJT_TITLE = "project_title";
-	private static final String KEY_SPEECH_TITLE = "speech_title";
-	private static final String KEY_EVALUATOR = "evaluator";
-	private static final String KEY_DATE = "date";
 	private static final String KEY_OBJECT = "object";
 
 	CCDataPojo[] data = new CCDataPojo[NUM_OF_CC_PJT];
+	
+	private Gson gson = new Gson();
+	private JsonParser jsonParser = new JsonParser();
 
 	public DBHandlerCC(Context context) {
 
@@ -50,8 +52,6 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 
 		String CREATE_CC_TABLE = "CREATE TABLE " + TABLE_NAME + "(" + KEY_ID
 				+ " INTEGER PRIMARY KEY," + KEY_OBJECT + " TEXT" + ")";
-		
-
 		db.execSQL(CREATE_CC_TABLE);
 	}
 
@@ -71,11 +71,10 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	public void addCCData(int id, CCDataPojo cc) {
 
 		SQLiteDatabase db = this.getWritableDatabase();
-
 		ContentValues values = new ContentValues();
-		///String jsonObj = gson.toJson(cc);
+		String jsonObj = gson.toJson(cc);
 		values.put(KEY_ID, id);
-		values.put(KEY_OBJECT, cc.getProjectTitle());
+		values.put(KEY_OBJECT, jsonObj);
 
 		db.insert(TABLE_NAME, null, values);
 		db.close();
@@ -91,18 +90,19 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_PJT_TITLE,
-				KEY_SPEECH_TITLE, KEY_EVALUATOR, KEY_DATE }, KEY_ID + "=?",
+		Cursor cursor = db.query(TABLE_NAME, new String[] { KEY_ID, KEY_OBJECT }, KEY_ID + "=?",
 				new String[] { String.valueOf(id) }, null, null, null, null);
 		if (cursor != null) {
-
 			cursor.moveToFirst();
 		}
+		Log.d("GDTM", "cursor : " + cursor.getString(1));
+		if(cursor.getString(1) != null) {
+			CCDataPojo cc = gson.fromJson(jsonParser.parse(cursor.getString(1))
+					.getAsJsonObject(), CCDataPojo.class);
+			return cc;
+		}
 
-		CCDataPojo cc = new CCDataPojo(Integer.parseInt(cursor.getString(0)), cursor.getString(1),
-				cursor.getString(2), cursor.getString(3), cursor.getString(4));
-
-		return cc;
+		return null;
 	}
 
 	/**
@@ -122,12 +122,8 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 		if (cursor.moveToFirst()) {
 			do {
 				CCDataPojo cc = new CCDataPojo();
+				cc = gson.fromJson(jsonParser.parse(cursor.getString(1)).getAsJsonObject(), CCDataPojo.class);
 				cc.setId(Integer.parseInt(cursor.getString(0)));
-				cc.setProjectTitle(cursor.getString(1));
-				cc.setSpeechTitle(cursor.getString(2));
-				cc.setEvaluator(cursor.getString(3));
-				cc.setDate(cursor.getString(4));
-
 				ccList.add(cc);
 			} while (cursor.moveToNext());
 		}
@@ -146,10 +142,10 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 		SQLiteDatabase db = this.getWritableDatabase();
 
 		ContentValues values = new ContentValues();
-		values.put(KEY_SPEECH_TITLE, cc.getSpeechTitle());
-		values.put(KEY_EVALUATOR, cc.getEvaluator());
+		String jsonObj = gson.toJson(cc);
+		values.put(KEY_OBJECT, jsonObj);
 
-		return db.update(TABLE_NAME, values, KEY_ID + " =?",
+		return db.update(TABLE_NAME, values, KEY_ID + " = ?",
 				new String[] { String.valueOf(cc.getId()) });
 	}
 
@@ -161,7 +157,7 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 	public void deleteCC(CCDataPojo cc) {
 
 		SQLiteDatabase db = this.getWritableDatabase();
-		db.delete(TABLE_NAME, KEY_ID + " =?", new String[] { String.valueOf(cc.getId()) });
+		db.delete(TABLE_NAME, KEY_ID + " = ?", new String[] { String.valueOf(cc.getId()) });
 		db.close();
 
 	}
