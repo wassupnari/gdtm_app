@@ -86,8 +86,9 @@ public class SpeechActivity extends BaseActivity {
 		mTitleData.setVisibility(View.GONE);
 		mEvaluatorData.setVisibility(View.GONE);
 		mTitleEdit.setVisibility(View.VISIBLE);
-		mTitleEdit.setText(mDB.getUserCCData(mID).getSpeechTitle());
+		mTitleEdit.setText(mData.getSpeechTitle());
 		mEvaluatorEdit.setVisibility(View.VISIBLE);
+		mEvaluatorEdit.setText(mData.getEvaluator());
 	}
 
 	@Override
@@ -100,21 +101,19 @@ public class SpeechActivity extends BaseActivity {
 			inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
 		}
 		
-		
 		mTitleData.setVisibility(View.VISIBLE);
 		mEvaluatorData.setVisibility(View.VISIBLE);
 		mTitleEdit.setVisibility(View.GONE);
 		mEvaluatorEdit.setVisibility(View.GONE);
 		
 		// Save data to DB
-		mData = new CCDataPojo();
 		String title = mTitleEdit.getText().toString();
 		String evaluator = mEvaluatorEdit.getText().toString();
 		mData.setId(mID);
 		mData.setSpeechTitle(title);
 		mData.setEvaluator(evaluator);
 		mTitleData.setText(title);
-		//mEvaluatorData.setTex)
+		mEvaluatorData.setText(evaluator);
 		mDB.updateCC(mData);
 		
 	}
