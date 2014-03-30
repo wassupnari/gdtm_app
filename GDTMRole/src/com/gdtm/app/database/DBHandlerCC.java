@@ -95,7 +95,6 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 		if (cursor != null) {
 			cursor.moveToFirst();
 		}
-		Log.d("GDTM", "cursor : " + cursor.getString(1));
 		if(cursor.getString(1) != null) {
 			CCDataPojo cc = gson.fromJson(jsonParser.parse(cursor.getString(1))
 					.getAsJsonObject(), CCDataPojo.class);
@@ -164,12 +163,13 @@ public class DBHandlerCC extends SQLiteOpenHelper {
 
 	public int getCCCount() {
 
+		int count;
 		String countQuery = "SELECT * FROM " + TABLE_NAME;
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor cursor = db.rawQuery(countQuery, null);
+		count = cursor.getCount();
 		cursor.close();
-
-		return cursor.getCount();
+		return count;
 	}
 
 	

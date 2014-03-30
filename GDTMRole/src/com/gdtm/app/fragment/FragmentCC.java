@@ -7,6 +7,7 @@ import com.gdtm.app.activity.SpeechActivity;
 import com.gdtm.app.adapter.CCListAdapter;
 import com.gdtm.app.adapter.MyExpandableListAdapter;
 import com.gdtm.app.database.DBHandlerCC;
+import com.gdtm.app.pojo.CCDataPojo;
 
 import android.app.Fragment;
 import android.content.Context;
@@ -36,10 +37,7 @@ public class FragmentCC extends Fragment {
 
 	// private MyExpandableListAdapter mAdapter;
 	private CCListAdapter mAdapter;
-
-	// private ArrayList<String> mGroupItem = new ArrayList<String>();
-	// private ArrayList<Object> mChildItem = new ArrayList<Object>();
-	private ArrayList<CCDataPojo> data = new ArrayList<CCDataPojo>();
+	private ListView mListView;
 
 	private String[] mProject;
 	
@@ -55,12 +53,14 @@ public class FragmentCC extends Fragment {
 		mProject = getResources().getStringArray(R.array.cc_project);
 		mDB = new DBHandlerCC(getActivity());
 		for (int i = 0; i < NUM_OF_CC_PJT; i++) {
-			data.add(new CCDataPojo(mProject[i], i, false));
-			mDB.addCCData(i, new com.gdtm.app.pojo.CCDataPojo());
+			CCDataPojo data = new CCDataPojo();
+			data.setSpeechTitle("Not decided yet");
+			data.setDate("None");
+			mDB.addCCData(i, data);
 		}
 
-		ListView listView = (ListView) view.findViewById(R.id.cc_listview);
-		listView.setOnItemClickListener(new ListView.OnItemClickListener() {
+		mListView = (ListView) view.findViewById(R.id.cc_listview);
+		mListView.setOnItemClickListener(new ListView.OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -73,32 +73,15 @@ public class FragmentCC extends Fragment {
 
 		// Database
 		DBHandlerCC db = new DBHandlerCC(this.getActivity());
-		// db.addCCData(new UserCC(1, "Icebreaker Speech", "My First Speech",
-		// "Peter Shin", "2013. 11. 15"));
-
-		// Adapter for listview
-		mAdapter = new CCListAdapter(getActivity(), data);
-		// mAdapter.setInflater(inflater, getActivity());
-		listView.setAdapter(mAdapter);
 
 		return view;
 	}
 
-	public class CCDataPojo {
-
-		public String project;
-		public Integer productNumber;
-		public boolean isCompleted;
-
-		public CCDataPojo(String title, Integer productNumber, boolean isCompleted) {
-			this.project = title;
-			this.productNumber = productNumber;
-			this.isCompleted = isCompleted;
-		}
-
-		public String getProject() {
-			return this.project;
-		}
+	@Override
+	public void onResume() {
+		super.onResume();
+		mAdapter = new CCListAdapter(getActivity());
+		mListView.setAdapter(mAdapter);
 	}
 
 	public class CCDataOpenHelper extends SQLiteOpenHelper {

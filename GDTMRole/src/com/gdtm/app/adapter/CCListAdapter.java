@@ -2,7 +2,7 @@ package com.gdtm.app.adapter;
 
 import java.util.ArrayList;
 
-import com.gdtm.app.fragment.FragmentCC.CCDataPojo;
+import com.gdtm.app.database.DBHandlerCC;
 
 import com.gdtm.app.R;
 import android.app.Activity;
@@ -18,24 +18,24 @@ public class CCListAdapter extends BaseAdapter {
 
 	private Activity mActivity;
 
-	private ArrayList<CCDataPojo> mData = new ArrayList<CCDataPojo>();
-
 	private LayoutInflater mInflater = null;
+	
+	private DBHandlerCC mDB;
 
-	public CCListAdapter(Activity activity, ArrayList<CCDataPojo> data) {
+	public CCListAdapter(Activity activity) {
 		this.mActivity = activity;
-		this.mData = data;
+		mDB = new DBHandlerCC(activity);
 		mInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
 	public int getCount() {
-		return mData.size();
+		return mDB.getCCCount();
 	}
 
 	@Override
 	public Object getItem(int position) {
-		return mData.get(position);
+		return mDB.getUserCCData(position);
 	}
 
 	@Override
@@ -49,10 +49,11 @@ public class CCListAdapter extends BaseAdapter {
 
 		TextView project = (TextView) vi.findViewById(R.id.cc_project_title);
 		TextView number = (TextView) vi.findViewById(R.id.cc_number);
-		TextView compeleted = (TextView) vi.findViewById(R.id.cc_title);
+		TextView title = (TextView) vi.findViewById(R.id.cc_title);
 
-		project.setText(mData.get(position).getProject());
+		project.setText("");
 		number.setText("Project " + String.valueOf(position + 1));
+		title.setText("Title : " + mDB.getUserCCData(position).getSpeechTitle());
 		return vi;
 
 	}

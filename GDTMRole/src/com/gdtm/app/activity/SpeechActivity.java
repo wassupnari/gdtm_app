@@ -39,16 +39,20 @@ public class SpeechActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_speech);
 		
-		showActionBar(this, "My Speech");
+		
 		
 		mID = getIntent().getIntExtra("cc_id", 0);
 		Log.d("GDTM", "Selected id : " + mID);
+		
+		showActionBar(this, "Project " + (mID+1));
 		
 		mDB = new DBHandlerCC(this);
 		mData = mDB.getUserCCData(mID);
 		
 		
 		UISetup();
+		
+		Log.d("GDTM", "DB size : " + mDB.getCCCount());
 		
 		
 	}
@@ -82,6 +86,7 @@ public class SpeechActivity extends BaseActivity {
 		mTitleData.setVisibility(View.GONE);
 		mEvaluatorData.setVisibility(View.GONE);
 		mTitleEdit.setVisibility(View.VISIBLE);
+		mTitleEdit.setText(mDB.getUserCCData(mID).getSpeechTitle());
 		mEvaluatorEdit.setVisibility(View.VISIBLE);
 	}
 
@@ -91,7 +96,10 @@ public class SpeechActivity extends BaseActivity {
 		
 		// Hide keyboard
 		InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
-		inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+		if(inputManager.isAcceptingText()) {
+			inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+		}
+		
 		
 		mTitleData.setVisibility(View.VISIBLE);
 		mEvaluatorData.setVisibility(View.VISIBLE);
@@ -102,11 +110,13 @@ public class SpeechActivity extends BaseActivity {
 		mData = new CCDataPojo();
 		String title = mTitleEdit.getText().toString();
 		String evaluator = mEvaluatorEdit.getText().toString();
+		mData.setId(mID);
 		mData.setSpeechTitle(title);
 		mData.setEvaluator(evaluator);
 		mTitleData.setText(title);
 		//mEvaluatorData.setTex)
 		mDB.updateCC(mData);
+		
 	}
 	
 	
