@@ -3,7 +3,7 @@ package com.gdtm.app.fragment;
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
-import com.gdtm.app.adapter.MyExpandableListAdapter;
+import com.gdtm.app.adapter.CLExpandableListAdapter;
 
 import android.annotation.SuppressLint;
 import android.app.Fragment;
@@ -25,7 +25,7 @@ public class FragmentMain extends Fragment implements Runnable {
 
 	private static final int NUM_OF_ROLE = 18;
 
-	private MyExpandableListAdapter mAdapter;
+	private CLExpandableListAdapter mAdapter;
 
 	private ArrayList<String> mGroupItem = new ArrayList<String>();
 	private ArrayList<Object> mChildItem = new ArrayList<Object>();
