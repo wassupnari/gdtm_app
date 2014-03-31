@@ -14,6 +14,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+/**
+ * @author Nari Kim Shin (wassupnari@gmail.com)
+ */
 
 public class BaseActivity extends Activity {
 

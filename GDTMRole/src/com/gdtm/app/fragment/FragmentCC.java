@@ -3,9 +3,9 @@ package com.gdtm.app.fragment;
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
-import com.gdtm.app.activity.SpeechActivity;
+import com.gdtm.app.activity.CCDetailActivity;
 import com.gdtm.app.adapter.CCListAdapter;
-import com.gdtm.app.adapter.MyExpandableListAdapter;
+import com.gdtm.app.adapter.CLExpandableListAdapter;
 import com.gdtm.app.database.DBHandlerCC;
 import com.gdtm.app.pojo.CCDataPojo;
 
@@ -40,7 +40,7 @@ public class FragmentCC extends Fragment {
 	private ListView mListView;
 
 	private String[] mProject;
-	
+
 	private DBHandlerCC mDB;
 
 	@Override
@@ -64,11 +64,11 @@ public class FragmentCC extends Fragment {
 
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				Intent speechView = new Intent(getActivity(), SpeechActivity.class);
+				Intent speechView = new Intent(getActivity(), CCDetailActivity.class);
 				speechView.putExtra("cc_id", position);
 				startActivity(speechView);
 			}
-			
+
 		});
 
 		// Database

@@ -3,8 +3,13 @@ package com.gdtm.app.adapter;
 import java.util.ArrayList;
 
 import com.gdtm.app.R;
+import com.gdtm.app.activity.CLDetailActivity;
+import com.gdtm.app.activity.CCDetailActivity;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MyExpandableListAdapter extends BaseExpandableListAdapter {
+public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 
 	private ArrayList<String> mGroupItem;
 	private ArrayList<String> mTempChild;
@@ -23,7 +28,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 	private LayoutInflater mInflater;
 	private Activity mActivity;
 
-	public MyExpandableListAdapter(ArrayList<String> grList, ArrayList<Object> childItem) {
+	public CLExpandableListAdapter(ArrayList<String> grList, ArrayList<Object> childItem) {
 
 		mGroupItem = grList;
 		mChildItem = childItem;
@@ -48,7 +53,7 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 	}
 
 	@Override
-	public View getChildView(int groupPosition, final int childPosition, boolean isLastChild,
+	public View getChildView(final int groupPosition, final int childPosition, boolean isLastChild,
 			View convertView, ViewGroup parent) {
 
 		mTempChild = (ArrayList<String>) mChildItem.get(groupPosition);
@@ -62,18 +67,16 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 		text = (TextView) convertView.findViewById(R.id.child_row);
 		// img = (ImageView) convertView.findViewById(R.id.childImage);
 		text.setText(mTempChild.get(childPosition));
-		if (childPosition == (mTempChild.size() - 1)) {
-			// img.setImageResource(R.drawable.dh);
-		}
-		if (childPosition == mTempChild.size()) {
-			// img.setImageResource(R.drawable.dj);
-		}
 		convertView.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				Toast.makeText(mActivity, mTempChild.get(childPosition), Toast.LENGTH_SHORT).show();
+				//Toast.makeText(mActivity, mTempChild.get(childPosition), Toast.LENGTH_SHORT).show();
+				Intent speechView = new Intent(mActivity, CLDetailActivity.class);
+				speechView.putExtra("cl_group_id", groupPosition);
+				speechView.putExtra("cl_child_id", childPosition);
+				mActivity.startActivity(speechView);
 			}
 		});
 		return convertView;
@@ -106,11 +109,16 @@ public class MyExpandableListAdapter extends BaseExpandableListAdapter {
 	@Override
 	public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup arg3) {
 
+		mInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.view_list_group_row, null);
 		}
-		((CheckedTextView) convertView).setText(mGroupItem.get(groupPosition));
-		((CheckedTextView) convertView).setChecked(isExpanded);
+		TextView text = (TextView) convertView.findViewById(R.id.group_row);
+		text.setText(mGroupItem.get(groupPosition));
+		TextView complete = (TextView) convertView.findViewById(R.id.group_complete);
+		complete.setText("complete");
+//		((CheckedTextView) convertView).setText(mGroupItem.get(groupPosition));
+//		((CheckedTextView) convertView).setChecked(isExpanded);
 		return convertView;
 	}
 

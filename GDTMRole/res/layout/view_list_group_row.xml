@@ -1,4 +1,30 @@
-<CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="35dp"
+    android:orientation="horizontal"
+    android:padding="10dp" >
+
+    <TextView
+        android:id="@+id/group_row"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:gravity="center_vertical"
+        android:textSize="@dimen/listview_text_size" />
+
+    <TextView
+        android:id="@+id/group_complete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/group_row"
+        android:layout_marginLeft="5dp"
+        android:textColor="#999999"
+        android:textSize="@dimen/listview_text_size_small" />
+
+</RelativeLayout><!--
+     <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/group_row"
     android:layout_width="wrap_content"
@@ -11,3 +37,4 @@
     android:textColor="#999999"
     android:textSize="14sp"
     android:textStyle="bold" />
+-->
