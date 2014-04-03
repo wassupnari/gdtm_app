@@ -11,7 +11,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 /**
- * @author Nari Kim (wassupnari@gmail.com)
+ * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 
 public class SplashScreen extends Activity {
@@ -56,7 +56,7 @@ public class SplashScreen extends Activity {
 			}
 
 			// Start main activity
-			Intent intent = new Intent(SplashScreen.this, SignupFragment.class);
+			Intent intent = new Intent(SplashScreen.this, IntroSwipeActivity.class);
 			SplashScreen.this.startActivity(intent);
 			SplashScreen.this.finish();
 		}
