@@ -4,6 +4,9 @@
     <string name="app_name">Peech</string>
     <string name="action_settings">Settings</string>
     <string name="app_id">626066877422488</string>
+    
+    <string name="intro_swipe_text_2">Learn more, Grow more</string>
+    <string name="intro_swipe_text_3">Build your skills with other professionals</string>
 
     <!-- Signup / Signin -->
     <string name="invalid_email">Invalid format. Please check again.</string>

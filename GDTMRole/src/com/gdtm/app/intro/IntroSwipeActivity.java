@@ -5,6 +5,10 @@ import java.util.List;
 
 import com.gdtm.app.MainActivity;
 import com.gdtm.app.R;
+import com.gdtm.app.fragment.SwipeFragment_1;
+import com.gdtm.app.fragment.SwipeFragment_2;
+import com.gdtm.app.fragment.SwipeFragment_3;
+import com.gdtm.app.fragment.SwipeFragment_4;
 import com.gdtm.app.utils.SimpleGestureFilter;
 
 import android.content.Intent;
@@ -23,6 +27,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -43,23 +48,25 @@ public class IntroSwipeActivity extends FragmentActivity {
 		mPageAdapter = new SwipePageAdapter(getSupportFragmentManager(), mFragments);
 		ViewPager pager = (ViewPager) findViewById(R.id.intro_viewpager);
 		pager.setAdapter(mPageAdapter);
-//		pager.setOnPageChangeListener(new OnPageChangeListener() {
-//
-//			@Override
-//			public void onPageScrollStateChanged(int arg0) {
-//				
-//			}
-//
-//			@Override
-//			public void onPageScrolled(int arg0, float arg1, int arg2) {
-//				
-//			}
-//
-//			@Override
-//			public void onPageSelected(int position) {
-//			}
-//			
-//		});
+		pager.setOnPageChangeListener(new OnPageChangeListener() {
+
+			@Override
+			public void onPageScrollStateChanged(int arg0) {
+				
+			}
+
+			@Override
+			public void onPageScrolled(int arg0, float arg1, int arg2) {
+				
+			}
+
+			@Override
+			public void onPageSelected(int position) {
+				//setPageIndicator(position);
+			}
+			
+		});
+		//setPageIndicator(0);
 
 	}
 
@@ -87,6 +94,11 @@ public class IntroSwipeActivity extends FragmentActivity {
 	public List<Fragment> getFragments() {
 		List<Fragment> fList = new ArrayList<Fragment>();
 
+//		fList.add(new SwipeFragment_1());
+//		fList.add(new SwipeFragment_2());
+//		fList.add(new SwipeFragment_3());
+//		fList.add(new SwipeFragment_4());
+		
 		fList.add(SwipeFragment.newInstance(R.layout.intro_swipe_fragment_1));
 		fList.add(SwipeFragment.newInstance(R.layout.intro_swipe_fragment_2));
 		fList.add(SwipeFragment.newInstance(R.layout.intro_swipe_fragment_3));
@@ -95,10 +107,8 @@ public class IntroSwipeActivity extends FragmentActivity {
 		return fList;
 	}
 
-	public static class SwipeFragment extends Fragment {//implements SimpleGestureFilter.SimpleGestureListener {
+	public static class SwipeFragment extends Fragment {
 		
-		private SimpleGestureFilter filter;
-
 		public static final String IMG_SOURCE = "IMG_SOURCE";
 		
 		public final static SwipeFragment newInstance(int layoutId) {
@@ -130,6 +140,27 @@ public class IntroSwipeActivity extends FragmentActivity {
 				});
 			}
 			return view;
+		}
+	}
+	
+	public void setPageIndicator(int position) {
+		final LinearLayout layout = (LinearLayout) findViewById(R.id.swipe_page_indicator);
+		layout.removeAllViews();
+		layout.setOrientation(LinearLayout.HORIZONTAL);
+		layout.setPadding(10, 10, 10, 10);
+		Button circle;
+		for (int y = 0; y < 4; y++) {
+			circle = new Button(this);
+
+			if (y == position) {
+				circle.setBackgroundResource(R.drawable.page_indicator_active);
+			} else {
+				circle.setBackgroundResource(R.drawable.page_indicator_inactive);
+			}
+			LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(30, 30);
+			layoutParams2.setMargins(5, 0, 2, 5);
+			layout.addView(circle, layoutParams2);
+
 		}
 	}
 

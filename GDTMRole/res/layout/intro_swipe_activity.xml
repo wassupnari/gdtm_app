@@ -8,5 +8,24 @@
         android:id="@+id/intro_viewpager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
+    
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollViewProduct"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:foregroundGravity="center_horizontal"
+        android:minHeight="20dp" >
+
+        <LinearLayout
+            android:id="@+id/swipe_page_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </HorizontalScrollView>
 
 </RelativeLayout>

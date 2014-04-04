@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="10dp"
-            android:textSize="17dp"
+            android:textSize="@dimen/swipe_text_size"
             android:textStyle="bold"
             android:text="Are you ready?"
             android:textColor="#ffffff" />
@@ -26,7 +26,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="START" />
+            android:text="START"
+            android:textColor="#ffffff" />
     </LinearLayout>
 
 </RelativeLayout>
