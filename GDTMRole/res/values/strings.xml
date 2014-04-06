@@ -24,22 +24,22 @@
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
         <item>Main</item>
-        <item>Meeting List</item>
         <item>CL Manual</item>
         <item>CC Manual</item>
         <item>Speech Draft</item>
         <item>Visit website</item>
+        <item>About Me</item>
         <item>Setting</item>
     </string-array>
 
     <!-- Nav Drawer List Item Icons -->
     <array name="nav_drawer_icons">
         <item>@drawable/ic_nav_main</item>
-        <item>@drawable/ic_nav_meeting_list</item>
         <item>@drawable/ic_nav_cl</item>
         <item>@drawable/ic_nav_cc</item>
         <item>@drawable/ic_nav_web</item>
         <item>@drawable/ic_nav_web</item>
+        <item>@drawable/ic_nav_about_me</item>
         <item>@drawable/ic_nav_setting</item>
     </array>
     <array name="cc_project">
@@ -61,5 +61,7 @@
     <string name="dialog_btn_cancel">Cancel</string>
     <string name="dialog_btn_signup">Sign Up</string>
     <string name="dialog_btn_signin">Sign In</string>
+    
+    <string name="about_description">If you have any question or want to contribute as a designer, please give me an email at : </string>
 
 </resources>

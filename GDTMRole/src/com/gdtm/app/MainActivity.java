@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.gdtm.app.R;
 import com.gdtm.app.adapter.DrawerAdapter;
 import com.gdtm.app.database.DBHandlerCC;
+import com.gdtm.app.fragment.FragmentAboutMe;
 import com.gdtm.app.fragment.FragmentCC;
 import com.gdtm.app.fragment.FragmentCL;
 import com.gdtm.app.fragment.FragmentClubPage;
@@ -197,20 +198,23 @@ public class MainActivity extends FragmentActivity {
 		case 0:
 			fragment = new FragmentMain();
 			break;
+//		case 1:
+//			fragment = new FragmentMeetingList();
+//			break;
 		case 1:
-			fragment = new FragmentMeetingList();
-			break;
-		case 2:
 			fragment = new FragmentCL();
 			break;
-		case 3:
+		case 2:
 			fragment = new FragmentCC();
 			break;
-		case 4:
+		case 3:
 			fragment = new FragmentDraft();
 			break;
-		case 5:
+		case 4:
 			fragment = new FragmentClubPage();
+			break;
+		case 5:
+			fragment = new FragmentAboutMe();
 			break;
 		case 6:
 			fragment = new FragmentSetting();
