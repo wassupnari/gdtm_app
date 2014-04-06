@@ -62,11 +62,11 @@ public class IntroSwipeActivity extends FragmentActivity {
 
 			@Override
 			public void onPageSelected(int position) {
-				//setPageIndicator(position);
+				setPageIndicator(position);
 			}
 			
 		});
-		//setPageIndicator(0);
+		setPageIndicator(0);
 
 	}
 
@@ -158,7 +158,7 @@ public class IntroSwipeActivity extends FragmentActivity {
 				circle.setBackgroundResource(R.drawable.page_indicator_inactive);
 			}
 			LinearLayout.LayoutParams layoutParams2 = new LinearLayout.LayoutParams(30, 30);
-			layoutParams2.setMargins(5, 0, 2, 5);
+			layoutParams2.setMargins(10, 0, 10, 10);
 			layout.addView(circle, layoutParams2);
 
 		}
