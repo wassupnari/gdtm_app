@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.EditText;
 
 
 public class FragmentDraft extends Fragment {
@@ -14,6 +16,9 @@ public class FragmentDraft extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.fragment_draft, null);
+		
+		EditText draft = (EditText) view.findViewById(R.id.draft_edittext);
+		draft.setImeOptions(EditorInfo.IME_ACTION_DONE);
 
 		return view;
 	}

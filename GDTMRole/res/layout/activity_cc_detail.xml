@@ -9,20 +9,23 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
 
         <TextView
             android:id="@+id/speech_title_static"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/content_text_size" />
 
         <TextView
             android:id="@+id/speech_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_title_static" />
+            android:layout_toRightOf="@id/speech_title_static"
+            android:textSize="@dimen/content_text_size" />
 
         <EditText
             android:id="@+id/speech_title_edit"
@@ -30,6 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/speech_title_static"
+            android:hint="Your speech title"
             android:visibility="gone" />
     </RelativeLayout>
 
@@ -37,20 +41,23 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
 
         <TextView
             android:id="@+id/speech_evaluator_static"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/content_text_size" />
 
         <TextView
             android:id="@+id/speech_evaluator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_evaluator_static" />
+            android:layout_toRightOf="@id/speech_evaluator_static"
+            android:textSize="@dimen/content_text_size" />
 
         <EditText
             android:id="@+id/speech_evaluator_edit"
@@ -58,38 +65,69 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/speech_evaluator_static"
+            android:hint="Evaluator Name"
             android:visibility="gone" />
     </RelativeLayout>
 
     <!-- Date -->
 
-    <TextView
-        android:id="@+id/speech_date_static"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
 
-    <TextView
-        android:id="@+id/speech_date"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        <TextView
+            android:id="@+id/speech_date_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="@dimen/content_text_size" />
+
+        <TextView
+            android:id="@+id/speech_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/speech_date_static"
+            android:textSize="@dimen/content_text_size" />
+
+        <EditText
+            android:id="@+id/speech_date_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/speech_date_static"
+            android:hint="Complete date"
+            android:visibility="gone" />
+    </RelativeLayout>
 
     <!-- Evaluation -->
 
-    <TextView
-        android:id="@+id/speech_eval_static"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/speech_evaluation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Your title" />
-
-    <EditText
-        android:id="@+id/speech_evaluation_edit"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_marginTop="10dp" >
+
+        <TextView
+            android:id="@+id/speech_eval_static"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/content_text_size" />
+
+        <TextView
+            android:id="@+id/speech_evaluation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/content_text_size"
+            android:layout_below="@id/speech_eval_static" />
+
+        <EditText
+            android:id="@+id/speech_evaluation_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/speech_eval_static"
+            android:hint="Evaluation comment"
+            android:visibility="gone" />
+    </RelativeLayout>
 
 </LinearLayout>

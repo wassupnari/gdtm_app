@@ -54,8 +54,7 @@ public class FragmentCC extends Fragment {
 		mDB = new DBHandlerCC(getActivity());
 		for (int i = 0; i < NUM_OF_CC_PJT; i++) {
 			CCDataPojo data = new CCDataPojo();
-			data.setSpeechTitle("Not decided yet");
-			data.setDate("None");
+			data.setSpeechTitle("None");
 			mDB.addCCData(i, data);
 		}
 

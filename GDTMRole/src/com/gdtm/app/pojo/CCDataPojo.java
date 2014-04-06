@@ -14,6 +14,10 @@ public class CCDataPojo {
 	private String mEvaluator;
 	@Expose
 	private String mDate;
+	@Expose
+	private String mEvaluation;
+	@Expose
+	private boolean complete;
 
 	// Later, I'll change all these constructor to Builder Pattern
 	public CCDataPojo() {
@@ -58,6 +62,14 @@ public class CCDataPojo {
 
 		mDate = date;
 	}
+	
+	public void setEvaluation(String evaluation) {
+		mEvaluation = evaluation;
+	}
+	
+	public void setComplete(boolean complete) {
+		this.complete = complete;
+	}
 
 	public int getId() {
 
@@ -82,6 +94,14 @@ public class CCDataPojo {
 	public String getDate() {
 
 		return mDate;
+	}
+
+	public String getEvaluation() {
+		return mEvaluation;
+	}
+	
+	public boolean getComplete() {
+		return complete;
 	}
 
 }
