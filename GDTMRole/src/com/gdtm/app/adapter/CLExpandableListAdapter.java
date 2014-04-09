@@ -27,6 +27,8 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 
 	private LayoutInflater mInflater;
 	private Activity mActivity;
+	
+	TextView text;
 
 	public CLExpandableListAdapter(ArrayList<String> grList, ArrayList<Object> childItem) {
 
@@ -57,7 +59,7 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 			View convertView, ViewGroup parent) {
 
 		mTempChild = (ArrayList<String>) mChildItem.get(groupPosition);
-		TextView text = null;
+		//TextView text = null;
 		// ImageView img = null;
 
 		if (convertView == null) {
@@ -76,6 +78,7 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 				Intent speechView = new Intent(mActivity, CLDetailActivity.class);
 				speechView.putExtra("cl_group_id", groupPosition);
 				speechView.putExtra("cl_child_id", childPosition);
+				speechView.putExtra("cl_detail_title", mTempChild.get(childPosition));
 				mActivity.startActivity(speechView);
 			}
 		});

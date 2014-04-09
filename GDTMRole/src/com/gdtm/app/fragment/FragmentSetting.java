@@ -34,7 +34,7 @@ public class FragmentSetting extends Fragment {
 	private TextView mName;
 	private TextView mNameField;
 	private TextView mEmail;
-	private Button mEmailField;
+	private TextView mEmailField;
 	private TextView mPhone;
 	private TextView mPhoneField;
 	private Button mLogout;
@@ -76,14 +76,14 @@ public class FragmentSetting extends Fragment {
 		mEmail = (TextView) view.findViewById(R.id.profile_email);
 		mEmail.setText("User Email");
 		mEmail.setTextSize(20);
-		mEmailField = (Button) view.findViewById(R.id.profile_email_field);
+		mEmailField = (TextView) view.findViewById(R.id.profile_email_field);
 		mEmailField.setText("wassupnari@gmail.com");
 
 		mPhone = (TextView) view.findViewById(R.id.profile_phone);
 		mPhone.setText("Phone");
 		mPhone.setTextSize(20);
-		mPhoneField = (Button) view.findViewById(R.id.profile_phone_field);
-		mPhoneField.setText("010-9925-1234");
+		mPhoneField = (TextView) view.findViewById(R.id.profile_phone_field);
+		mPhoneField.setText("415-123-1234");
 
 		mLogout = (Button) view.findViewById(R.id.profile_logout);
 		mLogout.setText("Logout");
