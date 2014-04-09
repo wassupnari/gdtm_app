@@ -13,6 +13,8 @@ import com.gdtm.app.fragment.FragmentDraft;
 import com.gdtm.app.fragment.FragmentMain;
 import com.gdtm.app.fragment.FragmentMeetingList;
 import com.gdtm.app.fragment.FragmentSetting;
+import com.gdtm.app.helper.PreferenceHelper;
+import com.gdtm.app.intro.SplashScreen;
 
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
@@ -22,6 +24,7 @@ import android.os.Bundle;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.util.Log;
@@ -57,6 +60,8 @@ public class MainActivity extends FragmentActivity {
 	private TypedArray mNavMenuIcon;
 	
 	private DBHandlerCC mDB;
+	
+	private PreferenceHelper mPreferences;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -64,57 +69,70 @@ public class MainActivity extends FragmentActivity {
 		super.onCreate(savedInstanceState);
 //		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+		mPreferences = new PreferenceHelper(MainActivity.this);
+		String isStarted = mPreferences.getStringFromPreferences("started", "");
 
-		mContext = this.getApplicationContext();
+		if(isStarted.equalsIgnoreCase("")) {
+			Intent intent = new Intent(MainActivity.this, SplashScreen.class);
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			startActivity(intent);
+			
+			MainActivity.this.finish();
+		} else {
+			mContext = this.getApplicationContext();
 
-		setContentView(R.layout.control_drawer_menu);
+			setContentView(R.layout.control_drawer_menu);
 
-		// Navigation Menu Setting
-		mTitle = mDrawerTitle = getTitle();
+			// Navigation Menu Setting
+			mTitle = mDrawerTitle = getTitle();
 
-		mNavMenuTitle = getResources().getStringArray(R.array.nav_drawer_items);
-		mNavMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
+			mNavMenuTitle = getResources().getStringArray(R.array.nav_drawer_items);
+			mNavMenuIcon = getResources().obtainTypedArray(R.array.nav_drawer_icons);
 
-		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-		mDrawerList = (ListView) findViewById(R.id.nav_menu);
+			mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+			mDrawerList = (ListView) findViewById(R.id.nav_menu);
 
-		mDrawerItem = new ArrayList<DrawerItem>();
-		InitDrawerItem();
-		mNavMenuIcon.recycle(); // Recycle the TypedArray
+			mDrawerItem = new ArrayList<DrawerItem>();
+			InitDrawerItem();
+			mNavMenuIcon.recycle(); // Recycle the TypedArray
 
-		// Adapter Setting
-		DrawerAdapter adapter = new DrawerAdapter(mContext, mDrawerItem);
-		mDrawerList.setAdapter(adapter);
+			// Adapter Setting
+			DrawerAdapter adapter = new DrawerAdapter(mContext, mDrawerItem);
+			mDrawerList.setAdapter(adapter);
 
-		// enabling action bar app icon and behaving it as toggle button
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		getActionBar().setHomeButtonEnabled(true);
-		getActionBar().setIcon(R.drawable.logo);
+			// enabling action bar app icon and behaving it as toggle button
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+			getActionBar().setHomeButtonEnabled(true);
+			getActionBar().setIcon(R.drawable.logo);
 
-		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer,
-				R.string.drawer_open, R.string.drawer_close) {
+			mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer,
+					R.string.drawer_open, R.string.drawer_close) {
 
-			public void onDrawerClosed(View view) {
-				getActionBar().setTitle(mTitle);
+				public void onDrawerClosed(View view) {
+					getActionBar().setTitle(mTitle);
 
-				invalidateOptionsMenu();
+					invalidateOptionsMenu();
+				}
+
+				public void onDrawerOpened(View view) {
+					getActionBar().setTitle(mDrawerTitle);
+					invalidateOptionsMenu();
+				}
+			};
+			mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+			if (savedInstanceState == null) {
+				// on first time display view for first nav item
+				DisplayView(0);
 			}
 
-			public void onDrawerOpened(View view) {
-				getActionBar().setTitle(mDrawerTitle);
-				invalidateOptionsMenu();
-			}
-		};
-		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-		if (savedInstanceState == null) {
-			// on first time display view for first nav item
-			DisplayView(0);
+			mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
+			
+			mDB = new DBHandlerCC(MainActivity.this);
 		}
 
-		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 		
-		mDB = new DBHandlerCC(MainActivity.this);
 		
 
 	}

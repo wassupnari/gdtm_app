@@ -1,6 +1,7 @@
 package com.gdtm.app.intro;
 
 import com.gdtm.app.R;
+import com.gdtm.app.helper.PreferenceHelper;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,11 +19,16 @@ public class SplashScreen extends Activity {
 
 	private static String TAG = SplashScreen.class.getName();
 	private static long SLEEP_TIME = 5; // Sleep for some time
+	
+	private PreferenceHelper mPreferences;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
+		
+		mPreferences = new PreferenceHelper(SplashScreen.this);
+		mPreferences.putStringInPreferences("started", "true");
 
 		// Removes title bar
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -38,6 +44,7 @@ public class SplashScreen extends Activity {
 		// Start timer and launch main activity
 		IntentLauncher launcher = new IntentLauncher();
 		launcher.start();
+		
 	}
 
 	private class IntentLauncher extends Thread {
