@@ -62,6 +62,7 @@
     <string name="dialog_btn_signup">Sign Up</string>
     <string name="dialog_btn_signin">Sign In</string>
     
-    <string name="about_description">If you have any question or want to contribute as a designer, please give me an email at : </string>
+    <string name="about_description_1">This application helps you to track your Toastmasters\' Competent Communication and Leadership manual.</string>
+    <string name="about_description_2">If you have any question or want to contribute as a developer or a designer, please give me an email at : </string>
 
 </resources>

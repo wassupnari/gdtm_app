@@ -30,7 +30,7 @@ public class FragmentClubPage extends Fragment {
 
 		mWebView.setWebViewClient(new myWebViewClient());
 		mWebView.getSettings().setJavaScriptEnabled(true);
-		mWebView.loadUrl("http://gdtm.org");
+		mWebView.loadUrl("http://toastmasters.org");
 
 		return view;
 	}
