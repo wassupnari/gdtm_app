@@ -5,6 +5,7 @@ import com.gdtm.app.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -26,8 +27,8 @@ public class CLDetailActivity extends BaseActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cl_detail);
-		
-		showActionBar(this, "Project ");
+		String title = getIntent().getExtras().getString("cl_detail_title");
+		showActionBar(this, title);
 		
 		setupUI();
 		
@@ -60,10 +61,19 @@ public class CLDetailActivity extends BaseActivity {
 	public void onEditDone() {
 		super.onEditDone();
 		
+		// Hide keyboard
+		InputMethodManager inputManager = (InputMethodManager) getSystemService(getApplicationContext().INPUT_METHOD_SERVICE);
+		if (inputManager.isAcceptingText()) {
+			inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+		}
+		
 		mEvaluator.setVisibility(View.VISIBLE);
 		mComment.setVisibility(View.VISIBLE);
+		//mEvaluatorEdit.clearFocus();
+		//mCommentEdit.clearFocus();
 		mEvaluatorEdit.setVisibility(View.GONE);
-		mComment.setVisibility(View.GONE);
+		mCommentEdit.setVisibility(View.GONE);
+		
 	}
 	
 	
