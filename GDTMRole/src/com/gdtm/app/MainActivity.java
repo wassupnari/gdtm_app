@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.gdtm.app.R;
 import com.gdtm.app.adapter.DrawerAdapter;
-import com.gdtm.app.database.DBHandlerCC;
 import com.gdtm.app.fragment.FragmentAboutMe;
 import com.gdtm.app.fragment.FragmentCC;
 import com.gdtm.app.fragment.FragmentCL;
@@ -13,6 +12,7 @@ import com.gdtm.app.fragment.FragmentDraft;
 import com.gdtm.app.fragment.FragmentMain;
 import com.gdtm.app.fragment.FragmentMeetingList;
 import com.gdtm.app.fragment.FragmentSetting;
+import com.gdtm.app.helper.DatabaseHelper;
 import com.gdtm.app.helper.PreferenceHelper;
 import com.gdtm.app.intro.SplashScreen;
 
@@ -59,7 +59,7 @@ public class MainActivity extends FragmentActivity {
 	private String[] mNavMenuTitle;
 	private TypedArray mNavMenuIcon;
 	
-	private DBHandlerCC mDB;
+	private DatabaseHelper mDB;
 	
 	private PreferenceHelper mPreferences;
 
@@ -129,7 +129,7 @@ public class MainActivity extends FragmentActivity {
 
 			mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 			
-			mDB = new DBHandlerCC(MainActivity.this);
+			mDB = new DatabaseHelper(MainActivity.this);
 		}
 
 		

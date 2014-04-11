@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 import com.google.gson.annotations.Expose;
 
+/**
+ * @author Nari Kim Shin (wassupnari@gmail.com)
+ */
 
 public class CLDataPojo {
 	@Expose
@@ -11,7 +14,7 @@ public class CLDataPojo {
 	@Expose
 	private String projectTitle;
 	@Expose
-	private ArrayList<CLSubDataPojo> subData;
+	private ArrayList<CLSubDataPojo> subData = new ArrayList<CLSubDataPojo>();
 	@Expose
 	private String complete;
 	

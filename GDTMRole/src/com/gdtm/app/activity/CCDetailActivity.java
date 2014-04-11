@@ -1,7 +1,7 @@
 package com.gdtm.app.activity;
 
 import com.gdtm.app.R;
-import com.gdtm.app.database.DBHandlerCC;
+import com.gdtm.app.helper.DatabaseHelper;
 import com.gdtm.app.pojo.CCDataPojo;
 
 import android.app.Activity;
@@ -34,7 +34,7 @@ public class CCDetailActivity extends BaseActivity {
 	private EditText mDateEdit;
 	private EditText mEvaluationEdit;
 
-	private DBHandlerCC mDB;
+	private DatabaseHelper mDB;
 	private CCDataPojo mData;
 
 	private int mID;
@@ -49,7 +49,7 @@ public class CCDetailActivity extends BaseActivity {
 
 		showActionBar(this, "Project " + (mID + 1));
 
-		mDB = new DBHandlerCC(this);
+		mDB = new DatabaseHelper(this);
 		mData = mDB.getUserCCData(mID);
 
 		UISetup();

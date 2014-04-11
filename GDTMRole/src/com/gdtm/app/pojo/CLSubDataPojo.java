@@ -3,6 +3,10 @@ package com.gdtm.app.pojo;
 import com.google.gson.annotations.Expose;
 
 
+/**
+ * @author Nari Kim Shin (wassupnari@gmail.com)
+ */
+
 public class CLSubDataPojo {
 	@Expose
 	private String subProjectTitle;
