@@ -1,133 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:background="#ffffff"
     android:padding="5dp" >
 
-    <!-- Title -->
-
     <RelativeLayout
+        android:id="@+id/footer_cc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
+        android:layout_alignParentBottom="true" >
 
         <TextView
-            android:id="@+id/speech_title_static"
+            android:id="@+id/footer_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:text="Did you finish this project? "
             android:textSize="@dimen/content_text_size" />
 
-        <TextView
-            android:id="@+id/speech_title"
+        <ToggleButton
+            android:id="@+id/footer_toggle_cc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_title_static"
-            android:textSize="@dimen/content_text_size" />
-
-        <EditText
-            android:id="@+id/speech_title_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_title_static"
-            android:hint="Your speech title"
-            android:visibility="gone" />
+            android:layout_toRightOf="@id/footer_question"
+            android:textOff=""
+            android:textOn="" />
     </RelativeLayout>
 
-    <!-- Evaluator -->
-
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
+        android:layout_height="match_parent"
+        android:layout_above="@id/footer_cc" >
 
-        <TextView
-            android:id="@+id/speech_evaluator_static"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/content_text_size" />
-
-        <TextView
-            android:id="@+id/speech_evaluator"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_evaluator_static"
-            android:textSize="@dimen/content_text_size" />
-
-        <EditText
-            android:id="@+id/speech_evaluator_edit"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_evaluator_static"
-            android:hint="Evaluator Name"
-            android:visibility="gone" />
-    </RelativeLayout>
+            android:orientation="vertical" >
 
-    <!-- Date -->
+            <!-- Title -->
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
 
-        <TextView
-            android:id="@+id/speech_date_static"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:textSize="@dimen/content_text_size" />
+                <TextView
+                    android:id="@+id/speech_title_static"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/content_text_size" />
 
-        <TextView
-            android:id="@+id/speech_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_date_static"
-            android:textSize="@dimen/content_text_size" />
+                <TextView
+                    android:id="@+id/speech_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/speech_title_static"
+                    android:textSize="@dimen/content_text_size" />
 
-        <EditText
-            android:id="@+id/speech_date_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@id/speech_date_static"
-            android:hint="Complete date"
-            android:visibility="gone" />
-    </RelativeLayout>
+                <EditText
+                    android:id="@+id/speech_title_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/speech_title_static"
+                    android:hint="Your speech title"
+                    android:visibility="gone" />
+            </RelativeLayout>
 
-    <!-- Evaluation -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="8dp"
+                android:background="#cccccc" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" >
+            <!-- Evaluator -->
 
-        <TextView
-            android:id="@+id/speech_eval_static"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/content_text_size" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
 
-        <TextView
-            android:id="@+id/speech_evaluation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/content_text_size"
-            android:layout_below="@id/speech_eval_static" />
+                <TextView
+                    android:id="@+id/speech_evaluator_static"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/content_text_size" />
 
-        <EditText
-            android:id="@+id/speech_evaluation_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/speech_eval_static"
-            android:hint="Evaluation comment"
-            android:visibility="gone" />
-    </RelativeLayout>
+                <TextView
+                    android:id="@+id/speech_evaluator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/speech_evaluator_static"
+                    android:textSize="@dimen/content_text_size" />
 
-</LinearLayout>
+                <EditText
+                    android:id="@+id/speech_evaluator_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/speech_evaluator_static"
+                    android:hint="Evaluator Name"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="8dp"
+                android:background="#cccccc" />
+
+            <!-- Date -->
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
+
+                <TextView
+                    android:id="@+id/speech_date_static"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="@dimen/content_text_size" />
+
+                <TextView
+                    android:id="@+id/speech_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/speech_date_static"
+                    android:textSize="@dimen/content_text_size" />
+
+                <EditText
+                    android:id="@+id/speech_date_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/speech_date_static"
+                    android:hint="Complete date"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="8dp"
+                android:background="#cccccc" />
+
+            <!-- Evaluation -->
+
+            <TextView
+                android:id="@+id/speech_eval_static"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/content_text_size" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dip"
+                android:layout_marginBottom="8dp"
+                android:layout_marginLeft="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="8dp"
+                android:background="#cccccc" />
+
+            <TextView
+                android:id="@+id/speech_evaluation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/speech_eval_static"
+                android:textSize="@dimen/content_text_size" />
+
+            <EditText
+                android:id="@+id/speech_evaluation_edit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/speech_eval_static"
+                android:hint="Evaluation comment"
+                android:visibility="gone" />
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

@@ -41,7 +41,7 @@ public class FragmentMain extends Fragment implements Runnable {
 		CCProgressBar = (ProgressBar) view.findViewById(R.id.cc_progress);
 		CCProgressBar.setVisibility(ProgressBar.VISIBLE);
         CCProgressBar.setProgress(0);
-        CCProgressBar.setMax(50);
+        CCProgressBar.setMax(100);
 		new Thread(this).start();
 
 		return view;
@@ -50,7 +50,7 @@ public class FragmentMain extends Fragment implements Runnable {
 	@Override
     public void run() {
         int currentPosition= 0;
-        while (currentPosition<100) {
+        while (currentPosition<50) {
             try {
                 Thread.sleep(100);
                 currentPosition+= 1;

@@ -3,8 +3,10 @@
 
     <color name="intro_swipe_background">#555555</color>
     
-    <color name="actionbar_default_color">#dddddd</color>
+    <color name="actionbar_default_color">#ffffff</color>
     <color name="actionbar_text_color">#000000</color>
+    
+    <color name="holo_blue">#33b5e5</color>
     
     
 </resources>

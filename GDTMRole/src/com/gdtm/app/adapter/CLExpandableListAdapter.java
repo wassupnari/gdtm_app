@@ -64,7 +64,7 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 
 		if (convertView == null) {
 			// LayoutInflater inflater = null;
-			convertView = mInflater.inflate(R.layout.view_list_child_row, null);
+			convertView = mInflater.inflate(R.layout.adapter_list_child_row, null);
 		}
 		text = (TextView) convertView.findViewById(R.id.child_row);
 		// img = (ImageView) convertView.findViewById(R.id.childImage);
@@ -114,7 +114,7 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 
 		mInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.view_list_group_row, null);
+			convertView = mInflater.inflate(R.layout.adapter_list_group_row, null);
 		}
 		TextView text = (TextView) convertView.findViewById(R.id.group_row);
 		text.setText(mGroupItem.get(groupPosition));
