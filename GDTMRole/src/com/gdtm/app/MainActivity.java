@@ -33,7 +33,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ToggleButton;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -62,6 +64,8 @@ public class MainActivity extends FragmentActivity {
 	private DatabaseHelper mDB;
 	
 	private PreferenceHelper mPreferences;
+	
+	private static boolean showEditButton = false;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -118,6 +122,7 @@ public class MainActivity extends FragmentActivity {
 				public void onDrawerOpened(View view) {
 					getActionBar().setTitle(mDrawerTitle);
 					invalidateOptionsMenu();
+					setShowEditButton(false);
 				}
 			};
 			mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -132,15 +137,28 @@ public class MainActivity extends FragmentActivity {
 			mDB = new DatabaseHelper(MainActivity.this);
 		}
 
-		
-		
-
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		if(showEditButton) {
+			getMenuInflater().inflate(R.menu.menu_actionbar_main, menu);
+			MenuItem menuItem = menu.findItem(R.id.actionbar_custom_menu);
+			
+			View actionView = menuItem.getActionView();
+			LinearLayout layout = (LinearLayout) actionView.findViewById(R.id.menu_custom_layout);
+			
+			ToggleButton editBtn = (ToggleButton) layout.findViewById(R.id.actionbar_edit_btn_main);
+			editBtn.setOnClickListener(new ToggleButton.OnClickListener() {
 
-		getMenuInflater().inflate(R.menu.menu_actionbar_main, menu);
+				@Override
+				public void onClick(View v) {
+					Log.d("GDTM", "button clicked!");
+				}
+				
+			});
+		}
+		
 		return true;
 	}
 
@@ -254,6 +272,10 @@ public class MainActivity extends FragmentActivity {
 			// error in creating fragment
 			Log.e("GDTM", "Error in creating fragment");
 		}
+	}
+	
+	public static void setShowEditButton(boolean show) {
+		showEditButton = show;
 	}
 
 }
