@@ -21,8 +21,10 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/group_row"
         android:layout_marginLeft="5dp"
-        android:textColor="#999999"
-        android:textSize="@dimen/listview_text_size_small" />
+        android:textColor="@color/holo_blue"
+        android:textSize="@dimen/listview_text_size_small"
+        android:text="Complete"
+        android:visibility="gone" />
 
 </RelativeLayout><!--
      <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"

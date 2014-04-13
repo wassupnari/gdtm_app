@@ -10,8 +10,10 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -34,6 +36,8 @@ public class CLDetailActivity extends BaseActivity {
 	private int mProjectNumber;
 	private int mSubNumber;
 	
+	private ToggleButton mComplete;
+	
 	private CLDataPojo mDataList;
 	private CLSubDataPojo mData;
 	
@@ -50,8 +54,8 @@ public class CLDetailActivity extends BaseActivity {
 		
 		mDB = new DatabaseHelper(this);
 		
-		Log.d("GDTM", "Project number : " + mProjectNumber + ", sub number : " + mSubNumber);
 		mDataList = mDB.getUserCLData(mProjectNumber);
+		mDataList.setId(mProjectNumber);
 		mData = mDataList.getSubData().get(mSubNumber);
 		
 		setupUI();
@@ -75,6 +79,38 @@ public class CLDetailActivity extends BaseActivity {
 		mDateStatic.setText("Date : ");
 		mCommentStatic.setText("Comment : ");
 		
+		if(mData != null) {
+			mEvaluator.setText(mData.getEvaluator());
+			mDate.setText(mData.getDate());
+			mComment.setText(mData.getComment());
+		}
+		
+		mComplete = (ToggleButton) findViewById(R.id.footer_toggle_cl);
+		if(mData.getComplete()) {
+			mComplete.setChecked(true);
+		} else {
+			mComplete.setChecked(false);
+		}
+		
+		mComplete.setOnCheckedChangeListener(new ToggleButton.OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				mData.setComplete(isChecked);
+				mDataList.getSubData().set(mSubNumber, mData);
+				mDB.updateCL(mDataList);
+			}
+			
+		});
+	}
+	
+	
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		mData = null;
+		mDataList = null;
 	}
 
 	@Override
@@ -106,13 +142,13 @@ public class CLDetailActivity extends BaseActivity {
 		mDate.setVisibility(View.VISIBLE);
 		mComment.setVisibility(View.VISIBLE);
 		
-		mEvaluatorEdit.setVisibility(View.GONE);
-		mDateEdit.setVisibility(View.GONE);
-		mCommentEdit.setVisibility(View.GONE);
-		
 		String evaluator = mEvaluatorEdit.getText().toString();
 		String date = mDateEdit.getText().toString();
 		String comment = mCommentEdit.getText().toString();
+		
+		mEvaluatorEdit.setVisibility(View.GONE);
+		mDateEdit.setVisibility(View.GONE);
+		mCommentEdit.setVisibility(View.GONE);
 		
 		mData.setEvaluator(evaluator);
 		mData.setDate(date);

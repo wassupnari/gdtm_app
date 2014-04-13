@@ -16,6 +16,8 @@ public class CLSubDataPojo {
 	private String date;
 	@Expose
 	private String comment;
+	@Expose
+	private boolean complete;
 	
 	public String getSubProjectTitle() {
 		return subProjectTitle;
@@ -47,5 +49,13 @@ public class CLSubDataPojo {
 	
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	
+	public boolean getComplete() {
+		return complete;
+	}
+	
+	public void setComplete(boolean complete) {
+		this.complete = complete;
 	}
 }

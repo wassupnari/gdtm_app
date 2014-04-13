@@ -16,16 +16,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:text="Did you finish this project? "
+            android:text="Did you finish this project?  "
             android:textSize="@dimen/content_text_size" />
 
         <ToggleButton
             android:id="@+id/footer_toggle_cl"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_toRightOf="@id/footer_question"
             android:textOff=""
-            android:textOn="" />
+            android:textOn=""
+            android:background="@drawable/project_done_btn_selector" />
     </RelativeLayout>
 
     <ScrollView

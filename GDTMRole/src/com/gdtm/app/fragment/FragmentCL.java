@@ -26,11 +26,14 @@ public class FragmentCL extends Fragment {
 	private static final int NUM_OF_CL_PJT = 10;
 
 	private CLExpandableListAdapter mAdapter;
+	private ExpandableListView expandableListView;
 
 	private ArrayList<String> mGroupItem = new ArrayList<String>();
 	private ArrayList<Object> mChildItem = new ArrayList<Object>();
 	
 	private DatabaseHelper mDB;
+	
+	private int mWidth;
 	
 	private int[] subCount = new int[NUM_OF_CL_PJT];
 
@@ -39,7 +42,7 @@ public class FragmentCL extends Fragment {
 
 		View view = inflater.inflate(R.layout.fragment_meeting_list, null);
 
-		ExpandableListView expandableListView = (ExpandableListView) view
+		expandableListView = (ExpandableListView) view
 				.findViewById(R.id.expandable_list_meeting);
 		
 		mDB = new DatabaseHelper(getActivity());
@@ -51,24 +54,28 @@ public class FragmentCL extends Fragment {
 			CLDataPojo data = new CLDataPojo();
 			ArrayList<CLSubDataPojo> subList = getList(subCount[i]);
 			data.setSubData(subList);
-			Log.d("GDTM", "Sub data size : " + data.getSubData().size());
 			mDB.addCLData(i, data);
 		}
 
-		
-
 		DisplayMetrics metrics = new DisplayMetrics();
 		getActivity().getWindowManager().getDefaultDisplay().getMetrics(metrics);
-		int width = metrics.widthPixels;
+		mWidth = metrics.widthPixels;
 
 		mAdapter = new CLExpandableListAdapter(mGroupItem, mChildItem);
 		mAdapter.setInflater(inflater, getActivity());
-		expandableListView.setAdapter(mAdapter);
-		expandableListView.setIndicatorBounds(width - 70, width - 20);
 
 		return view;
 	}
 	
+	
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		expandableListView.setAdapter(mAdapter);
+		expandableListView.setIndicatorBounds(mWidth - 70, mWidth - 20);
+	}
+
 	public ArrayList<CLSubDataPojo> getList(int count) {
 		ArrayList<CLSubDataPojo> list = new ArrayList<CLSubDataPojo>();
 		
@@ -76,15 +83,11 @@ public class FragmentCL extends Fragment {
 			CLSubDataPojo subData = new CLSubDataPojo();
 			list.add(subData);
 		}
-		Log.d("GDTM", "List size : " + list.size());
 		return list;
 	}
 
 	public void setGroupData() {
 
-		// for (int i = 1; i <= NUM_OF_CL_PJT; i++) {
-		// mGroupItem.add("Project " + i);
-		// }
 		mGroupItem.add("Project 1 : Listening");
 		mGroupItem.add("Project 2 : Critical Thinking");
 		mGroupItem.add("Project 3 : Giving Feedback");

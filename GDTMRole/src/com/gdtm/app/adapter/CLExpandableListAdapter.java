@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import com.gdtm.app.R;
 import com.gdtm.app.activity.CLDetailActivity;
 import com.gdtm.app.activity.CCDetailActivity;
+import com.gdtm.app.helper.DatabaseHelper;
+import com.gdtm.app.pojo.CLDataPojo;
+import com.gdtm.app.pojo.CLSubDataPojo;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +22,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * @author Nari Kim Shin (wassupnari@gmail.com)
+ */
+
 public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 
 	private ArrayList<String> mGroupItem;
@@ -27,8 +34,14 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 
 	private LayoutInflater mInflater;
 	private Activity mActivity;
-	
-	TextView text;
+
+	private TextView text;
+	private TextView mDone;
+
+	private DatabaseHelper mDB;
+
+	private CLDataPojo mDataList;
+	private CLSubDataPojo mData;
 
 	public CLExpandableListAdapter(ArrayList<String> grList, ArrayList<Object> childItem) {
 
@@ -40,6 +53,7 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 
 		mInflater = inflater;
 		mActivity = activity;
+		mDB = new DatabaseHelper(mActivity);
 	}
 
 	@Override
@@ -59,22 +73,31 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 			View convertView, ViewGroup parent) {
 
 		mTempChild = (ArrayList<String>) mChildItem.get(groupPosition);
-		//TextView text = null;
-		// ImageView img = null;
 
 		if (convertView == null) {
 			// LayoutInflater inflater = null;
 			convertView = mInflater.inflate(R.layout.adapter_list_child_row, null);
 		}
 		text = (TextView) convertView.findViewById(R.id.child_row);
-		// img = (ImageView) convertView.findViewById(R.id.childImage);
 		text.setText(mTempChild.get(childPosition));
+
+		mDone = (TextView) convertView.findViewById(R.id.child_row_done);
+		boolean isComplete = mDB.getUserCLData(groupPosition).getSubData().get(childPosition)
+				.getComplete();
+
+		if (isComplete) {
+			mDone.setVisibility(View.VISIBLE);
+		} else {
+			mDone.setVisibility(View.GONE);
+		}
+
 		convertView.setOnClickListener(new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				//Toast.makeText(mActivity, mTempChild.get(childPosition), Toast.LENGTH_SHORT).show();
+				// Toast.makeText(mActivity, mTempChild.get(childPosition),
+				// Toast.LENGTH_SHORT).show();
 				Intent speechView = new Intent(mActivity, CLDetailActivity.class);
 				speechView.putExtra("cl_group_id", groupPosition);
 				speechView.putExtra("cl_child_id", childPosition);
@@ -119,9 +142,16 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 		TextView text = (TextView) convertView.findViewById(R.id.group_row);
 		text.setText(mGroupItem.get(groupPosition));
 		TextView complete = (TextView) convertView.findViewById(R.id.group_complete);
-		complete.setText("complete");
-//		((CheckedTextView) convertView).setText(mGroupItem.get(groupPosition));
-//		((CheckedTextView) convertView).setChecked(isExpanded);
+
+		if (CalculateCompletion(groupPosition)) {
+			complete.setVisibility(View.VISIBLE);
+		} else {
+			complete.setVisibility(View.GONE);
+		}
+
+		// ((CheckedTextView)
+		// convertView).setText(mGroupItem.get(groupPosition));
+		// ((CheckedTextView) convertView).setChecked(isExpanded);
 		return convertView;
 	}
 
@@ -147,6 +177,74 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 	public void onGroupExpanded(int groupPosition) {
 
 		super.onGroupExpanded(groupPosition);
+	}
+
+	public boolean CalculateCompletion(int groupPosition) {
+		boolean isComplete = false;
+		int count = 0;
+		ArrayList<CLSubDataPojo> dataList = mDB.getUserCLData(groupPosition).getSubData();
+		for (CLSubDataPojo data : dataList) {
+			if (data.getComplete()) {
+				count += 1;
+			}
+		}
+		switch (groupPosition) {
+		case 0:
+			if (count >= 3) {
+				isComplete = true;
+			}
+			break;
+		case 1:
+			if (count >= 2) {
+				isComplete = true;
+			}
+			break;
+		case 2:
+			if (count >= 3) {
+				isComplete = true;
+			}
+			break;
+		case 3:
+			if (count >= 2 && dataList.get(0).getComplete()) {
+				isComplete = true;
+			}
+			break;
+		case 4:
+			if (count >= 3) {
+				isComplete = true;
+			}
+			break;
+		case 5:
+			if (count >= 1) {
+				isComplete = true;
+			}
+			break;
+		case 6:
+			if (count >= 2) {
+				isComplete = true;
+			}
+			break;
+		case 7:
+			if (count >= 3 && (dataList.get(0).getComplete() || dataList.get(1).getComplete())) {
+				isComplete = true;
+			}
+			break;
+		case 8:
+			if (count >= 1) {
+				isComplete = true;
+			}
+			break;
+		case 9:
+			if ((dataList.get(0).getComplete() && dataList.get(1).getComplete())
+					|| dataList.get(2).getComplete() || dataList.get(3).getComplete()
+					|| dataList.get(4).getComplete() || dataList.get(5).getComplete()
+					|| dataList.get(6).getComplete() || dataList.get(7).getComplete()) {
+				isComplete = true;
+			}
+			break;
+		}
+
+		return isComplete;
 	}
 
 }
