@@ -1,7 +1,7 @@
 package com.gdtm.app.activity;
 
 import com.gdtm.app.R;
-import com.gdtm.app.database.DBHandlerCC;
+import com.gdtm.app.helper.DatabaseHelper;
 import com.gdtm.app.pojo.CCDataPojo;
 
 import android.app.Activity;
@@ -10,8 +10,10 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -34,8 +36,11 @@ public class CCDetailActivity extends BaseActivity {
 	private EditText mDateEdit;
 	private EditText mEvaluationEdit;
 
-	private DBHandlerCC mDB;
+	private DatabaseHelper mDB;
 	private CCDataPojo mData;
+
+	private ToggleButton mComplete;
+	private boolean isComplete;
 
 	private int mID;
 
@@ -45,16 +50,14 @@ public class CCDetailActivity extends BaseActivity {
 		setContentView(R.layout.activity_cc_detail);
 
 		mID = getIntent().getIntExtra("cc_id", 0);
-		Log.d("GDTM", "Selected id : " + mID);
 
 		showActionBar(this, "Project " + (mID + 1));
 
-		mDB = new DBHandlerCC(this);
+		mDB = new DatabaseHelper(this);
 		mData = mDB.getUserCCData(mID);
+		mData.setId(mID);
 
 		UISetup();
-
-		Log.d("GDTM", "DB size : " + mDB.getCCCount());
 
 	}
 
@@ -85,6 +88,24 @@ public class CCDetailActivity extends BaseActivity {
 			mDateData.setText(mData.getDate());
 			mEvaluationData.setText(mData.getEvaluation());
 		}
+
+		mComplete = (ToggleButton) findViewById(R.id.footer_toggle_cc);
+		if (mData.getComplete()) {
+			mComplete.setChecked(true);
+		} else {
+			mComplete.setChecked(false);
+		}
+
+		mComplete.setOnCheckedChangeListener(new ToggleButton.OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+				mData.setComplete(isChecked);
+				mDB.updateCC(mData);
+			}
+
+		});
+
 	}
 
 	@Override
@@ -94,20 +115,20 @@ public class CCDetailActivity extends BaseActivity {
 		mEvaluatorData.setVisibility(View.GONE);
 		mDateData.setVisibility(View.GONE);
 		mEvaluationData.setVisibility(View.GONE);
-		
+
 		mTitleEdit.setVisibility(View.VISIBLE);
-		if(mData.getSpeechTitle().equalsIgnoreCase("None")) {
+		if (mData.getSpeechTitle().equalsIgnoreCase("None")) {
 			// Show place holder
 		} else {
 			mTitleEdit.setText(mData.getSpeechTitle());
 		}
-		
+
 		mEvaluatorEdit.setVisibility(View.VISIBLE);
 		mEvaluatorEdit.setText(mData.getEvaluator());
-		
+
 		mDateEdit.setVisibility(View.VISIBLE);
 		mDateEdit.setText(mData.getDate());
-		
+
 		mEvaluationEdit.setVisibility(View.VISIBLE);
 		mEvaluationEdit.setText(mData.getEvaluation());
 	}
@@ -127,7 +148,7 @@ public class CCDetailActivity extends BaseActivity {
 		mEvaluatorData.setVisibility(View.VISIBLE);
 		mDateData.setVisibility(View.VISIBLE);
 		mEvaluationData.setVisibility(View.VISIBLE);
-		
+
 		mTitleEdit.setVisibility(View.GONE);
 		mEvaluatorEdit.setVisibility(View.GONE);
 		mDateEdit.setVisibility(View.GONE);
@@ -138,23 +159,22 @@ public class CCDetailActivity extends BaseActivity {
 		String evaluator = mEvaluatorEdit.getText().toString();
 		String date = mDateEdit.getText().toString();
 		String evaluation = mEvaluationEdit.getText().toString();
-		
-		mData.setId(mID);
-		if(title.equalsIgnoreCase("")) {
+
+		if (title.equalsIgnoreCase("")) {
 			mData.setSpeechTitle("None");
 		} else {
 			mData.setSpeechTitle(title);
 		}
-		
+
 		mData.setEvaluator(evaluator);
 		mData.setDate(date);
 		mData.setEvaluation(evaluation);
-		
+
 		mEvaluatorData.setText(evaluator);
 		mEvaluationData.setText(evaluation);
 		mTitleData.setText(title);
 		mDateData.setText(date);
-		
+
 		mDB.updateCC(mData);
 
 	}

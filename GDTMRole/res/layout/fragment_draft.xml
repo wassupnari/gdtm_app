@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" >
 
-    <ScrollView
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent"
+        android:background="#ffffff" >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,6 +18,13 @@
                 android:padding="10dp"
                 android:textSize="@dimen/content_text_size"
                 android:text="Your draft : " />
+            
+            <TextView 
+                android:id="@+id/draft_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/content_text_size"
+                android:padding="10dp" />
 
             <EditText
                 android:id="@+id/draft_edittext"
@@ -33,8 +38,8 @@
                 android:scrollbars="vertical"
                 android:hint="What is your next speech about?"
                 android:imeOptions="actionDone"
-                android:singleLine="true" />
+                android:singleLine="true"
+                android:visibility="gone" />
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>

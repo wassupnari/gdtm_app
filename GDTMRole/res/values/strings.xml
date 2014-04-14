@@ -37,7 +37,7 @@
         <item>@drawable/ic_nav_main</item>
         <item>@drawable/ic_nav_cl</item>
         <item>@drawable/ic_nav_cc</item>
-        <item>@drawable/ic_nav_web</item>
+        <item>@drawable/ic_nav_draft</item>
         <item>@drawable/ic_nav_web</item>
         <item>@drawable/ic_nav_about_me</item>
         <item>@drawable/ic_nav_setting</item>

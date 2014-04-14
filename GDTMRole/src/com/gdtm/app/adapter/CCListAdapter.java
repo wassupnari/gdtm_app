@@ -2,7 +2,7 @@ package com.gdtm.app.adapter;
 
 import java.util.ArrayList;
 
-import com.gdtm.app.database.DBHandlerCC;
+import com.gdtm.app.helper.DatabaseHelper;
 
 import com.gdtm.app.R;
 import android.app.Activity;
@@ -14,17 +14,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+/**
+ * @author Nari Kim Shin (wassupnari@gmail.com)
+ */
+
 public class CCListAdapter extends BaseAdapter {
 
 	private Activity mActivity;
 
 	private LayoutInflater mInflater = null;
-	
-	private DBHandlerCC mDB;
+
+	private DatabaseHelper mDB;
 
 	public CCListAdapter(Activity activity) {
 		this.mActivity = activity;
-		mDB = new DBHandlerCC(activity);
+		mDB = new DatabaseHelper(activity);
 		mInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -50,10 +54,17 @@ public class CCListAdapter extends BaseAdapter {
 		TextView project = (TextView) vi.findViewById(R.id.cc_project_title);
 		TextView number = (TextView) vi.findViewById(R.id.cc_number);
 		TextView title = (TextView) vi.findViewById(R.id.cc_title);
+		TextView complete = (TextView) vi.findViewById(R.id.cc_complete);
 
 		project.setText("");
 		number.setText("Project " + String.valueOf(position + 1));
 		title.setText("Title : " + mDB.getUserCCData(position).getSpeechTitle());
+
+		if (mDB.getUserCCData(position).getComplete()) {
+			complete.setVisibility(View.VISIBLE);
+		} else {
+			complete.setVisibility(View.GONE);
+		}
 		return vi;
 
 	}

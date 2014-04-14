@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import com.gdtm.app.R;
 import com.gdtm.app.adapter.DrawerAdapter;
-import com.gdtm.app.database.DBHandlerCC;
 import com.gdtm.app.fragment.FragmentAboutMe;
 import com.gdtm.app.fragment.FragmentCC;
 import com.gdtm.app.fragment.FragmentCL;
@@ -13,6 +12,7 @@ import com.gdtm.app.fragment.FragmentDraft;
 import com.gdtm.app.fragment.FragmentMain;
 import com.gdtm.app.fragment.FragmentMeetingList;
 import com.gdtm.app.fragment.FragmentSetting;
+import com.gdtm.app.helper.DatabaseHelper;
 import com.gdtm.app.helper.PreferenceHelper;
 import com.gdtm.app.intro.SplashScreen;
 
@@ -33,7 +33,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ToggleButton;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -59,9 +62,17 @@ public class MainActivity extends FragmentActivity {
 	private String[] mNavMenuTitle;
 	private TypedArray mNavMenuIcon;
 	
-	private DBHandlerCC mDB;
+	private DatabaseHelper mDB;
 	
 	private PreferenceHelper mPreferences;
+	
+	private static boolean showEditButton = false;
+	
+	public interface OnMainMenuEditButtonListener{
+		public void onMainMenuEditButtonListener(boolean isChecked);
+	}
+	
+	private static OnMainMenuEditButtonListener mOnMainMenuEditButtonListener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -118,6 +129,7 @@ public class MainActivity extends FragmentActivity {
 				public void onDrawerOpened(View view) {
 					getActionBar().setTitle(mDrawerTitle);
 					invalidateOptionsMenu();
+					setShowEditButton(false);
 				}
 			};
 			mDrawerLayout.setDrawerListener(mDrawerToggle);
@@ -129,18 +141,34 @@ public class MainActivity extends FragmentActivity {
 
 			mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 			
-			mDB = new DBHandlerCC(MainActivity.this);
+			mDB = new DatabaseHelper(MainActivity.this);
 		}
-
-		
-		
 
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		if(showEditButton) {
+			getMenuInflater().inflate(R.menu.menu_actionbar_main, menu);
+			MenuItem menuItem = menu.findItem(R.id.actionbar_custom_menu);
+			
+			View actionView = menuItem.getActionView();
+			LinearLayout layout = (LinearLayout) actionView.findViewById(R.id.menu_custom_layout);
+			
+			ToggleButton editBtn = (ToggleButton) layout.findViewById(R.id.actionbar_edit_btn_main);
+			editBtn.setOnCheckedChangeListener(new ToggleButton.OnCheckedChangeListener() {
 
-		getMenuInflater().inflate(R.menu.menu_actionbar_main, menu);
+				@Override
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					if(mOnMainMenuEditButtonListener != null) {
+						Log.d("GDTM", "button clicked!");
+						mOnMainMenuEditButtonListener.onMainMenuEditButtonListener(isChecked);
+					}
+				}
+				
+			});
+		}
+		
 		return true;
 	}
 
@@ -254,6 +282,14 @@ public class MainActivity extends FragmentActivity {
 			// error in creating fragment
 			Log.e("GDTM", "Error in creating fragment");
 		}
+	}
+	
+	public static void setShowEditButton(boolean show) {
+		showEditButton = show;
+	}
+	
+	public static void setOnMainMenuEditButtonListener(OnMainMenuEditButtonListener listener) {
+		mOnMainMenuEditButtonListener = listener;
 	}
 
 }

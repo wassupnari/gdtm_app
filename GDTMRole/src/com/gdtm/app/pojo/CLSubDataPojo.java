@@ -3,6 +3,10 @@ package com.gdtm.app.pojo;
 import com.google.gson.annotations.Expose;
 
 
+/**
+ * @author Nari Kim Shin (wassupnari@gmail.com)
+ */
+
 public class CLSubDataPojo {
 	@Expose
 	private String subProjectTitle;
@@ -12,6 +16,8 @@ public class CLSubDataPojo {
 	private String date;
 	@Expose
 	private String comment;
+	@Expose
+	private boolean complete;
 	
 	public String getSubProjectTitle() {
 		return subProjectTitle;
@@ -43,5 +49,13 @@ public class CLSubDataPojo {
 	
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+	
+	public boolean getComplete() {
+		return complete;
+	}
+	
+	public void setComplete(boolean complete) {
+		this.complete = complete;
 	}
 }
