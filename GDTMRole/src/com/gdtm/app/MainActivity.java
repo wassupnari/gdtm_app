@@ -33,6 +33,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ToggleButton;
@@ -66,6 +67,12 @@ public class MainActivity extends FragmentActivity {
 	private PreferenceHelper mPreferences;
 	
 	private static boolean showEditButton = false;
+	
+	public interface OnMainMenuEditButtonListener{
+		public void onMainMenuEditButtonListener(boolean isChecked);
+	}
+	
+	private static OnMainMenuEditButtonListener mOnMainMenuEditButtonListener;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -149,11 +156,14 @@ public class MainActivity extends FragmentActivity {
 			LinearLayout layout = (LinearLayout) actionView.findViewById(R.id.menu_custom_layout);
 			
 			ToggleButton editBtn = (ToggleButton) layout.findViewById(R.id.actionbar_edit_btn_main);
-			editBtn.setOnClickListener(new ToggleButton.OnClickListener() {
+			editBtn.setOnCheckedChangeListener(new ToggleButton.OnCheckedChangeListener() {
 
 				@Override
-				public void onClick(View v) {
-					Log.d("GDTM", "button clicked!");
+				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+					if(mOnMainMenuEditButtonListener != null) {
+						Log.d("GDTM", "button clicked!");
+						mOnMainMenuEditButtonListener.onMainMenuEditButtonListener(isChecked);
+					}
 				}
 				
 			});
@@ -276,6 +286,10 @@ public class MainActivity extends FragmentActivity {
 	
 	public static void setShowEditButton(boolean show) {
 		showEditButton = show;
+	}
+	
+	public static void setOnMainMenuEditButtonListener(OnMainMenuEditButtonListener listener) {
+		mOnMainMenuEditButtonListener = listener;
 	}
 
 }

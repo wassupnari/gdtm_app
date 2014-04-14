@@ -1,14 +1,18 @@
 package com.gdtm.app.fragment;
 
 import com.gdtm.app.MainActivity;
+import com.gdtm.app.MainActivity.OnMainMenuEditButtonListener;
 import com.gdtm.app.R;
+import com.gdtm.app.helper.DatabaseHelper;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -19,31 +23,64 @@ public class FragmentDraft extends Fragment {
 	private TextView mDraft;
 	private EditText mDraftEdit;
 	
+	private DatabaseHelper mDB;
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.fragment_draft, null);
 		
-		MainActivity.setShowEditButton(true);
+		mDB = new DatabaseHelper(getActivity());
+		
 		
 		mDraft = (TextView) view.findViewById(R.id.draft_data);
 		mDraftEdit = (EditText) view.findViewById(R.id.draft_edittext);
 		mDraftEdit.setImeOptions(EditorInfo.IME_ACTION_DONE);
 		
-//		View actionbarView = getActivity().getActionBar().getCustomView();
-//		ToggleButton editButton = (ToggleButton) actionbarView.findViewById(R.id.actionbar_edit_btn_main);
-//		editButton.setOnClickListener(new ToggleButton.OnClickListener() {
-//
-//			@Override
-//			public void onClick(View v) {
-//				mDraftEdit.setVisibility(View.VISIBLE);
-//				mDraft.setVisibility(View.GONE);
-//			}
-//			
-//		});
+		if(!mDB.checkDraftExists(0)) {
+			Log.d("GDTM", "Not exist!");
+			mDB.addDraftData(0, "");
+		} else {
+			String dbString = mDB.getDraftData(0);
+			mDraft.setText(dbString);
+		}
 		
-		
+		MainActivity.setShowEditButton(true);
+		MainActivity.setOnMainMenuEditButtonListener(new OnMainMenuEditButtonListener() {
 
+			@Override
+			public void onMainMenuEditButtonListener(boolean isChecked) {
+				if(isChecked) {
+					mDraftEdit.setVisibility(View.VISIBLE);
+					mDraft.setVisibility(View.GONE);
+					String dbDraft = mDB.getDraftData(0);
+					if(!dbDraft.equalsIgnoreCase("")) {
+						mDraftEdit.setText(dbDraft);
+					}
+				} else {
+					hideKeyboard();
+					mDraftEdit.setVisibility(View.GONE);
+					mDraft.setVisibility(View.VISIBLE);
+					
+					String draft = mDraftEdit.getText().toString();
+					
+					mDraft.setText(draft);
+					
+					mDB.updateDraft(0, draft);
+				}
+				
+			}
+			
+		});
+		
 		return view;
+	}
+	
+	public void hideKeyboard() {
+		InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(getActivity().getApplicationContext().INPUT_METHOD_SERVICE);
+		if (inputManager.isAcceptingText()) {
+			inputManager.hideSoftInputFromWindow(getActivity().getCurrentFocus().getWindowToken(),
+					InputMethodManager.HIDE_NOT_ALWAYS);
+		}
 	}
 }

@@ -389,4 +389,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 		return count;
 	}
 	
+	public boolean checkDraftExists(int id) {
+		SQLiteDatabase db = this.getReadableDatabase();
+
+		Cursor cursor = db.query(TABLE_NAME_DRAFT, null, KEY_ID + "=?",
+				new String[] { String.valueOf(id) }, null, null, null);
+
+		if (!cursor.moveToFirst()) {
+			return false;
+		}
+		return true;
+	}
+	
 }
