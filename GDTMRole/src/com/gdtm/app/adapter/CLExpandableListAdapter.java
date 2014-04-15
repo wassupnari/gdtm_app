@@ -96,8 +96,6 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 			@Override
 			public void onClick(View v) {
 
-				// Toast.makeText(mActivity, mTempChild.get(childPosition),
-				// Toast.LENGTH_SHORT).show();
 				Intent speechView = new Intent(mActivity, CLDetailActivity.class);
 				speechView.putExtra("cl_group_id", groupPosition);
 				speechView.putExtra("cl_child_id", childPosition);
@@ -144,6 +142,9 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 		TextView complete = (TextView) convertView.findViewById(R.id.group_complete);
 
 		if (CalculateCompletion(groupPosition)) {
+			mDataList = mDB.getUserCLData(groupPosition);
+			mDataList.setComplete(true);
+			mDB.updateCL(mDataList);
 			complete.setVisibility(View.VISIBLE);
 		} else {
 			complete.setVisibility(View.GONE);

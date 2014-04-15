@@ -133,7 +133,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	 * 
 	 * @return
 	 */
-	public List<CCDataPojo> getAllData() {
+	public List<CCDataPojo> getAllCCData() {
 
 		List<CCDataPojo> ccList = new ArrayList<CCDataPojo>();
 

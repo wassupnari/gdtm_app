@@ -16,7 +16,7 @@ public class CLDataPojo {
 	@Expose
 	private ArrayList<CLSubDataPojo> subData = new ArrayList<CLSubDataPojo>();
 	@Expose
-	private String complete;
+	private boolean complete;
 	
 	public int getId() {
 		return id;
@@ -42,11 +42,11 @@ public class CLDataPojo {
 		this.subData = data;
 	}
 	
-	public String getComplete() {
+	public boolean getComplete() {
 		return complete;
 	}
 	
-	public void setComplete(String complete) {
+	public void setComplete(boolean complete) {
 		this.complete = complete;
 	}
 	
