@@ -140,15 +140,16 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 		TextView text = (TextView) convertView.findViewById(R.id.group_row);
 		text.setText(mGroupItem.get(groupPosition));
 		TextView complete = (TextView) convertView.findViewById(R.id.group_complete);
-
+		
+		mDataList = mDB.getUserCLData(groupPosition);
 		if (CalculateCompletion(groupPosition)) {
-			mDataList = mDB.getUserCLData(groupPosition);
 			mDataList.setComplete(true);
-			mDB.updateCL(mDataList);
 			complete.setVisibility(View.VISIBLE);
 		} else {
+			mDataList.setComplete(false);
 			complete.setVisibility(View.GONE);
 		}
+		mDB.updateCL(mDataList);
 
 		// ((CheckedTextView)
 		// convertView).setText(mGroupItem.get(groupPosition));
