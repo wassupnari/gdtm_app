@@ -102,6 +102,7 @@ public class CCDetailActivity extends BaseActivity {
 			public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 				mData.setComplete(isChecked);
 				mDB.updateCC(mData);
+				//CCDetailActivity.this.finish();
 			}
 
 		});

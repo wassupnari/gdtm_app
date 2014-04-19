@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -54,16 +55,16 @@ public class CCListAdapter extends BaseAdapter {
 		TextView project = (TextView) vi.findViewById(R.id.cc_project_title);
 		TextView number = (TextView) vi.findViewById(R.id.cc_number);
 		TextView title = (TextView) vi.findViewById(R.id.cc_title);
-		TextView complete = (TextView) vi.findViewById(R.id.cc_complete);
+		ImageView complete = (ImageView) vi.findViewById(R.id.cc_complete_img);
 
 		project.setText("");
 		number.setText("Project " + String.valueOf(position + 1));
 		title.setText("Title : " + mDB.getUserCCData(position).getSpeechTitle());
 
 		if (mDB.getUserCCData(position).getComplete()) {
-			complete.setVisibility(View.VISIBLE);
+			complete.setImageDrawable(mActivity.getResources().getDrawable(R.drawable.complete_active));
 		} else {
-			complete.setVisibility(View.GONE);
+			complete.setImageDrawable(mActivity.getResources().getDrawable(R.drawable.complete_inactive));
 		}
 		return vi;
 

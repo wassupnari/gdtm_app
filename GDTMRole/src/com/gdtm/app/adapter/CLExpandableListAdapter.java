@@ -139,15 +139,15 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 		}
 		TextView text = (TextView) convertView.findViewById(R.id.group_row);
 		text.setText(mGroupItem.get(groupPosition));
-		TextView complete = (TextView) convertView.findViewById(R.id.group_complete);
+		ImageView complete = (ImageView) convertView.findViewById(R.id.cl_complete_img);
 		
 		mDataList = mDB.getUserCLData(groupPosition);
 		if (CalculateCompletion(groupPosition)) {
 			mDataList.setComplete(true);
-			complete.setVisibility(View.VISIBLE);
+			complete.setImageDrawable(mActivity.getResources().getDrawable(R.drawable.complete_active));
 		} else {
 			mDataList.setComplete(false);
-			complete.setVisibility(View.GONE);
+			complete.setImageDrawable(mActivity.getResources().getDrawable(R.drawable.complete_inactive));
 		}
 		mDB.updateCL(mDataList);
 
