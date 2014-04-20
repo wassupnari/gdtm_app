@@ -5,11 +5,14 @@ import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.pojo.CCDataPojo;
 
 import android.app.Activity;
+import android.app.Dialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -44,6 +47,9 @@ public class CCDetailActivity extends BaseActivity {
 
 	private int mID;
 
+	private String[] mDesc;
+	private String[] mTime;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -56,6 +62,9 @@ public class CCDetailActivity extends BaseActivity {
 		mDB = new DatabaseHelper(this);
 		mData = mDB.getUserCCData(mID);
 		mData.setId(mID);
+		
+		mDesc = getResources().getStringArray(R.array.cc_manual_desc);
+		mTime = getResources().getStringArray(R.array.cc_manual_time);
 
 		UISetup();
 
@@ -179,5 +188,33 @@ public class CCDetailActivity extends BaseActivity {
 		mDB.updateCC(mData);
 
 	}
+
+	@Override
+	public void onInfo() {
+		super.onInfo();
+		final Dialog dialog = new Dialog(CCDetailActivity.this);
+		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		dialog.setContentView(R.layout.dialog_cc_manual);
+		
+		TextView desc = (TextView) dialog.findViewById(R.id.dialog_cc_desc);
+		desc.setText("Summary : " + mDesc[mID]);
+		
+		TextView time = (TextView) dialog.findViewById(R.id.dialog_cc_time);
+		time.setText("Time : " + mTime[mID]);
+		
+		Button gotit = (Button) dialog.findViewById(R.id.dialog_cc_gotit);
+		gotit.setOnClickListener(new Button.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				dialog.dismiss();
+			}
+			
+		});
+		
+		dialog.show();
+	}
+	
+	
 
 }

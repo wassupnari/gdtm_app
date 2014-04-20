@@ -27,11 +27,14 @@ public class CCListAdapter extends BaseAdapter {
 	private LayoutInflater mInflater = null;
 
 	private DatabaseHelper mDB;
+	
+	private String[] mProject;
 
 	public CCListAdapter(Activity activity) {
 		this.mActivity = activity;
 		mDB = new DatabaseHelper(activity);
 		mInflater = (LayoutInflater) mActivity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		mProject = mActivity.getResources().getStringArray(R.array.cc_manual_title);
 	}
 
 	@Override
@@ -59,7 +62,7 @@ public class CCListAdapter extends BaseAdapter {
 		ImageView complete = (ImageView) vi.findViewById(R.id.cc_complete_img);
 
 		project.setText("");
-		number.setText("Project " + String.valueOf(position + 1));
+		number.setText(String.valueOf(position + 1) + ". " + mProject[position]);
 		title.setText("Title : " + mDB.getUserCCData(position).getSpeechTitle());
 
 		if (mDB.getUserCCData(position).getComplete()) {

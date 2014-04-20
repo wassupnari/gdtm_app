@@ -88,16 +88,16 @@ public class FragmentCL extends Fragment {
 
 	public void setGroupData() {
 
-		mGroupItem.add("Project 1 : Listening");
-		mGroupItem.add("Project 2 : Critical Thinking");
-		mGroupItem.add("Project 3 : Giving Feedback");
-		mGroupItem.add("Project 4 : Time Management");
-		mGroupItem.add("Project 5 : Planning and Implementation");
-		mGroupItem.add("Project 6 : Organization and Delegation");
-		mGroupItem.add("Project 7 : Facilitation");
-		mGroupItem.add("Project 8 : Motivation");
-		mGroupItem.add("Project 9 : Mentoring");
-		mGroupItem.add("Project 10 : Team Building");
+		mGroupItem.add("1. Listening");
+		mGroupItem.add("2. Critical Thinking");
+		mGroupItem.add("3. Giving Feedback");
+		mGroupItem.add("4. Time Management");
+		mGroupItem.add("5. Planning and Implementation");
+		mGroupItem.add("6. Organization and Delegation");
+		mGroupItem.add("7. Facilitation");
+		mGroupItem.add("8. Motivation");
+		mGroupItem.add("9. Mentoring");
+		mGroupItem.add("10. Team Building");
 	}
 
 	public void setChildData() {

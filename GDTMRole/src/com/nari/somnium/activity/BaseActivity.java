@@ -66,9 +66,20 @@ public class BaseActivity extends Activity {
 			}
 			
 		});
+		
+		ImageButton infoBtn = (ImageButton) v.findViewById(R.id.actionbar_info_btn);
+		infoBtn.setOnClickListener(new ImageButton.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				onInfo();
+			}
+			
+		});
 	}
 	
 	public void onEdit() {};
 	public void onEditDone() {};
+	public void onInfo() {};
 	
 }

@@ -49,7 +49,7 @@ public class FragmentCC extends Fragment {
 
 		SharedPreferences setting = this.getActivity().getSharedPreferences(PREFERENCE, 0);
 
-		mProject = getResources().getStringArray(R.array.cc_project);
+		mProject = getResources().getStringArray(R.array.cc_manual_title);
 		mDB = new DatabaseHelper(getActivity());
 		for (int i = 0; i < NUM_OF_CC_PJT; i++) {
 			CCDataPojo data = new CCDataPojo();
