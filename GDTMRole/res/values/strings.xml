@@ -80,6 +80,27 @@
         <item>5 - 7 minutes</item>
         <item>8 - 10 minutes</item>
     </array>
+    
+    <!-- CL Manual -->
+    <array name="cl_manual_role">
+        <item>Ah-Counter</item>
+        <item>Speech Evaluator</item>
+        <item>General Evaluator</item>
+        <item>Grammarian</item>
+        <item>Timer</item>
+        <item>Toastmaster</item>
+        <item>Topicsmaster</item>
+    </array>
+    
+    <array name="cl_manual_role_desc">
+        <item>The purpose of the Ah-Counter is to note any word or sound used as a crutch by anyone who speaks during the meeting. Words may be inappropriate interjections, such as and, well, but, so and you know. Sounds may be ah, um or er. The Ah-Counter role is an excellent opportunity to practice your listening skills.</item>
+        <item>You will provide both verbal and written evaluations for speakers using the guide in the manual. You’ll always give a written evaluation for leadership roles, though verbal evaluations for leaders are handled differently from club to club. </item>
+        <item>Leads the evaluation team, including the Speech Evaluators, Timer, and Ah-Counter. The General Evaluator also gives an evaluation of the overall meeting during which he or she offers tips to improve all aspects of the meeting.</item>
+        <item>Identifies aspects of word use including poor choice, grammatical errors, as well as creative or clever usage, and offers suggestions for improvement. Also should note the times the “word of the day” is used and explains potential new words. Should NOT refer to specific people or use names.</item>
+        <item>Keeps track of the time for all speakers also noting frame of eligibility. Sits in a visible area and raises and holds card up until speaker sees green card for minimum time, yellow for a warning, and red for maximum time. Gives a final report for time.</item>
+        <item>Runs the meeting, leads applause, introduces speakers, passes control of the podium to speakers as they come up to speak, and keeps the meeting on time.</item>
+        <item>Topicsmaster gives members who aren’t assigned a speaking role the opportunity to speak during the meeting. The Topicsmaster challenges each member with a subject, and the speaker responds with a one- to two-minute impromptu talk.</item>
+    </array>
 
     <!-- Dialog -->
     <string name="app_logout">Are you sure to logout?</string>
