@@ -68,69 +68,69 @@ public class FragmentSetting extends Fragment {
 		mProfilePicture.setCropped(true);
 
 		// Find user name view
-		mName = (TextView) view.findViewById(R.id.profile_name);
-		mName.setText("User name");
-		mName.setTextSize(20);
-		mNameField = (TextView) view.findViewById(R.id.profile_name_field);
-
-		mEmail = (TextView) view.findViewById(R.id.profile_email);
-		mEmail.setText("User Email");
-		mEmail.setTextSize(20);
-		mEmailField = (TextView) view.findViewById(R.id.profile_email_field);
-		mEmailField.setText("wassupnari@gmail.com");
-
-		mPhone = (TextView) view.findViewById(R.id.profile_phone);
-		mPhone.setText("Phone");
-		mPhone.setTextSize(20);
-		mPhoneField = (TextView) view.findViewById(R.id.profile_phone_field);
-		mPhoneField.setText("415-123-1234");
-
-		mLogout = (Button) view.findViewById(R.id.profile_logout);
-		mLogout.setText("Logout");
-		mLogout.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-
-				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
-				builder.setMessage(R.string.app_logout)
-						.setTitle(R.string.app_name)
-						.setPositiveButton(R.string.dialog_btn_ok,
-								new DialogInterface.OnClickListener() {
-
-									public void onClick(DialogInterface dialog, int id) {
-
-										// User clicked OK button
-										// Clear User Preference and Session Out
-										Session session = Session.getActiveSession();
-										if (session != null && !session.isClosed()) {
-											session.closeAndClearTokenInformation();
-											startActivity(new Intent(mContext, SplashScreen.class));
-											getActivity().finish();
-										}
-									}
-								})
-						.setNegativeButton(R.string.dialog_btn_cancel,
-								new DialogInterface.OnClickListener() {
-
-									public void onClick(DialogInterface dialog, int id) {
-
-										// User cancelled the dialog
-										// Do nothing
-									}
-								});
-				AlertDialog dialog = builder.create();
-				dialog.show();
-			}
-
-		});
-
-		// Check for an open session
-		Session session = Session.getActiveSession();
-		if (session != null && session.isOpened()) {
-			// Get the user's data
-			makeMeRequest(session);
-		}
+//		mName = (TextView) view.findViewById(R.id.profile_name);
+//		mName.setText("User name");
+//		mName.setTextSize(20);
+//		mNameField = (TextView) view.findViewById(R.id.profile_name_field);
+//
+//		mEmail = (TextView) view.findViewById(R.id.profile_email);
+//		mEmail.setText("User Email");
+//		mEmail.setTextSize(20);
+//		mEmailField = (TextView) view.findViewById(R.id.profile_email_field);
+//		mEmailField.setText("wassupnari@gmail.com");
+//
+//		mPhone = (TextView) view.findViewById(R.id.profile_phone);
+//		mPhone.setText("Phone");
+//		mPhone.setTextSize(20);
+//		mPhoneField = (TextView) view.findViewById(R.id.profile_phone_field);
+//		mPhoneField.setText("415-123-1234");
+//
+//		mLogout = (Button) view.findViewById(R.id.profile_logout);
+//		mLogout.setText("Logout");
+//		mLogout.setOnClickListener(new Button.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View arg0) {
+//
+//				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+//				builder.setMessage(R.string.app_logout)
+//						.setTitle(R.string.app_name)
+//						.setPositiveButton(R.string.dialog_btn_ok,
+//								new DialogInterface.OnClickListener() {
+//
+//									public void onClick(DialogInterface dialog, int id) {
+//
+//										// User clicked OK button
+//										// Clear User Preference and Session Out
+//										Session session = Session.getActiveSession();
+//										if (session != null && !session.isClosed()) {
+//											session.closeAndClearTokenInformation();
+//											startActivity(new Intent(mContext, SplashScreen.class));
+//											getActivity().finish();
+//										}
+//									}
+//								})
+//						.setNegativeButton(R.string.dialog_btn_cancel,
+//								new DialogInterface.OnClickListener() {
+//
+//									public void onClick(DialogInterface dialog, int id) {
+//
+//										// User cancelled the dialog
+//										// Do nothing
+//									}
+//								});
+//				AlertDialog dialog = builder.create();
+//				dialog.show();
+//			}
+//
+//		});
+//
+//		// Check for an open session
+//		Session session = Session.getActiveSession();
+//		if (session != null && session.isOpened()) {
+//			// Get the user's data
+//			makeMeRequest(session);
+//		}
 
 		return view;
 	}

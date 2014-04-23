@@ -2,29 +2,49 @@
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp" >
+    android:layout_margin="200dp" >
 
-    <Button
+    <!-- <Button
         android:id="@+id/profile_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true" />
+        android:layout_alignParentBottom="true" /> -->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:orientation="vertical" >
 
         <com.facebook.widget.ProfilePictureView
             android:id="@+id/profilePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
             facebook:preset_size="normal" />
+        
+        <TextView
+            android:id="@+id/profile_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profilePicture"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textSize="18dp"
+            android:text="Your profile view will be enabled in next version of app" />
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_text_1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:textSize="35dp"
+            android:text="STAY TUNED" />
 
-        <ImageView
+        <!-- <ImageView
             android:id="@+id/profile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -66,7 +86,7 @@
         <TextView
             android:id="@+id/profile_phone_field"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content" /> -->
+    </RelativeLayout>
 
 </RelativeLayout>
