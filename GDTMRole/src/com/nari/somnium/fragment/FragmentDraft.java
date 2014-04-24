@@ -1,6 +1,6 @@
 package com.nari.somnium.fragment;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
 import com.nari.somnium.MainActivity.OnMainMenuEditButtonListener;
 import com.nari.somnium.helper.DatabaseHelper;
@@ -9,11 +9,16 @@ import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -75,7 +80,7 @@ public class FragmentDraft extends Fragment {
 		
 		return view;
 	}
-	
+
 	public void hideKeyboard() {
 		InputMethodManager inputManager = (InputMethodManager) getActivity().getSystemService(getActivity().getApplicationContext().INPUT_METHOD_SERVICE);
 		if (inputManager.isAcceptingText()) {

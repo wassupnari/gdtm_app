@@ -1,6 +1,6 @@
 package com.nari.somnium.intro;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.helper.PreferenceHelper;
 
 import android.app.Activity;
@@ -24,12 +24,8 @@ public class SplashScreen extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
+		Log.d("GDTM", "Splash Activity");
 		super.onCreate(savedInstanceState);
-		
-		mPreferences = new PreferenceHelper(SplashScreen.this);
-		mPreferences.putStringInPreferences("started", "true");
-
 		// Removes title bar
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// Removes notification bar
@@ -38,6 +34,7 @@ public class SplashScreen extends Activity {
 
 		setContentView(R.layout.intro_splash_screen);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+		mPreferences = new PreferenceHelper(SplashScreen.this);
 		// Create Hash Tag for facebook
 		// printHashKey();
 

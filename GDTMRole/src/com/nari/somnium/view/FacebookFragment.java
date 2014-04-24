@@ -4,7 +4,7 @@ import com.facebook.Session;
 import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.widget.LoginButton;
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
 import com.nari.somnium.intro.SignupPage;
 

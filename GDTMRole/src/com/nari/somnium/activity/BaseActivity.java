@@ -1,10 +1,7 @@
 package com.nari.somnium.activity;
 
-import com.gdtm.app.R;
-
+import com.nari.somnium.R;
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;

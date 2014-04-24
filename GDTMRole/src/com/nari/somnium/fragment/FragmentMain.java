@@ -2,7 +2,7 @@ package com.nari.somnium.fragment;
 
 import java.util.ArrayList;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.adapter.CLExpandableListAdapter;
 import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.pojo.CCDataPojo;

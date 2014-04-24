@@ -7,13 +7,10 @@ import com.facebook.SessionState;
 import com.facebook.UiLifecycleHelper;
 import com.facebook.model.GraphUser;
 import com.facebook.widget.ProfilePictureView;
-import com.gdtm.app.R;
-import com.nari.somnium.intro.SplashScreen;
 
-import android.app.AlertDialog;
+import com.nari.somnium.R;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -64,8 +61,8 @@ public class FragmentSetting extends Fragment {
 		mContext = view.getContext();
 
 		// Find the user's profile custom view
-		mProfilePicture = (ProfilePictureView) view.findViewById(R.id.profilePicture);
-		mProfilePicture.setCropped(true);
+//		mProfilePicture = (ProfilePictureView) view.findViewById(R.id.profilePicture);
+//		mProfilePicture.setCropped(true);
 
 		// Find user name view
 //		mName = (TextView) view.findViewById(R.id.profile_name);

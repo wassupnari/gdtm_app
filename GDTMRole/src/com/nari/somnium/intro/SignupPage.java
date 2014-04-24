@@ -10,7 +10,7 @@ import com.facebook.SessionState;
 import com.facebook.widget.LoginButton;
 import com.facebook.widget.LoginButton.OnErrorListener;
 import com.facebook.model.GraphUser;
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
 
 import android.app.Activity;

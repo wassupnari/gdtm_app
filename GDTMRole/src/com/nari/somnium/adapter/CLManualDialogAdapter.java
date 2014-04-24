@@ -1,7 +1,6 @@
 package com.nari.somnium.adapter;
 
-import com.gdtm.app.R;
-
+import com.nari.somnium.R;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

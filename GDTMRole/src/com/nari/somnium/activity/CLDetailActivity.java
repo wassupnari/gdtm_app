@@ -1,6 +1,6 @@
 package com.nari.somnium.activity;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.adapter.CLManualDialogAdapter;
 import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.pojo.CLDataPojo;

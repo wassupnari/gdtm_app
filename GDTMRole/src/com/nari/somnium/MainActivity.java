@@ -2,7 +2,7 @@ package com.nari.somnium;
 
 import java.util.ArrayList;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.adapter.DrawerAdapter;
 import com.nari.somnium.fragment.FragmentAboutMe;
 import com.nari.somnium.fragment.FragmentCC;
@@ -10,28 +10,24 @@ import com.nari.somnium.fragment.FragmentCL;
 import com.nari.somnium.fragment.FragmentClubPage;
 import com.nari.somnium.fragment.FragmentDraft;
 import com.nari.somnium.fragment.FragmentMain;
-import com.nari.somnium.fragment.FragmentMeetingList;
 import com.nari.somnium.fragment.FragmentSetting;
 import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.helper.PreferenceHelper;
-import com.nari.somnium.intro.SplashScreen;
 
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
@@ -42,7 +38,7 @@ import android.widget.ToggleButton;
  * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 
-public class MainActivity extends FragmentActivity {
+public class MainActivity extends Activity {
 
 	private Context mContext;
 
@@ -73,9 +69,11 @@ public class MainActivity extends FragmentActivity {
 	}
 	
 	private static OnMainMenuEditButtonListener mOnMainMenuEditButtonListener;
-
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		
+		Log.d("GDTM", "Main Activity");
 
 		super.onCreate(savedInstanceState);
 //		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -84,13 +82,13 @@ public class MainActivity extends FragmentActivity {
 		mPreferences = new PreferenceHelper(MainActivity.this);
 		String isStarted = mPreferences.getStringFromPreferences("started", "");
 
-		if(isStarted.equalsIgnoreCase("")) {
-			Intent intent = new Intent(MainActivity.this, SplashScreen.class);
-			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-			startActivity(intent);
-			
-			MainActivity.this.finish();
-		} else {
+//		if(isStarted.equalsIgnoreCase("")) {
+//			Intent intent = new Intent(MainActivity.this, SplashScreen.class);
+//			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//			startActivity(intent);
+//			
+//			MainActivity.this.finish();
+//		} else {
 			mContext = this.getApplicationContext();
 
 			setContentView(R.layout.control_drawer_menu);
@@ -122,7 +120,6 @@ public class MainActivity extends FragmentActivity {
 
 				public void onDrawerClosed(View view) {
 					getActionBar().setTitle(mTitle);
-
 					invalidateOptionsMenu();
 				}
 
@@ -142,12 +139,23 @@ public class MainActivity extends FragmentActivity {
 			mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
 			
 			mDB = new DatabaseHelper(MainActivity.this);
-		}
+//		}
 
 	}
+	
+	
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+		Log.d("GDTM", "Main activity onResume");
+	}
+
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
+		Log.d("GDTM", "onCreateOptionsMenu");
 		if(showEditButton) {
 			getMenuInflater().inflate(R.menu.menu_actionbar_main, menu);
 			MenuItem menuItem = menu.findItem(R.id.actionbar_custom_menu);
@@ -161,7 +169,6 @@ public class MainActivity extends FragmentActivity {
 				@Override
 				public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 					if(mOnMainMenuEditButtonListener != null) {
-						Log.d("GDTM", "button clicked!");
 						mOnMainMenuEditButtonListener.onMainMenuEditButtonListener(isChecked);
 					}
 				}

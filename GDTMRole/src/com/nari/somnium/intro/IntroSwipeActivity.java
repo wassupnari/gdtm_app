@@ -3,14 +3,9 @@ package com.nari.somnium.intro;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
-import com.nari.somnium.fragment.SwipeFragment_1;
-import com.nari.somnium.fragment.SwipeFragment_2;
-import com.nari.somnium.fragment.SwipeFragment_3;
-import com.nari.somnium.fragment.SwipeFragment_4;
 import com.nari.somnium.helper.PreferenceHelper;
-import com.nari.somnium.utils.SimpleGestureFilter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,16 +13,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**

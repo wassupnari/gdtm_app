@@ -1,7 +1,6 @@
 package com.nari.somnium.fragment;
 
-import com.gdtm.app.R;
-
+import com.nari.somnium.R;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;
