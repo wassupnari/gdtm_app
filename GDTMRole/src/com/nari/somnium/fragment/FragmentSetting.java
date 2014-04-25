@@ -139,8 +139,8 @@ public class FragmentSetting extends Fragment {
 	public void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-		mUIHelper = new UiLifecycleHelper(getActivity(), callback);
-		mUIHelper.onCreate(savedInstanceState);
+//		mUIHelper = new UiLifecycleHelper(getActivity(), callback);
+//		mUIHelper.onCreate(savedInstanceState);
 	}
 
 	/**
@@ -151,37 +151,37 @@ public class FragmentSetting extends Fragment {
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 
 		super.onActivityResult(requestCode, resultCode, data);
-		if (requestCode == REAUTH_ACTIVITY_CODE) {
-			mUIHelper.onActivityResult(requestCode, resultCode, data);
-		}
+//		if (requestCode == REAUTH_ACTIVITY_CODE) {
+//			mUIHelper.onActivityResult(requestCode, resultCode, data);
+//		}
 	}
 
 	@Override
 	public void onResume() {
 
 		super.onResume();
-		mUIHelper.onResume();
+//		mUIHelper.onResume();
 	}
 
 	@Override
 	public void onSaveInstanceState(Bundle bundle) {
 
 		super.onSaveInstanceState(bundle);
-		mUIHelper.onSaveInstanceState(bundle);
+//		mUIHelper.onSaveInstanceState(bundle);
 	}
 
 	@Override
 	public void onPause() {
 
 		super.onPause();
-		mUIHelper.onPause();
+//		mUIHelper.onPause();
 	}
 
 	@Override
 	public void onDestroy() {
 
 		super.onDestroy();
-		mUIHelper.onDestroy();
+//		mUIHelper.onDestroy();
 	}
 
 	/**
@@ -193,28 +193,28 @@ public class FragmentSetting extends Fragment {
 
 		// Make an API call to get user data and define a new callback to handle
 		// the response.
-		Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
-
-			@Override
-			public void onCompleted(GraphUser user, Response response) {
-
-				// If the response is successful
-				if (session == Session.getActiveSession()) {
-					if (user != null) {
-						// Set the id for the ProfilePictureView
-						// view that in turn displays the profile picture.
-						mProfilePicture.setProfileId(user.getId());
-						// Set the Textview's text to the user's name.
-						mNameField.setText(user.getName());
-					}
-				}
-				if (response.getError() != null) {
-					// Handle errors, will do so later.
-				}
-			}
-
-		});
-		request.executeAsync();
+//		Request request = Request.newMeRequest(session, new Request.GraphUserCallback() {
+//
+//			@Override
+//			public void onCompleted(GraphUser user, Response response) {
+//
+//				// If the response is successful
+//				if (session == Session.getActiveSession()) {
+//					if (user != null) {
+//						// Set the id for the ProfilePictureView
+//						// view that in turn displays the profile picture.
+//						mProfilePicture.setProfileId(user.getId());
+//						// Set the Textview's text to the user's name.
+//						mNameField.setText(user.getName());
+//					}
+//				}
+//				if (response.getError() != null) {
+//					// Handle errors, will do so later.
+//				}
+//			}
+//
+//		});
+//		request.executeAsync();
 	}
 
 	/**
@@ -227,9 +227,9 @@ public class FragmentSetting extends Fragment {
 	 */
 	private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
 
-		if (session != null && session.isOpened()) {
-			// Get the user's data.
-			makeMeRequest(session);
-		}
+//		if (session != null && session.isOpened()) {
+//			// Get the user's data.
+//			makeMeRequest(session);
+//		}
 	}
 }

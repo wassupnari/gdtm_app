@@ -15,14 +15,15 @@
         android:icon="@drawable/app_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
-        
         <!-- <meta-data android:value="@string/app_id" android:name="com.facebook.sdk.ApplicationId"/> -->
         <!-- Intro -->
+        <!-- android:theme="@android:style/Theme.NoTitleBar.Fullscreen" -->
         <activity
             android:name="com.nari.somnium.intro.SplashScreen"
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:theme="@style/MyNoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -38,7 +39,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-         <activity
+        <activity
             android:name="com.nari.somnium.MainActivity"
             android:configChanges="orientation" >
             <intent-filter>
