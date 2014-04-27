@@ -9,10 +9,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
-import com.gdtm.app.R;
+//import com.facebook.Session;
+//import com.facebook.SessionState;
+//import com.facebook.UiLifecycleHelper;
+import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
 
 /**
@@ -22,7 +22,7 @@ import com.nari.somnium.MainActivity;
  */
 
 public class SignupFragment extends FragmentActivity {
-
+/*
 	private static final int NONAUTH = 0;
 	// private static final int AUTH = 1;
 	// private static final int FRAGMENT_COUNT = AUTH +1;
@@ -56,10 +56,10 @@ public class SignupFragment extends FragmentActivity {
 		// fragments[AUTH] = fm.findFragmentById(R.id.authfrag);
 
 		FragmentTransaction transaction = fm.beginTransaction();
-		/*
-		 * for(int i = 0; i < fragments.length; i++) {
-		 * transaction.hide(fragments[i]); }
-		 */
+		
+//		  for(int i = 0; i < fragments.length; i++) {
+//		  transaction.hide(fragments[i]); }
+		 
 		transaction.commit();
 
 	}
@@ -69,11 +69,11 @@ public class SignupFragment extends FragmentActivity {
 		FragmentManager fm = getSupportFragmentManager();
 		FragmentTransaction transaction = fm.beginTransaction();
 		transaction.show(nonAuthFrag);
-		/*
-		 * for (int i = 0; i < fragments.length; i++) { if (i == fragmentIndex)
-		 * { transaction.show(fragments[i]); } else {
-		 * transaction.hide(fragments[i]); } }
-		 */
+		
+//		  for (int i = 0; i < fragments.length; i++) { if (i == fragmentIndex)
+//		  { transaction.show(fragments[i]); } else {
+//		  transaction.hide(fragments[i]); } }
+		 
 		if (addToBackStack) {
 			transaction.addToBackStack(null);
 		}
@@ -170,5 +170,5 @@ public class SignupFragment extends FragmentActivity {
 
 			onSessionStateChange(session, state, exception);
 		}
-	};
+	};*/
 }

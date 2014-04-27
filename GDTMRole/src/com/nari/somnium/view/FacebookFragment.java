@@ -1,23 +1,23 @@
 package com.nari.somnium.view;
 
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
-import com.facebook.widget.LoginButton;
-import com.gdtm.app.R;
-import com.nari.somnium.MainActivity;
-import com.nari.somnium.intro.SignupPage;
+//import com.facebook.Session;
+//import com.facebook.SessionState;
+//import com.facebook.UiLifecycleHelper;
+//import com.facebook.widget.LoginButton;
+//import com.nari.somnium.R;
+//import com.nari.somnium.MainActivity;
+//import com.nari.somnium.intro.SignupPage;
+//
+//import android.content.Intent;
+//import android.os.Bundle;
+//import android.support.v4.app.Fragment;
+//import android.util.Log;
+//import android.view.LayoutInflater;
+//import android.view.View;
+//import android.view.ViewGroup;
+//import android.widget.Button;
 
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-
-public class FacebookFragment extends Fragment {
+public class FacebookFragment{ // extends Fragment {
 /*
 	private UiLifecycleHelper uiHelper;
 

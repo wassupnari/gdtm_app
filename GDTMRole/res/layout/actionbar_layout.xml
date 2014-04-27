@@ -32,12 +32,13 @@
         android:textOff=""
         android:textOn="" />
 
-    <ImageButton
+    <ImageView
         android:id="@+id/actionbar_info_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
+        android:padding="10dp"
         android:layout_centerVertical="true"
         android:layout_toLeftOf="@id/actionbar_edit_btn"
-        android:background="@drawable/actionbar_back_arrow" />
+        android:src="@drawable/actionbar_btn_info" />
 
 </RelativeLayout>

@@ -2,8 +2,7 @@ package com.nari.somnium.adapter;
 
 import java.util.ArrayList;
 
-
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.helper.DatabaseHelper;
 
 import android.app.Activity;

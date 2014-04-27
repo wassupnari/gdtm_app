@@ -11,7 +11,7 @@
         android:id="@+id/about_description_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"
         android:textSize="@dimen/content_text_size"
         android:text="@string/about_description_1"/>
@@ -20,9 +20,28 @@
         android:id="@+id/about_description_2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:layout_gravity="center_horizontal"
         android:textSize="@dimen/content_text_size"
         android:text="@string/about_description_2"/>
+    
+    <TextView 
+        android:id="@+id/about_description_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/content_text_size"
+        android:text="@string/about_description_3"/>
+    
+    <TextView 
+        android:id="@+id/about_description_4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/content_text_size"
+        android:text="@string/about_description_4"/>
     
     <TextView 
         android:id="@+id/about_email"
@@ -31,5 +50,5 @@
         android:layout_gravity="center_horizontal"
         android:autoLink="email"
         android:textSize="@dimen/content_text_size"
-        android:text="wassupnari@gmail.com"/>
+        android:text="narishin.lab@gmail.com"/>
 </LinearLayout>

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.adapter.CLExpandableListAdapter;
 import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.pojo.CLDataPojo;

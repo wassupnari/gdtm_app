@@ -1,7 +1,6 @@
 package com.nari.somnium.intro;
 
-import com.gdtm.app.R;
-
+import com.nari.somnium.R;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;

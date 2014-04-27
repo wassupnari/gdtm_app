@@ -3,13 +3,9 @@ package com.nari.somnium.intro;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.gdtm.app.R;
+import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
-import com.nari.somnium.fragment.SwipeFragment_1;
-import com.nari.somnium.fragment.SwipeFragment_2;
-import com.nari.somnium.fragment.SwipeFragment_3;
-import com.nari.somnium.fragment.SwipeFragment_4;
-import com.nari.somnium.utils.SimpleGestureFilter;
+import com.nari.somnium.helper.PreferenceHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,16 +13,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 /**
@@ -38,15 +31,22 @@ public class IntroSwipeActivity extends FragmentActivity {
 	private SwipePageAdapter mPageAdapter;
 	private List<Fragment> mFragments;
 	
+	private static PreferenceHelper mPreferences;
+	
 	@Override
 	protected void onCreate(Bundle arg0) {
 		super.onCreate(arg0);
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.intro_swipe_activity);
 		
+		mPreferences = new PreferenceHelper(this);
+		
+		
 		mFragments = getFragments();
 		mPageAdapter = new SwipePageAdapter(getSupportFragmentManager(), mFragments);
-		ViewPager pager = (ViewPager) findViewById(R.id.intro_viewpager);
+		ViewPagerParallax pager = (ViewPagerParallax) findViewById(R.id.intro_viewpager);
+		pager.set_max_pages(4);
+		pager.setBackgroundAsset(R.drawable.toastmasters_bg);
 		pager.setAdapter(mPageAdapter);
 		pager.setOnPageChangeListener(new OnPageChangeListener() {
 
@@ -131,6 +131,7 @@ public class IntroSwipeActivity extends FragmentActivity {
 
 					@Override
 					public void onClick(View v) {
+						mPreferences.putStringInPreferences("started", "true");
 						Intent intent = new Intent(getActivity(), MainActivity.class);
 						intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 						startActivity(intent);

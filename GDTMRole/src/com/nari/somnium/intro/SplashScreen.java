@@ -1,6 +1,7 @@
 package com.nari.somnium.intro;
 
-import com.gdtm.app.R;
+import com.nari.somnium.MainActivity;
+import com.nari.somnium.R;
 import com.nari.somnium.helper.PreferenceHelper;
 
 import android.app.Activity;
@@ -21,29 +22,38 @@ public class SplashScreen extends Activity {
 	private static long SLEEP_TIME = 5; // Sleep for some time
 	
 	private PreferenceHelper mPreferences;
+	
+	private String isStarted;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-
 		super.onCreate(savedInstanceState);
-		
-		mPreferences = new PreferenceHelper(SplashScreen.this);
-		mPreferences.putStringInPreferences("started", "true");
-
+		mPreferences = new PreferenceHelper(this);
 		// Removes title bar
-		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		//this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		// Removes notification bar
 //		this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 //				WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		
+		isStarted = mPreferences.getStringFromPreferences("started", "");
+		
+		if(isStarted.equalsIgnoreCase("true")) {
+			Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+			startActivity(intent);
+			finish();
+		} else {
+			setContentView(R.layout.intro_splash_screen);
+			setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+			mPreferences = new PreferenceHelper(SplashScreen.this);
+			// Create Hash Tag for facebook
+			// printHashKey();
 
-		setContentView(R.layout.intro_splash_screen);
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-		// Create Hash Tag for facebook
-		// printHashKey();
+			// Start timer and launch main activity
+			IntentLauncher launcher = new IntentLauncher();
+			launcher.start();
+		}
 
-		// Start timer and launch main activity
-		IntentLauncher launcher = new IntentLauncher();
-		launcher.start();
+		
 		
 	}
 

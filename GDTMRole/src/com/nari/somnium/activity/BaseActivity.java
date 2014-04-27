@@ -1,10 +1,7 @@
 package com.nari.somnium.activity;
 
-import com.gdtm.app.R;
-
+import com.nari.somnium.R;
 import android.app.Activity;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -67,8 +64,8 @@ public class BaseActivity extends Activity {
 			
 		});
 		
-		ImageButton infoBtn = (ImageButton) v.findViewById(R.id.actionbar_info_btn);
-		infoBtn.setOnClickListener(new ImageButton.OnClickListener() {
+		ImageView infoBtn = (ImageView) v.findViewById(R.id.actionbar_info_btn);
+		infoBtn.setOnClickListener(new ImageView.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {

@@ -2,28 +2,60 @@
     xmlns:facebook="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp" >
+    android:layout_margin="200dp" >
 
-    <Button
+    <!--
+         <Button
         android:id="@+id/profile_logout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true" />
+    -->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:orientation="vertical" >
 
-        <com.facebook.widget.ProfilePictureView
+        <!--
+             <com.facebook.widget.ProfilePictureView
             android:id="@+id/profilePicture"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
             facebook:preset_size="normal" />
+        -->
 
+        <ImageView
+            android:id="@+id/construction"
+            android:layout_width="120dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:background="@drawable/under_construction" />
+
+        <TextView
+            android:id="@+id/profile_text_1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/construction"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="This page is currently under construction"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/profile_text_1"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:text="STAY TUNED"
+            android:textSize="35dp" />
+
+        <!--
         <ImageView
             android:id="@+id/profile"
             android:layout_width="wrap_content"
@@ -67,6 +99,16 @@
             android:id="@+id/profile_phone_field"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-    </LinearLayout>
+        -->
+    </RelativeLayout>
+
+    <!--
+         <ImageView
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/under_construction" />
+    -->
 
 </RelativeLayout>
