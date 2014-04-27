@@ -2,14 +2,14 @@ package com.nari.somnium.intro;
 
 import java.util.Arrays;
 
-import com.facebook.FacebookException;
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.widget.LoginButton;
-import com.facebook.widget.LoginButton.OnErrorListener;
-import com.facebook.model.GraphUser;
+//import com.facebook.FacebookException;
+//import com.facebook.Request;
+//import com.facebook.Response;
+//import com.facebook.Session;
+//import com.facebook.SessionState;
+//import com.facebook.widget.LoginButton;
+//import com.facebook.widget.LoginButton.OnErrorListener;
+//import com.facebook.model.GraphUser;
 import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
 
@@ -31,6 +31,7 @@ import android.widget.TextView;
  */
 
 public class SignupPage extends Activity {
+	/*
 
 	private LoginButton mLoginWithFacebook;
 	private Button mLoginWithEmail;
@@ -181,4 +182,5 @@ public class SignupPage extends Activity {
 
 		return mUser;
 	}
+	*/
 }

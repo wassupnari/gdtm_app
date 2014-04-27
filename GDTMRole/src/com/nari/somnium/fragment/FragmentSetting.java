@@ -1,12 +1,12 @@
 package com.nari.somnium.fragment;
 
-import com.facebook.Request;
-import com.facebook.Response;
-import com.facebook.Session;
-import com.facebook.SessionState;
-import com.facebook.UiLifecycleHelper;
-import com.facebook.model.GraphUser;
-import com.facebook.widget.ProfilePictureView;
+//import com.facebook.Request;
+//import com.facebook.Response;
+//import com.facebook.Session;
+//import com.facebook.SessionState;
+//import com.facebook.UiLifecycleHelper;
+//import com.facebook.model.GraphUser;
+//import com.facebook.widget.ProfilePictureView;
 
 import com.nari.somnium.R;
 import android.app.Fragment;
@@ -36,23 +36,23 @@ public class FragmentSetting extends Fragment {
 	private TextView mPhoneField;
 	private Button mLogout;
 
-	private ProfilePictureView mProfilePicture;
-
-	private UiLifecycleHelper mUIHelper;
-
-	private Session.StatusCallback callback = new Session.StatusCallback() {
-
-		@Override
-		public void call(final Session session, final SessionState state, final Exception exception) {
-
-			onSessionStateChange(session, state, exception);
-		}
-	};
+//	private ProfilePictureView mProfilePicture;
+//
+//	private UiLifecycleHelper mUIHelper;
+//
+//	private Session.StatusCallback callback = new Session.StatusCallback() {
+//
+//		@Override
+//		public void call(final Session session, final SessionState state, final Exception exception) {
+//
+//			onSessionStateChange(session, state, exception);
+//		}
+//	};
 
 	// For new permission request
 	private static final int REAUTH_ACTIVITY_CODE = 100;
 
-	private GraphUser mUser;
+//	private GraphUser mUser;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -189,7 +189,7 @@ public class FragmentSetting extends Fragment {
 	 * 
 	 * @param session
 	 */
-	private void makeMeRequest(final Session session) {
+//	private void makeMeRequest(final Session session) {
 
 		// Make an API call to get user data and define a new callback to handle
 		// the response.
@@ -215,7 +215,7 @@ public class FragmentSetting extends Fragment {
 //
 //		});
 //		request.executeAsync();
-	}
+//	}
 
 	/**
 	 * Respond to session changes and call the makeMeRequest(), if the session
@@ -225,11 +225,11 @@ public class FragmentSetting extends Fragment {
 	 * @param state
 	 * @param exception
 	 */
-	private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
-
+//	private void onSessionStateChange(final Session session, SessionState state, Exception exception) {
+//
 //		if (session != null && session.isOpened()) {
 //			// Get the user's data.
 //			makeMeRequest(session);
 //		}
-	}
+//	}
 }

@@ -1,6 +1,6 @@
 package com.nari.somnium.intro;
 
-import com.facebook.*;
+//import com.facebook.*;
 import com.nari.somnium.R;
 import com.nari.somnium.view.FacebookFragment;
 
@@ -59,20 +59,20 @@ public class FragmentNonAuthUser extends Fragment {
 		mSigninEmail = (EditText) mView.findViewById(R.id.signin_email);
 		mSigninPW = (EditText) mView.findViewById(R.id.signin_pw);
 
-		mLoginButton = (Button) mView.findViewById(R.id.btn_login);
-		mLoginButton.setOnClickListener(new Button.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				mIsEmailValid = mValidator.emailValidator(mSigninEmail.getText().toString());
-				if (mIsEmailValid && mSigninPW.getText().length() > 5) {
-					// Send data to backend
-				} else {
-					mValidator.showAlertDialog(mContext, R.string.invalid_email);
-				}
-			}
-
-		});
+//		mLoginButton = (Button) mView.findViewById(R.id.btn_login);
+//		mLoginButton.setOnClickListener(new Button.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View arg0) {
+//				mIsEmailValid = mValidator.emailValidator(mSigninEmail.getText().toString());
+//				if (mIsEmailValid && mSigninPW.getText().length() > 5) {
+//					// Send data to backend
+//				} else {
+//					mValidator.showAlertDialog(mContext, R.string.invalid_email);
+//				}
+//			}
+//
+//		});
 
 		mSignUpButton = (TextView) mView.findViewById(R.id.btn_signup);
 		mSignUpButton.setOnClickListener(new Button.OnClickListener() {
