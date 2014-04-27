@@ -59,7 +59,7 @@ public class CLExpandableListAdapter extends BaseExpandableListAdapter {
 	@Override
 	public Object getChild(int groupPosition, int childPosition) {
 
-		return null;
+		return mDB.getUserCLData(groupPosition).getSubData().get(childPosition);
 	}
 
 	@Override

@@ -62,7 +62,7 @@ public class CLDetailActivity extends BaseActivity {
 		mDataList = mDB.getUserCLData(mProjectNumber);
 		mDataList.setId(mProjectNumber);
 		mData = mDataList.getSubData().get(mSubNumber);
-
+		
 		setupUI();
 
 	}
@@ -162,8 +162,8 @@ public class CLDetailActivity extends BaseActivity {
 		mDate.setText(date);
 		mComment.setText(comment);
 
-		mDataList.getSubData().set(mProjectNumber, mData);
-
+		mDataList.getSubData().set(mSubNumber, mData);
+		
 		mDB.updateCL(mDataList);
 
 	}

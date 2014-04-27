@@ -53,9 +53,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	public DatabaseHelper(Context context) {
 
-		//super(context, DATABASE_NAME, null, DATABASE_VER);
+		super(context, DATABASE_NAME, null, DATABASE_VER);
 		// For debugging
-		super(context, "/mnt/sdcard/" + DATABASE_NAME, null, DATABASE_VER);
+		//super(context, "/mnt/sdcard/" + DATABASE_NAME, null, DATABASE_VER);
 	}
 	
 	public DatabaseHelper(Context context, String name, CursorFactory factory, int version) {
@@ -276,6 +276,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 		ContentValues values = new ContentValues();
 		String jsonObj = gson.toJson(cl);
+
 		values.put(KEY_OBJECT, jsonObj);
 
 		return db.update(TABLE_NAME_CL, values, KEY_ID + " = ?",
