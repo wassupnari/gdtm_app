@@ -53,6 +53,7 @@ public class FragmentCL extends Fragment {
 		for(int i=0; i<NUM_OF_CL_PJT; i++) {
 			CLDataPojo data = new CLDataPojo();
 			ArrayList<CLSubDataPojo> subList = getList(subCount[i]);
+			data.setId(i);
 			data.setSubData(subList);
 			mDB.addCLData(i, data);
 		}

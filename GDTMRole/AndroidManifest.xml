@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nari.somnium"
     android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionName="1.0.1" >
 
     <uses-sdk
         android:minSdkVersion="8"
@@ -22,7 +22,6 @@
             android:name="com.nari.somnium.intro.SplashScreen"
             android:configChanges="orientation"
     		android:screenOrientation="portrait"
-            android:label="@string/app_name"
             android:theme="@style/MyNoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,8 +31,7 @@
         <activity
             android:name="com.nari.somnium.intro.IntroSwipeActivity"
             android:configChanges="orientation"
-    		android:screenOrientation="portrait"
-            android:label="@string/app_name" >
+    		android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -41,7 +39,8 @@
         </activity>
         <activity
             android:name="com.nari.somnium.MainActivity"
-            android:configChanges="orientation" >
+            android:configChanges="orientation"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.DEFAULT" />
