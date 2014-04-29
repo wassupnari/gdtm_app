@@ -3,7 +3,7 @@ package com.nari.somnium.intro;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;

@@ -1,6 +1,6 @@
 package com.nari.somnium.fragment;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.os.Bundle;

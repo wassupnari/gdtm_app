@@ -1,6 +1,6 @@
 package com.nari.somnium.activity;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;

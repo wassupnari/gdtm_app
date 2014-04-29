@@ -1,7 +1,7 @@
 package com.nari.somnium.intro;
 
 import com.nari.somnium.MainActivity;
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.helper.PreferenceHelper;
 
 import android.app.Activity;

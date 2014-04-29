@@ -3,7 +3,7 @@ package com.nari.somnium.intro;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.MainActivity;
 import com.nari.somnium.helper.PreferenceHelper;
 

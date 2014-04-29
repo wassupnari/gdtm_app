@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListView;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.adapter.CLExpandableListAdapter;
 import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.pojo.CLDataPojo;
@@ -40,7 +40,7 @@ public class FragmentCL extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.fragment_meeting_list, null);
+		View view = inflater.inflate(R.layout.fragment_cl, null);
 
 		expandableListView = (ExpandableListView) view
 				.findViewById(R.id.expandable_list_meeting);

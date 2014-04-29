@@ -2,7 +2,7 @@ package com.nari.somnium;
 
 import java.util.ArrayList;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.adapter.DrawerAdapter;
 import com.nari.somnium.fragment.FragmentAboutMe;
 import com.nari.somnium.fragment.FragmentCC;
@@ -113,7 +113,7 @@ public class MainActivity extends Activity {
 			// enabling action bar app icon and behaving it as toggle button
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 			getActionBar().setHomeButtonEnabled(true);
-			getActionBar().setIcon(R.drawable.logo);
+			getActionBar().setIcon(R.drawable.actionbar_logo);
 
 			mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.drawable.ic_drawer,
 					R.string.drawer_open, R.string.drawer_close) {

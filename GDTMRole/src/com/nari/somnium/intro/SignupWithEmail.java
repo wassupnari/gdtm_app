@@ -1,6 +1,6 @@
 package com.nari.somnium.intro;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;

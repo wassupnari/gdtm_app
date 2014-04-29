@@ -10,7 +10,6 @@ import java.util.Arrays;
 //import com.facebook.widget.LoginButton;
 //import com.facebook.widget.LoginButton.OnErrorListener;
 //import com.facebook.model.GraphUser;
-import com.nari.somnium.R;
 import com.nari.somnium.MainActivity;
 
 import android.app.Activity;

@@ -1,7 +1,7 @@
 package com.nari.somnium.intro;
 
 //import com.facebook.*;
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.view.FacebookFragment;
 
 import android.app.AlertDialog;

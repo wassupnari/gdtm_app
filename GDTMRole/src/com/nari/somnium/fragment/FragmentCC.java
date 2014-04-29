@@ -2,7 +2,7 @@ package com.nari.somnium.fragment;
 
 import java.util.ArrayList;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.activity.CCDetailActivity;
 import com.nari.somnium.adapter.CCListAdapter;
 import com.nari.somnium.adapter.CLExpandableListAdapter;

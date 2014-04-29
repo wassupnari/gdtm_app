@@ -1,20 +1,27 @@
 package com.nari.somnium.activity;
 
-import com.nari.somnium.R;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
+import com.nari.toastmate.R;
 import com.nari.somnium.adapter.CLManualDialogAdapter;
 import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.pojo.CLDataPojo;
 import com.nari.somnium.pojo.CLSubDataPojo;
 
 import android.app.Activity;
+import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.app.DatePickerDialog.OnDateSetListener;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.view.View.OnFocusChangeListener;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -24,7 +31,7 @@ import android.widget.ToggleButton;
  * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 
-public class CLDetailActivity extends BaseActivity {
+public class CLDetailActivity extends BaseActivity implements OnFocusChangeListener{
 
 	private TextView mEvaluatorStatic;
 	private TextView mEvaluator;
@@ -47,6 +54,19 @@ public class CLDetailActivity extends BaseActivity {
 	private CLSubDataPojo mData;
 
 	private DatabaseHelper mDB;
+	
+	private DatePickerDialog.OnDateSetListener mDateSetListener = new OnDateSetListener() {
+
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+
+			mYear = year;
+			mMonth = monthOfYear;
+			mDay = dayOfMonth;
+			updateDate();
+		}
+	};;
+	private int mYear, mMonth, mDay;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +83,11 @@ public class CLDetailActivity extends BaseActivity {
 		mDataList.setId(mProjectNumber);
 		mData = mDataList.getSubData().get(mSubNumber);
 		
+		Calendar calendar = Calendar.getInstance();
+		mYear = calendar.get(Calendar.YEAR);
+		mMonth = calendar.get(Calendar.MONTH);
+		mDay = calendar.get(Calendar.DAY_OF_MONTH);
+		
 		setupUI();
 
 	}
@@ -75,6 +100,7 @@ public class CLDetailActivity extends BaseActivity {
 		mDateStatic = (TextView) findViewById(R.id.cl_date_static);
 		mDate = (TextView) findViewById(R.id.cl_date);
 		mDateEdit = (EditText) findViewById(R.id.cl_date_edit);
+		mDateEdit.setOnFocusChangeListener(this);
 
 		mCommentStatic = (TextView) findViewById(R.id.cl_comment_static);
 		mComment = (TextView) findViewById(R.id.cl_comment);
@@ -129,6 +155,7 @@ public class CLDetailActivity extends BaseActivity {
 		mDateEdit.setText(mData.getDate());
 		mCommentEdit.setVisibility(View.VISIBLE);
 		mCommentEdit.setText(mData.getComment());
+		
 	}
 
 	@Override
@@ -189,6 +216,29 @@ public class CLDetailActivity extends BaseActivity {
 		});
 
 		dialog.show();
+	}
+	
+	public void createDatePopup() {
+		DatePickerDialog datePicker = new DatePickerDialog(this, mDateSetListener, mYear, mMonth, mDay);
+		datePicker.show();
+	}
+	
+	public void updateDate() {
+		SimpleDateFormat format = new SimpleDateFormat("MMM");
+		Calendar setCal = Calendar.getInstance();
+		setCal.set(mYear, mMonth, mDay);
+		mDateEdit.setText(format.format(setCal.getTime()) + ". " + mDay + ". " + mYear);
+	}
+
+	@Override
+	public void onFocusChange(View v, boolean hasFocus) {
+		switch(v.getId()) {
+		case R.id.cl_date_edit:
+			if(hasFocus) {
+				createDatePopup();
+			}
+			break;
+		}
 	}
 
 }

@@ -8,7 +8,7 @@ package com.nari.somnium.fragment;
 //import com.facebook.model.GraphUser;
 //import com.facebook.widget.ProfilePictureView;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;

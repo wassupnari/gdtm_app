@@ -1,6 +1,6 @@
 package com.nari.somnium.adapter;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;

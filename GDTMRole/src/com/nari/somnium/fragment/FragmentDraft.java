@@ -1,6 +1,6 @@
 package com.nari.somnium.fragment;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.MainActivity;
 import com.nari.somnium.MainActivity.OnMainMenuEditButtonListener;
 import com.nari.somnium.helper.DatabaseHelper;

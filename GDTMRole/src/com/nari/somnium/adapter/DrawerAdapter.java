@@ -2,7 +2,7 @@ package com.nari.somnium.adapter;
 
 import java.util.ArrayList;
 
-import com.nari.somnium.R;
+import com.nari.toastmate.R;
 import com.nari.somnium.DrawerItem;
 
 import android.content.Context;
