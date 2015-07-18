@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="35dp"
+    android:orientation="horizontal"
+    android:paddingBottom="10dp"
+    android:paddingTop="10dp" >
+
+    <ImageView
+        android:id="@+id/cl_complete_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:src="@drawable/complete_inactive" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/cl_complete_img"
+        android:layout_centerVertical="true" >
+
+        <TextView
+            android:id="@+id/group_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/listview_text_size"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/group_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group_row"
+            android:layout_marginLeft="5dp"
+            android:text="Complete"
+            android:textColor="@color/holo_blue"
+            android:textSize="@dimen/listview_text_size_small"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</RelativeLayout><!--
+     <CheckedTextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/group_row"
+    android:layout_width="wrap_content"
+    android:layout_height="60dp"
+    android:layout_marginLeft="5dp"
+    android:gravity="center_vertical"
+    android:paddingLeft="50dp"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:textColor="#999999"
+    android:textSize="14sp"
+    android:textStyle="bold" />
+-->
+<!-- From: file:/Users/wassupnari/AndroidStudioProjects/ToastMate/app/src/main/res/layout/adapter_list_group_row.xml -->

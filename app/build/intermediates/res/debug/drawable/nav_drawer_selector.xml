@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true" 
+        android:drawable="@drawable/nav_drawer_active" />
+    <item  android:state_focused="false" 
+        android:drawable="@drawable/nav_drawer_inactive" />
+</selector>
+<!-- From: file:/Users/wassupnari/AndroidStudioProjects/ToastMate/app/src/main/res/drawable/nav_drawer_selector.xml -->

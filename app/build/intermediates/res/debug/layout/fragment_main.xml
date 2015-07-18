@@ -1,0 +1,83 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cc_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="5dp" >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/listview_text_size"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"
+        android:text="Your progress" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+         >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/listview_text_size"
+            android:text="Competent Communication" />
+
+        <TextView
+            android:id="@+id/cc_progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/cc_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <TextView 
+        android:id="@+id/cc_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/listview_text_size"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:textSize="@dimen/listview_text_size"
+            android:text="Competent Leadership" />
+
+        <TextView
+            android:id="@+id/cl_progress_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true" />
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/cl_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    
+    <TextView 
+        android:id="@+id/cl_message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/listview_text_size"
+        android:layout_marginBottom="20dp"
+        android:textStyle="italic"
+        android:visibility="gone"/>
+
+</LinearLayout><!-- From: file:/Users/wassupnari/AndroidStudioProjects/ToastMate/app/src/main/res/layout/fragment_main.xml -->

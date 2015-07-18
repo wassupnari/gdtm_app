@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/wassupnari/git/ToastMate/app/libs/Parse-1.5.1.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="3d645417e7780d44f32e29a3ec6b729b75aef26c">
+        <dex dex="/Users/wassupnari/git/ToastMate/app/build/intermediates/pre-dexed/debug/Parse-1.5.1-24a6aed4595422a022ac069ddc809ac2811daa97.jar" />
+    </item>
+    <item
+        jar="/Users/wassupnari/git/ToastMate/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/Users/wassupnari/git/ToastMate/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-3d9ca4beb15eb3369c248e343f1eafc378eeebbe.jar" />
+    </item>
+    <item
+        jar="/Users/wassupnari/git/ToastMate/app/libs/slf4j-api-1.7.7.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="949db5d6435aecdd6c2a61ce252edd2e9d582441">
+        <dex dex="/Users/wassupnari/git/ToastMate/app/build/intermediates/pre-dexed/debug/slf4j-api-1.7.7-69e7c895fa52bb495c99ab76b0b2488c9bac3c33.jar" />
+    </item>
+    <item
+        jar="/Users/wassupnari/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/Users/wassupnari/git/ToastMate/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-c867bb4c9a27c7b0cde82fc65cf77483361f22e4.jar" />
+    </item>
+    <item
+        jar="/Users/wassupnari/git/ToastMate/app/libs/gson-2.2.4.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="973e832af433b44c3ed11c426f2f390b29f3f3f8">
+        <dex dex="/Users/wassupnari/git/ToastMate/app/build/intermediates/pre-dexed/debug/gson-2.2.4-464440f230f974ca14b7eab09bf3d57b57f19887.jar" />
+    </item>
+    <item
+        jar="/Users/wassupnari/git/ToastMate/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/Users/wassupnari/git/ToastMate/app/build/intermediates/pre-dexed/debug/classes-b83bd1582fc84370916479f5ef4330cb6f1c7a7e.jar" />
+    </item>
+    <item
+        jar="/Users/wassupnari/git/ToastMate/app/libs/crashlytics.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="b8189e9eef2f07fae743e05d7fe7e69daebe98d1">
+        <dex dex="/Users/wassupnari/git/ToastMate/app/build/intermediates/pre-dexed/debug/crashlytics-127cde2f5f5880d16a65e906999c9a1a680375ee.jar" />
+    </item>
+
+</items>
