@@ -25,31 +25,45 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 
 public class CCDetailActivity extends BaseActivity implements OnFocusChangeListener {
 
-	private TextView mTitleStatic;
-	private TextView mDateStatic;
-	private TextView mEvaluationStatic;
-	private TextView mEvaluatorStatic;
-
-	private TextView mTitleData;
-	private TextView mEvaluationData;
-	private TextView mDateData;
-	private TextView mEvaluatorData;
-
-	private EditText mTitleEdit;
-	private EditText mEvaluatorEdit;
-	private EditText mDateEdit;
-	private EditText mEvaluationEdit;
+    @InjectView(R.id.speech_title_static)
+	public TextView mTitleStatic;
+    @InjectView(R.id.speech_date_static)
+	public TextView mDateStatic;
+    @InjectView(R.id.speech_eval_static)
+	public TextView mEvaluationStatic;
+    @InjectView(R.id.speech_evaluator_static)
+	public TextView mEvaluatorStatic;
+    @InjectView(R.id.speech_title)
+	public TextView mTitleData;
+    @InjectView(R.id.speech_evaluation)
+	public TextView mEvaluationData;
+    @InjectView(R.id.speech_date)
+	public TextView mDateData;
+    @InjectView(R.id.speech_evaluator)
+	public TextView mEvaluatorData;
+    @InjectView(R.id.speech_title_edit)
+	public EditText mTitleEdit;
+    @InjectView(R.id.speech_evaluator_edit)
+	public EditText mEvaluatorEdit;
+    @InjectView(R.id.speech_date_edit)
+	public EditText mDateEdit;
+    @InjectView(R.id.speech_evaluation_edit)
+	public EditText mEvaluationEdit;
 
 	private DatabaseHelper mDB;
 	private CCDataPojo mData;
 
-	private ToggleButton mComplete;
+    @InjectView(R.id.footer_toggle_cc)
+	public ToggleButton mComplete;
 	private boolean isComplete;
 
 	private int mID;
@@ -74,7 +88,7 @@ public class CCDetailActivity extends BaseActivity implements OnFocusChangeListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cc_detail);
-
+        ButterKnife.inject(this);
 		mID = getIntent().getIntExtra("cc_id", 0);
 
 		showActionBar(this, "Project " + (mID + 1));
@@ -96,25 +110,10 @@ public class CCDetailActivity extends BaseActivity implements OnFocusChangeListe
 	}
 
 	public void UISetup() {
-		mTitleStatic = (TextView) findViewById(R.id.speech_title_static);
-		mTitleData = (TextView) findViewById(R.id.speech_title);
 		mTitleStatic.setText("Project : ");
-		mTitleEdit = (EditText) findViewById(R.id.speech_title_edit);
-
-		mEvaluatorStatic = (TextView) findViewById(R.id.speech_evaluator_static);
 		mEvaluatorStatic.setText("Evaluator : ");
-		mEvaluatorData = (TextView) findViewById(R.id.speech_evaluator);
-		mEvaluatorEdit = (EditText) findViewById(R.id.speech_evaluator_edit);
-
-		mDateStatic = (TextView) findViewById(R.id.speech_date_static);
 		mDateStatic.setText("Date : ");
-		mDateData = (TextView) findViewById(R.id.speech_date);
-		mDateEdit = (EditText) findViewById(R.id.speech_date_edit);
-
-		mEvaluationStatic = (TextView) findViewById(R.id.speech_eval_static);
 		mEvaluationStatic.setText("Evaluation : ");
-		mEvaluationData = (TextView) findViewById(R.id.speech_evaluation);
-		mEvaluationEdit = (EditText) findViewById(R.id.speech_evaluation_edit);
 
 		if (mData != null) {
 			mTitleData.setText(mData.getSpeechTitle());
@@ -125,7 +124,6 @@ public class CCDetailActivity extends BaseActivity implements OnFocusChangeListe
 		
 		mDateEdit.setOnFocusChangeListener(this);
 
-		mComplete = (ToggleButton) findViewById(R.id.footer_toggle_cc);
 		if (mData.getComplete()) {
 			mComplete.setChecked(true);
 		} else {
