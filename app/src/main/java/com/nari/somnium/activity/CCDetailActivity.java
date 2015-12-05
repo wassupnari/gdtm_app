@@ -7,7 +7,6 @@ import com.nari.toastmate.R;
 import com.nari.somnium.helper.DatabaseHelper;
 import com.nari.somnium.pojo.CCDataPojo;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -16,7 +15,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -25,8 +23,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -34,35 +32,35 @@ import butterknife.InjectView;
 
 public class CCDetailActivity extends BaseActivity implements OnFocusChangeListener {
 
-    @InjectView(R.id.speech_title_static)
+    @Bind(R.id.speech_title_static)
 	public TextView mTitleStatic;
-    @InjectView(R.id.speech_date_static)
+    @Bind(R.id.speech_date_static)
 	public TextView mDateStatic;
-    @InjectView(R.id.speech_eval_static)
+    @Bind(R.id.speech_eval_static)
 	public TextView mEvaluationStatic;
-    @InjectView(R.id.speech_evaluator_static)
+    @Bind(R.id.speech_evaluator_static)
 	public TextView mEvaluatorStatic;
-    @InjectView(R.id.speech_title)
+    @Bind(R.id.speech_title)
 	public TextView mTitleData;
-    @InjectView(R.id.speech_evaluation)
+    @Bind(R.id.speech_evaluation)
 	public TextView mEvaluationData;
-    @InjectView(R.id.speech_date)
+    @Bind(R.id.speech_date)
 	public TextView mDateData;
-    @InjectView(R.id.speech_evaluator)
+    @Bind(R.id.speech_evaluator)
 	public TextView mEvaluatorData;
-    @InjectView(R.id.speech_title_edit)
+    @Bind(R.id.speech_title_edit)
 	public EditText mTitleEdit;
-    @InjectView(R.id.speech_evaluator_edit)
+    @Bind(R.id.speech_evaluator_edit)
 	public EditText mEvaluatorEdit;
-    @InjectView(R.id.speech_date_edit)
+    @Bind(R.id.speech_date_edit)
 	public EditText mDateEdit;
-    @InjectView(R.id.speech_evaluation_edit)
+    @Bind(R.id.speech_evaluation_edit)
 	public EditText mEvaluationEdit;
 
 	private DatabaseHelper mDB;
 	private CCDataPojo mData;
 
-    @InjectView(R.id.footer_toggle_cc)
+    @Bind(R.id.footer_toggle_cc)
 	public ToggleButton mComplete;
 	private boolean isComplete;
 
@@ -88,7 +86,7 @@ public class CCDetailActivity extends BaseActivity implements OnFocusChangeListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cc_detail);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 		mID = getIntent().getIntExtra("cc_id", 0);
 
 		showActionBar(this, "Project " + (mID + 1));

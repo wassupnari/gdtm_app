@@ -27,8 +27,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.InjectView;
 
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
@@ -36,17 +36,17 @@ import butterknife.InjectView;
 
 public class CLDetailActivity extends BaseActivity implements OnFocusChangeListener{
 
-    @InjectView(R.id.cl_evaluator)
+    @Bind(R.id.cl_evaluator)
 	public TextView mEvaluator;
-    @InjectView(R.id.cl_evaluator_edit)
+    @Bind(R.id.cl_evaluator_edit)
 	public EditText mEvaluatorEdit;
-    @InjectView(R.id.cl_date)
+    @Bind(R.id.cl_date)
 	public TextView mDate;
-    @InjectView(R.id.cl_date_edit)
+    @Bind(R.id.cl_date_edit)
 	public EditText mDateEdit;
-    @InjectView(R.id.cl_comment)
+    @Bind(R.id.cl_comment)
 	public TextView mComment;
-    @InjectView(R.id.cl_comment_edit)
+    @Bind(R.id.cl_comment_edit)
 	public EditText mCommentEdit;
 
 	private int mSubNumber;
@@ -73,7 +73,7 @@ public class CLDetailActivity extends BaseActivity implements OnFocusChangeListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cl_detail);
-        ButterKnife.inject(this);
+        ButterKnife.bind(this);
 		String title = getIntent().getExtras().getString("cl_detail_title");
         int mProjectNumber = getIntent().getIntExtra("cl_group_id", 0);
 		mSubNumber = getIntent().getIntExtra("cl_child_id", 0);
