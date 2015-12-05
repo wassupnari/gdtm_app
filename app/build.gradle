@@ -1,12 +1,14 @@
 apply plugin: 'android'
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 22
     buildToolsVersion '20.0.0'
     defaultConfig {
         applicationId 'com.nari.toastmate'
-        minSdkVersion 8
-        targetSdkVersion 21
+        minSdkVersion 14
+        targetSdkVersion 22
+        versionCode 814135
+        versionName '1.0.2'
     }
     buildTypes {
         debug {
@@ -23,7 +25,10 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:support-v4:22.2.1'
+    compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.android.support:appcompat-v7:22.2.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
     compile files('libs/crashlytics.jar')
     compile files('libs/slf4j-api-1.7.7.jar')
     compile files('libs/gson-2.2.4.jar')

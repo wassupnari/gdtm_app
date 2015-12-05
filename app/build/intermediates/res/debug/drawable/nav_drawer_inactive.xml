@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android" >
-
-    <solid android:color="@color/actionbar_default_color" />
-
-</shape><!-- From: file:/Users/wassupnari/AndroidStudioProjects/ToastMate/app/src/main/res/drawable/nav_drawer_inactive.xml -->

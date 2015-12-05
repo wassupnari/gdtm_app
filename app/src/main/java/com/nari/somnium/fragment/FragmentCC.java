@@ -25,6 +25,8 @@ import android.widget.AdapterView;
 import android.widget.ExpandableListView;
 import android.widget.ListView;
 
+import butterknife.Bind;
+
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
  */
@@ -36,6 +38,7 @@ public class FragmentCC extends Fragment {
 	private static final int NUM_OF_CC_PJT = 10;
 
 	private CCListAdapter mAdapter;
+    @Bind(R.id.cc_listview)
 	private ListView mListView;
 
 	private String[] mProject;
@@ -57,7 +60,6 @@ public class FragmentCC extends Fragment {
 			mDB.addCCData(i, data);
 		}
 
-		mListView = (ListView) view.findViewById(R.id.cc_listview);
 		mListView.setOnItemClickListener(new ListView.OnItemClickListener() {
 
 			@Override
@@ -78,6 +80,4 @@ public class FragmentCC extends Fragment {
 		mAdapter = new CCListAdapter(getActivity());
 		mListView.setAdapter(mAdapter);
 	}
-
-
 }

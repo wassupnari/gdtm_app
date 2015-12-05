@@ -22,6 +22,9 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * This is the main page of role signup.
  * 
@@ -39,12 +42,15 @@ public class FragmentMain extends Fragment implements Runnable {
 	private int clPosition;
 	
 	private DatabaseHelper mDB;
-	
+
+    @Bind(R.id.cc_progress_text)
 	TextView ccProgressText;
+    @Bind(R.id.cl_progress_text)
 	TextView clProgressText;
-	
-	private TextView mCCmsg;
-	private TextView mCLmsg;
+	@Bind(R.id.cc_message)
+	TextView mCCmsg;
+    @Bind(R.id.cl_message)
+	TextView mCLmsg;
 	
 	private Handler mHandler = new Handler();
 
@@ -52,14 +58,9 @@ public class FragmentMain extends Fragment implements Runnable {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.fragment_main, null);
+        ButterKnife.bind(this, view);
 		
 		mDB = new DatabaseHelper(getActivity());
-		
-		ccProgressText = (TextView) view.findViewById(R.id.cc_progress_text);
-		clProgressText = (TextView) view.findViewById(R.id.cl_progress_text);
-		
-		mCCmsg = (TextView) view.findViewById(R.id.cc_message);
-		mCLmsg = (TextView) view.findViewById(R.id.cl_message);
 		
 		for(CCDataPojo cc : mDB.getAllCCData()) {
 			if(cc.getComplete()) {

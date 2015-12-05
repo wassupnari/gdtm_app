@@ -27,28 +27,29 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 /**
  * @author Nari Kim Shin (wassupnari@gmail.com)
  */
 
 public class CLDetailActivity extends BaseActivity implements OnFocusChangeListener{
 
-	private TextView mEvaluatorStatic;
-	private TextView mEvaluator;
-	private EditText mEvaluatorEdit;
+    @Bind(R.id.cl_evaluator)
+	public TextView mEvaluator;
+    @Bind(R.id.cl_evaluator_edit)
+	public EditText mEvaluatorEdit;
+    @Bind(R.id.cl_date)
+	public TextView mDate;
+    @Bind(R.id.cl_date_edit)
+	public EditText mDateEdit;
+    @Bind(R.id.cl_comment)
+	public TextView mComment;
+    @Bind(R.id.cl_comment_edit)
+	public EditText mCommentEdit;
 
-	private TextView mDateStatic;
-	private TextView mDate;
-	private EditText mDateEdit;
-
-	private TextView mCommentStatic;
-	private TextView mComment;
-	private EditText mCommentEdit;
-
-	private int mProjectNumber;
 	private int mSubNumber;
-
-	private ToggleButton mComplete;
 
 	private CLDataPojo mDataList;
 	private CLSubDataPojo mData;
@@ -72,8 +73,9 @@ public class CLDetailActivity extends BaseActivity implements OnFocusChangeListe
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_cl_detail);
+        ButterKnife.bind(this);
 		String title = getIntent().getExtras().getString("cl_detail_title");
-		mProjectNumber = getIntent().getIntExtra("cl_group_id", 0);
+        int mProjectNumber = getIntent().getIntExtra("cl_group_id", 0);
 		mSubNumber = getIntent().getIntExtra("cl_child_id", 0);
 		showActionBar(this, title);
 
@@ -93,19 +95,10 @@ public class CLDetailActivity extends BaseActivity implements OnFocusChangeListe
 	}
 
 	public void setupUI() {
-		mEvaluatorStatic = (TextView) findViewById(R.id.cl_evaluator_static);
-		mEvaluator = (TextView) findViewById(R.id.cl_evaluator);
-		mEvaluatorEdit = (EditText) findViewById(R.id.cl_evaluator_edit);
-
-		mDateStatic = (TextView) findViewById(R.id.cl_date_static);
-		mDate = (TextView) findViewById(R.id.cl_date);
-		mDateEdit = (EditText) findViewById(R.id.cl_date_edit);
+        TextView mEvaluatorStatic = (TextView) findViewById(R.id.cl_evaluator_static);
+        TextView mDateStatic = (TextView) findViewById(R.id.cl_date_static);
 		mDateEdit.setOnFocusChangeListener(this);
-
-		mCommentStatic = (TextView) findViewById(R.id.cl_comment_static);
-		mComment = (TextView) findViewById(R.id.cl_comment);
-		mCommentEdit = (EditText) findViewById(R.id.cl_comment_edit);
-
+        TextView mCommentStatic = (TextView) findViewById(R.id.cl_comment_static);
 		mEvaluatorStatic.setText("Evaluator : ");
 		mDateStatic.setText("Date : ");
 		mCommentStatic.setText("Comment : ");
@@ -116,7 +109,7 @@ public class CLDetailActivity extends BaseActivity implements OnFocusChangeListe
 			mComment.setText(mData.getComment());
 		}
 
-		mComplete = (ToggleButton) findViewById(R.id.footer_toggle_cl);
+        ToggleButton mComplete = (ToggleButton) findViewById(R.id.footer_toggle_cl);
 		if (mData.getComplete()) {
 			mComplete.setChecked(true);
 		} else {
